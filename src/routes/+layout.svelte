@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
 </head>
 
-<div class="flex flex-col min-h-screen justify-between">
+<div class="flex flex-col min-h-[100dvh] justify-between">
 
 {#if $page.url.pathname === '/'}
 	<Header />
