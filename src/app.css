@@ -1,3 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
+
+body {
+    font-family: 'Clicker', sans-serif;
+  }

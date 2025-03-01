@@ -1,0 +1,41 @@
+@import './variables';
+
+body {
+    background-color: $background-color;
+}
+
+.mbg-yellow{
+    background-color: $primary-accent;
+}
+
+.text-primary{
+    color: $text-color
+}
+
+.text-dark{
+    color: $background-color
+}
+
+.text-accent-one {
+    color: $primary-accent
+}
+
+.text-accent-two {
+    color: $secondary-accent
+}
+
+.border-accent-one{
+    border-color: $primary-accent;
+}
+
+.border-accent-two {
+    border-color: $secondary-accent;
+}
+
+.home-nav-button {
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+
+}
+
