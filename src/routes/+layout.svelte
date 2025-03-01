@@ -15,16 +15,21 @@
 
 <div class="flex flex-col min-h-screen justify-between">
 
-	{#if $page.url.pathname === '/'}
+{#if $page.url.pathname === '/'}
 	<Header />
-  	{:else}
+{:else}
 	<SecondaryHeader />
-  	{/if}
-  
+{/if}
 
-<main>
+{#if $page.url.pathname === "/"}
+<main class="flex-grow flex flex-col justify-center">
 	{@render children()}
 </main>
+{:else}
+<main class="flex-grow">
+	{@render children()}
+</main>
+{/if}
 
 <Footer />
 </div>

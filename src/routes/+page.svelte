@@ -4,13 +4,13 @@
 
 <div class="home-nav flex flex-col gap-5 p-10 justify-center items-center">
     <button on:click={() => goto('/about')} class="home-nav-button text-dark mbg-yellow p-4">
-        about
+        <strong>about</strong>
     </button>
     <button on:click={() => goto('/portfolio')} class="home-nav-button text-dark mbg-yellow p-4">
-        portfolio
+        <strong>portfolio</strong>
     </button>
     <button on:click={() => goto('/services')} class="home-nav-button text-dark mbg-yellow p-4">
-        services
+        <strong>services</strong>
     </button>
 
 </div>
