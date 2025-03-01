@@ -5,7 +5,7 @@
 
 <section class="py-16">
     <div class="container mx-auto text-center">
-      <p class="mb-16 text-lg text-gray-700">
+      <p class="mb-16 text-lg">
         At Developmental Web Services, we provide comprehensive solutions for businesses looking to grow their online presence. Explore our wide range of services, tailored to meet your unique needs.
       </p>
       
