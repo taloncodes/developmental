@@ -12,10 +12,12 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-	setTimeout(() => {
+	window.requestAnimationFrame(() => {
 		window.dispatchEvent(new Event('resize'));
-	}, 0);
 	});
+	});
+
+	
 </script>
 
 <head>
