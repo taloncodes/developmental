@@ -32,10 +32,10 @@ body {
     border-color: $secondary-accent;
 }
 
-.home-nav-button {
+.sharp-corners {
+    border: $secondary-accent solid 3px;
     border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
