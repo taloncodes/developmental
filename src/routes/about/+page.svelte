@@ -6,7 +6,7 @@
 <section>
 
     <div class="flex justify-center">
-        <div class="text-center sharp-corners-yellow p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-dark mbg-yellow"><strong>about</strong></div>
+        <div class="text-center sharp-corners-yellow p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-accent-one"><strong>about</strong></div>
     </div>
 
     <div class="about_container p-10 sm:p-2 flex justify-center w-screen">

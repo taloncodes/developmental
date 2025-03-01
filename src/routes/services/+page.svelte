@@ -5,7 +5,7 @@
 
 <section>
     <div class="flex justify-center">
-        <div class="text-center sharp-corners-yellow p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-dark mbg-yellow"><strong>services</strong></div>
+        <div class="text-center sharp-corners-yellow p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-accent-one"><strong>services</strong></div>
     </div>
 
     <div class="container mx-auto text-center">
