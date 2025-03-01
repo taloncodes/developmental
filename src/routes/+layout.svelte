@@ -8,6 +8,14 @@
 
 
 	let { children } = $props();
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+	setTimeout(() => {
+		window.dispatchEvent(new Event('resize'));
+	}, 0);
+	});
 </script>
 
 <head>
