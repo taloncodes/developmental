@@ -1,7 +1,15 @@
+<script>
+    import instaIcon from '$lib/icons/insta_icon.png';
+    import githhubIcon from '$lib/icons/github_icon.png';
+    import mailIcon from '$lib/icons/mail_icon.png';
+
+</script>
+
 <footer>
     <div class="flex footer p-10 h-3 justify-center items-center border-t-3 border-accent-two">
         <div class="links flex gap-6">
-            <div class="link border-accent-one border-4 rounded-full h-10 w-10">
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <img src={instaIcon} alt="instagram icon">
 
             </div>
 
@@ -10,7 +18,8 @@
                     /
                 </span>
             </div>
-            <div class="link border-accent-one border-4 rounded-full h-10 w-10">
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <img src={githhubIcon} alt="github icon">
             
             </div>
             <div class="flex flex-col justify-center">
@@ -18,8 +27,8 @@
                     /
                 </span>
             </div>
-            <div class="link border-accent-one border-4 rounded-full h-10 w-10">
-                
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <img src={mailIcon} alt="github icon">
             </div>
         </div>
     </div>
