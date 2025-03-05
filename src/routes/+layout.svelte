@@ -17,12 +17,14 @@
 	});
 	});
 
-	
+
+
 </script>
 
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
 </head>
+
 
 <div class="flex flex-col min-h-[100dvh] justify-between">
 
@@ -44,6 +46,7 @@
 
 <Footer />
 </div>
+
 
 
 

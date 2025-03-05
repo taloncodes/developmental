@@ -28,7 +28,7 @@
 
     .home-nav-button {
         border: #DEE2A6 solid 2px;
-        border-radius: 10px;
+        border-radius: 15px;
         width: 400px;
         max-width: 90%;
     }
