@@ -55,7 +55,7 @@
 
 {#if isMenuOpen}
   <div 
-    class="fixed inset-0 bg-black/50 backdrop-blur-lg transition-opacity duration-300"
+    class="overlay fixed inset-0 bg-black/50 backdrop-blur-lg transition-opacity duration-300"
     on:click={() => isMenuOpen = false}
   ></div>
 {/if}
@@ -110,6 +110,20 @@
     .nav-menu{
         background-color: #1D2030;
         color: #DEE2A6;
+        z-index: 10;
+        overflow: hidden;
+    }
+
+    .overlay{
+        z-index: 9;
+    }
+
+    .noOverflow{
+        overflow: hidden;
+    }
+
+    .overFlow{
+        overflow: initial;
     }
 
 </style>
