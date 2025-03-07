@@ -23,7 +23,7 @@
             name : 'lvm',
             src : lvm,
             desc : "A custom music player designed specifically for LVM with a bespoke, responsive design that aligns with their personality. This interactive web app aims to enhance the artist's vision, offering a unique platform to showcase their EP. With engaging features to enhance listening experience, allowing fans to explore the music in a whole new way.",
-            stack : "<li>HMTL</li><li>CSS</li><li>JavaScript</li><li>Svelte</li><li>Vite</li><li>Input-knobs.js</li>",
+            stack : "<li>HTML</li><li>CSS</li><li>JavaScript</li><li>Svelte</li><li>Vite</li><li>Input-knobs.js</li>",
             features : "<li>Audio Play/Stop</li><li>Track Select</li><li>Frequency analyser</li><li>Hi Pass Filter</li><li>Lo Pass Filter</li>Subtle Animation<li>",
             url : "https://custom-music-player-eight.vercel.app/",
 
