@@ -74,7 +74,7 @@
       
     <div class="wrapper xl:flex xl:justify-center">
 
-    <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-4/5 m-auto xl:m-0">
+    <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-[90%] m-auto xl:m-0">
 
         <div class="xl:order-none xl:inline hidden">
             <button class="portButton" on:click={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
