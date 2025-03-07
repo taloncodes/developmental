@@ -88,7 +88,7 @@
 
         </div>
 
-        <div class="demo order-first xl:order-none relative xl:min-w-[700px]">
+        <div class="demo xl:min-w-[650px] order-first xl:order-none relative xl:min-w-[700px]">
             <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0 sharp-corners">
             <div class="absolute inset-0 opacity-0 overlay">
                 <button 
@@ -118,10 +118,9 @@
 
 <style>
     .demo{
-        border-radius: 10px;
+        border-radius: 15px;
         border-top-left-radius: 0;
         border-bottom-right-radius: 0;
-        min-width: 650px;
 
     }
 
