@@ -59,14 +59,14 @@
         {portfolioItems[currentItem].desc}
     </div>
 
-    <div class="flex justify-center items-center gap-20 mb-6">
+    <div class="flex justify-center items-center gap-10 md:gap-20 lg:gap-30 mb-6 w-[95%] mx-auto">
 
         <div>
-            <button class="xl:hidden port-nav-button text-dark text-center mbg-yellow p-4 inline basis-[150px] portButtonFull" on:click={prevItem} aria-label="view next showcase">previous</button>
+            <button class="xl:hidden port-nav-button text-dark text-center mbg-yellow p-2 inline basis-[150px] portButtonFull" on:click={prevItem} aria-label="view next showcase">previous</button>
         </div>
 
         <div>
-            <button class="portButtonFull xl:hidden port-nav-button text-dark text-center mbg-yellow p-4 inline basis-[150px]" on:click={nextItem} aria-label="view next showcase">next</button>
+            <button class="portButtonFull xl:hidden port-nav-button text-dark text-center mbg-yellow p-2 inline basis-[150px]" on:click={nextItem} aria-label="view next showcase">next</button>
         </div>
 
 
@@ -89,8 +89,8 @@
         </div>
 
         <div class="demo xl:min-w-[650px] order-first xl:order-none relative xl:min-w-[700px]">
-            <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0 sharp-corners">
-            <div class="absolute inset-0 opacity-0 overlay">
+            <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0">
+            <div class="absolute inset-0 opacity-100 lg:opacity-0 overlay">
                 <button 
                     on:click={window.location.href=portfolioItems[currentItem].url} 
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-10 cursor-pointer transition-all duration-300 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div class="features xl:h-[396px] xl:max-w-[300px] sharp-corners w-full flex flex-col justify-start">
+        <div class="features xl:h-[396px] xl:max-w-[300px] sharp-corners w-full flex mb-10 xl:mb-0 flex-col justify-start">
             <h2 class="border-b-2 pb-3 mb-3 top-0 text-accent-one"> Features </h2>
             <ul class="flex h-full flex-col justify-evenly">
                 {@html portfolioItems[currentItem].features}
@@ -143,7 +143,6 @@
         flex-shrink: 1;
         min-width: 150px;
         max-height: 370px;
-
     }
 
     .backIcon {
@@ -175,4 +174,6 @@
         transform: scale(1.2);
 
     }
+
+
 </style>
