@@ -3,6 +3,8 @@
     import lvm from '$lib/demo/lvm.png';
     import { goto } from '$app/navigation';
     import {onMount} from 'svelte';
+    import backBtn from '$lib/icons/backBtn.png';
+    import nextBtn from '$lib/icons/nextBtn.png';
 
     let currentItem = $state(0);
 
@@ -11,50 +13,83 @@
             item : 0,
             name : 'wags',
             src : wags,
-            desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, it showcases the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for clients to connect and make direct booking inquiries.",
-            stack : "<li> Vanilla HTML, CSS and JavaScript </li> <li> Node.js for custom mail handling </li> <li> Integrated with Mailgun API </li>",
-            features : "<li>Google analytics</li> <li>Subtle Animations</li> <li>Bespoke design</li> <li> Optimsed for speed, performance and SEO</li>",
+            desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, it showcases the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for clients to make direct booking inquiries.",
+            stack : "<li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Mailgun</li>",
+            features : "<li>Google analytics</li><li>Subtle Animation</li> <li>Contact Form</li><li>Bespoke design</li> <li>SEO Optimised</li><li>Speed Optimised</li>",
             url : "https://wagsnwhiskers.co",
         },
         {
             item : 1,
             name : 'lvm',
             src : lvm,
-            desc : "lorem ipsum",
-            stack : "<li> lorem </li> <li> ipsum </li>",
-            features : "<li> lorem </li> <li> ipsum </li>",
+            desc : "A custom music player designed specifically for LVM with a bespoke, responsive design that aligns with their personality. This interactive web app aims to enhance the artist's vision, offering a unique platform to showcase their EP. With engaging features to enhance listening experience, allowing fans to explore the music in a whole new way.",
+            stack : "<li>HMTL</li><li>CSS</li><li>JavaScript</li><li>Svelte</li><li>Vite</li><li>Input-knobs.js</li>",
+            features : "<li>Audio Play/Stop</li><li>Track Select</li><li>Frequency analyser</li><li>Hi Pass Filter</li><li>Lo Pass Filter</li>Subtle Animation<li>",
             url : "https://custom-music-player-eight.vercel.app/",
 
         }
     ];
 
+    console.log(portfolioItems.length);
+
+    function nextItem(){
+        if (currentItem === portfolioItems.length - 1){
+            currentItem = 0;
+        }
+
+        else (currentItem++)
+    }
+
+    function prevItem(){
+        if (currentItem === 0){
+            currentItem = portfolioItems.length - 1
+        }
+        else {
+            currentItem--;
+        }
+
+    }
+
 </script>
 
 <section class="top-0">
-    <div class="flex justify-center">
-        <div class="flex justify-center items-center sharp-corners p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-accent-one relative"><strong>portfolio</strong>
-        <button on:click={ () => goto('/')} class="backIcon" aria-label="back button"></button>
-        <button on:click={currentItem++}>next </button>
-        </div>
+
+
+    <div class="w-full px-12 p-5 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
+        {portfolioItems[currentItem].desc}
     </div>
 
-    <div class="w-full px-12 xl:px-20 flex justify-center text-center mb-6 text-accent-one">
-        {portfolioItems[currentItem].desc}
-      </div>
+    <div class="flex justify-center items-center gap-20 mb-6">
+
+        <div>
+            <button class="xl:hidden port-nav-button text-dark text-center mbg-yellow p-4 inline basis-[150px] portButtonFull" on:click={prevItem} aria-label="view next showcase">previous</button>
+        </div>
+
+        <div>
+            <button class="portButtonFull xl:hidden port-nav-button text-dark text-center mbg-yellow p-4 inline basis-[150px]" on:click={nextItem} aria-label="view next showcase">next</button>
+        </div>
+
+
+    </div>
       
     <div class="wrapper xl:flex xl:justify-center">
 
-    <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[90%] gap-10 p-2 w-4/5 m-auto xl:m-0">
+    <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-4/5 m-auto xl:m-0">
+
+        <div class="xl:order-none xl:inline hidden">
+            <button class="portButton" on:click={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
+        </div>
 
         <div class="stack sharp-corners w-full xl:h-[396px] xl:max-w-[300px] flex flex-col justify-start">
-            <h2 class="border-b-2 mb-6 text-accent-one"> Tech Stack </h2>
-            {@html portfolioItems[currentItem].stack}
-                
+            <h2 class="border-b-2 pb-3 mb-3 text-accent-one"> Tech Stack </h2>
+            <ul class="flex h-full flex-col justify-evenly">
+                {@html portfolioItems[currentItem].stack}
+            </ul>
 
         </div>
 
         <div class="demo order-first xl:order-none relative xl:min-w-[700px]">
-            <img src={portfolioItems[currentItem].src} alt="wags n whiskers demo" class="demo flex m-auto shrink-0">
+            <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0 sharp-corners">
             <div class="absolute inset-0 opacity-0 overlay">
                 <button 
                     on:click={window.location.href=portfolioItems[currentItem].url} 
@@ -65,13 +100,20 @@
         </div>
 
         <div class="features xl:h-[396px] xl:max-w-[300px] sharp-corners w-full flex flex-col justify-start">
-            <h2 class="border-b-2 mb-6 top-0 text-accent-one"> Features </h2>
-            {@html portfolioItems[currentItem].features}
-    </div>
+            <h2 class="border-b-2 pb-3 mb-3 top-0 text-accent-one"> Features </h2>
+            <ul class="flex h-full flex-col justify-evenly">
+                {@html portfolioItems[currentItem].features}
+            </ul>
+        </div>
+
+        <div class="xl:order-none xl:inline hidden">
+            <button class="portButton" on:click={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
+        </div>
 
     </div>
 
     </div>
+
 </section>
 
 <style>
@@ -79,6 +121,8 @@
         border-radius: 10px;
         border-top-left-radius: 0;
         border-bottom-right-radius: 0;
+        min-width: 650px;
+
     }
 
     .demo:hover{
@@ -97,8 +141,9 @@
         padding: 20px;
         text-align: center;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-shrink: 1;
+        min-width: 150px;
+        max-height: 370px;
 
     }
 
@@ -110,5 +155,25 @@
         border-bottom: 15px solid transparent;
         position: absolute;
         left: 15px;
+    }
+
+    .portButton{
+        transition: ease 0.3s;
+        width: 40px;
+    }
+
+    .portButton:hover{
+        transform: scale(1.2);
+
+    }
+
+    .portButtonFull{
+        transition: ease 0.3s;
+
+    }
+
+    .portButtonFull:hover{
+        transform: scale(1.2);
+
     }
 </style>

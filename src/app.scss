@@ -37,6 +37,7 @@ body {
     border-radius: 15px;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
+    background-color: #11121b;
 }
 
 .sharp-corners-yellow {
@@ -46,3 +47,37 @@ body {
     border-bottom-right-radius: 0;
 }
 
+.darker{
+    background-color: #11121b;
+}
+
+.home-nav-button:hover{
+    border: #B17A85 solid 2px;
+    background-color: #11121B;
+    color: #DEE2A6;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+.home-nav-button {
+    border: #DEE2A6 solid 2px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.port-nav-button:hover{
+    border: #B17A85 solid 2px;
+    background-color: #11121B;
+    color: #DEE2A6;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+.port-nav-button {
+    border: #DEE2A6 solid 2px;
+    border-radius: 15px;
+    width: 150px;
+}

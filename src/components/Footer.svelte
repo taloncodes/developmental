@@ -6,7 +6,7 @@
 </script>
 
 <footer>
-    <div class="flex footer p-10 h-3 justify-center items-center border-t-3 border-accent-two">
+    <div class="flex footer p-10 h-3 justify-center items-center border-t-3 border-accent-two darker">
         <div class="links flex gap-6">
             <div class="link border-accent-one border-2 rounded-full h-10 w-10">
                 <a href="https://www.instagram.com/developmen_tal">

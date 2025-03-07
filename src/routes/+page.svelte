@@ -17,20 +17,6 @@
 
 <style>
 
-    .home-nav-button:hover{
-        border: #B17A85 solid 2px;
-        background-color: #1D2030;
-        color: #DEE2A6;
-        border-top-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
 
-
-    .home-nav-button {
-        border: #DEE2A6 solid 2px;
-        border-radius: 15px;
-        width: 400px;
-        max-width: 90%;
-    }
 
 </style>

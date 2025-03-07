@@ -71,7 +71,6 @@
 <style>
     .second-header{
         border-color: #B17A85;
-        margin-bottom: 24px;
     }
     span.navlink {
         color: #DEE2A6;
@@ -88,6 +87,7 @@
         border-radius: 10px;
         border-top-left-radius: 0;
         border-bottom-right-radius: 0;
+        background-color: #11121B;
         
     }
 
