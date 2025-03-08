@@ -56,7 +56,7 @@
 <section class="top-0">
 
 
-    <div class="w-full px-12 p-5 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
+    <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
         {portfolioItems[currentItem].desc}
     </div>
 
