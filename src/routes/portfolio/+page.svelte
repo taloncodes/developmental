@@ -5,6 +5,8 @@
     import {onMount} from 'svelte';
     import backBtn from '$lib/icons/backBtn.png';
     import nextBtn from '$lib/icons/nextBtn.png';
+    import { slide } from 'svelte/transition';
+    import {fade} from 'svelte/transition';
 
     let currentItem = $state(0);
 
@@ -173,6 +175,5 @@
         transform: scale(1.2);
 
     }
-
 
 </style>
