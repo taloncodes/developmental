@@ -1,10 +1,9 @@
 <script>
     	import { page } from '$app/stores';
+        import { isMenuOpen } from '../store.svelte';
+
+    
         let activePage;
-
-
-        let isMenuOpen = false;
-
 
 
         $: {
@@ -17,6 +16,17 @@
             } else {
             activePage = '';
             }
+        }
+
+
+        function handleClick() {
+            isMenuOpen.open = !isMenuOpen.open;
+            isMenuOpen.open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible';
+        }
+
+        function handleClose(){
+            isMenuOpen.open = false;
+            document.body.style.overflow = 'visible'
         }
 
 </script>
@@ -45,7 +55,7 @@
             </span>
         </ul>
 
-        <button class="relative burger md:hidden flex h-10 flex-col justify-around px-2 py-2 border-2 rounded-[10px] rounded-tl-none rounded-br-none" on:click={() => isMenuOpen = !isMenuOpen}>
+        <button class="relative burger md:hidden flex h-10 flex-col justify-around px-2 py-2 border-2 rounded-[10px] rounded-tl-none rounded-br-none" on:click={handleClick}>
             <span class="block lettuce w-6 h-[2px] bg-white"></span>
             <span class="block cheese w-6 h-[2px] bg-white"></span>
             <span class="block tomato w-6 h-[2px] bg-white"></span>
@@ -53,18 +63,18 @@
     </div>
 </header>
 
-{#if isMenuOpen}
+{#if isMenuOpen.open}
   <div 
     class="overlay fixed inset-0 bg-black/50 backdrop-blur-lg transition-opacity duration-300"
-    on:click={() => isMenuOpen = false}
+    on:click={handleClose}
   ></div>
 {/if}
 
-<div class={`fixed top-0 right-0 nav-menu h-full w-3/4 p-6 shadow-lg transform transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+<div class={`fixed top-0 right-0 nav-menu h-full w-3/4 p-6 shadow-lg transform transition-transform duration-300 ${isMenuOpen.open ? 'translate-x-0' : 'translate-x-full'}`}>
   <ul class="mt-10 space-y-4">
-    <li><a href="/about" class:active={activePage === 'about'} class="block text-lg px-3 py-1" on:click={() => isMenuOpen = false}>about</a></li>
-    <li><a href="/services" class:active={activePage === 'services'} class="block text-lg px-3 py-1" on:click={() => isMenuOpen = false}>services</a></li>
-    <li><a href="/portfolio" class:active={activePage === 'portfolio'} class="block text-lg px-3 py-1" on:click={() => isMenuOpen = false}>portfolio</a></li>
+    <li><a href="/about" class:active={activePage === 'about'} class="block text-lg px-3 py-1" on:click={handleClose}>about</a></li>
+    <li><a href="/services" class:active={activePage === 'services'} class="block text-lg px-3 py-1" on:click={handleClose}>services</a></li>
+    <li><a href="/portfolio" class:active={activePage === 'portfolio'} class="block text-lg px-3 py-1" on:click={handleClose}>portfolio</a></li>
   </ul>
 </div>
 
@@ -125,5 +135,10 @@
     .overFlow{
         overflow: initial;
     }
+
+    :global(body.menu-open) {
+        overflow: hidden;
+    }
+
 
 </style>

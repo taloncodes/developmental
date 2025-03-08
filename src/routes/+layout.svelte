@@ -11,6 +11,8 @@
 
 	import { onMount } from 'svelte';
 
+
+
 	onMount(() => {
 	window.requestAnimationFrame(() => {
 		window.dispatchEvent(new Event('resize'));
@@ -46,6 +48,13 @@
 
 <Footer />
 </div>
+
+<style>
+	:global(body.menu-open) {
+    overflow: hidden;
+}
+
+</style>
 
 
 
