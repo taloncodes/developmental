@@ -41,7 +41,7 @@
             At Developmental, we specialise in crafting modern, functional websites tailored specifically to you. Our goal is to highlight your individuality and help you stand our from your competitors, creating a digital presence that's not only memorable but also authentic.
             We use the latest technologies and best practices to ensure your website looks amazing, performs flawlessly, and is optimised for speed and efficiency.
         </ul>
-        <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question mark icon">
+        <img src={tools} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
     </div>
 
@@ -49,7 +49,7 @@
         
         <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why choose us? </h2>
         <div class="flex flex-col md:flex-row">
-        <img src={tools} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
+        <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
         <ul class="flex flex-col justify-evenly h-auto">
             Unlike many competitors who rely on generic templates, we build fully bespoke websites that balance performance and design. This means you can have as much (or as little) input in the design process as you like. The result? A site that's unique to your business and one that runs faster that a template-based site, without all the built-in bloat that slows things down.
         </ul>
