@@ -8,9 +8,24 @@
     import shake from '$lib/icons/shake_icon.svg';
     import seo from '$lib/icons/seo_icon.svg';
     import downArrow from '$lib/icons/down_icon.svg';
+    import Form from '../../components/Form.svelte';
+
+    let modalOpen = $state(false);
+
+    function openModal(){
+        modalOpen = !modalOpen;
+
+    };
+
+    function closeModal(){
+        modalOpen = !modalOpen;
+    };
+
 </script>
 
 <section>
+
+    <Form bind:visible={modalOpen} />
 
     <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
         <h1 class="text-4xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
@@ -120,19 +135,24 @@
         
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 1. Make an Enquiry </h2>
         <p class="p-6">Getting started is easy. You can reach out with a simple email, text message or phone call. Or, for a quicker start, fill out our comprehensive enquiry form to privde us with the key details we need.</p>
-        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 2. Tell Us About Your Goals </h2>
         <p class="p-6">We'll send you a tailored package designed to gather the finer details about you and your website goals. This includes what you aim to achieve, along with any existing branding, logos, or designs you'd like us to incorporate.</p>
-        <img src={downArrow} alt="down arrow" width="77px" class="m-auto pb-6">
+        <img src={downArrow} alt="down arrow" width="77px" class="m-auto pb-3">
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 3. Planning & Design</h2>
         <p class="p-6">Once we've collected everything we need and received your initial deposit, we'll begin mapping out your website's functionality and design. Throughout this stage, we'll stay in regular contact to keep you updated.</p>
-        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 4. Review & Refine</h2>
         <p class="p-6">When the site is nearing completion, we'll provide you with early access so you can explore it firsthand. This is your opporunity to share feedback and request any revisions to ensure everything feels just right.</p>
-        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 5. Launch & Beyond </h2>
         <p class="p-6">With your approval, we'll launch your website! But our support doesn't end there. If you ever need updates or changes, we offer flexible options. Choose from our ongoing maintenance packages or pay-as-you-go services with discounted rates for future adjustments.</p>
 
+            <button 
+                on:click={openModal} 
+                class="px-6 m-auto w-fit py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                Ready To Go? Get In Touch <strong>Now</strong>
+            </button>
     </div>
 
 </div>
@@ -146,6 +166,17 @@
 </section>
 
 <style>
+
+    button:hover {
+
+    border: #B17A85 solid 2px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #11121b;
+    color: #DEE2A6;
+
+    }
 
     p {
         color: #FAFAFA;

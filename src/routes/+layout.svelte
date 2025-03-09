@@ -6,11 +6,9 @@
 	import SecondaryHeader from '../components/SecondaryHeader.svelte';
 	import { page } from '$app/stores';
 
-
 	let { children } = $props();
 
 	import { onMount } from 'svelte';
-
 
 
 	onMount(() => {
@@ -26,7 +24,6 @@
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
 </head>
-
 
 <div class="flex flex-col min-h-[100dvh] justify-between">
 
@@ -53,6 +50,11 @@
 	:global(body.menu-open) {
     overflow: hidden;
 }
+
+
+
+
+
 
 </style>
 
