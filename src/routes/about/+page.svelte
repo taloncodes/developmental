@@ -4,12 +4,14 @@
     import wave from '$lib/icons/wave_icon.png';
     import qMark from '$lib/icons/question_icon.png';
     import tools from '$lib/icons/tools_icon.png';
+    import response from '$lib/icons/mobile_first.svg';
+
 </script>
 
 <section>
 
     <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-3xl">Inside <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
+        <h1 class="text-3xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
     </div>
 
    
@@ -62,17 +64,22 @@
         <h1 class="text-3xl">Our Approach</h1>
     </div>
 
-    <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        Mobile-First Design
+    <div class=" p-[5%]">
+
+    <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
+        
+        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
+        <div class="flex flex-col">
+        <ul class="flex flex-col justify-evenly h-auto">
+            With over (x)% of the world now accessing the internet through mobile devices, it's crucial that your website is optimised for mobile users. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
+        </ul>
+
+        <img src={response} width="1000px" class="m-auto" alt="mobile to desktop responsiveness">
+    </div>
     </div>
 
-    <div class="about_container p-10 sm:p-2 flex justify-center w-screen">
-        <p class="w-9/10 md:w-1/2 sharp-corners p-5">
-        With over (x)% of the world now accessing the internet through mobile devices, it's crucial that your website is optimised for mobile users. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
-        </p>
     </div>
 
-    <div>***** To include some examples of mobile vs desktop design</div>
       
     
 
