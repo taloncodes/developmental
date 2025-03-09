@@ -33,7 +33,7 @@
     
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What do we do? </h2>
+        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What We Do </h2>
 
         <div class="flex flex-col-reverse md:flex-row">
         
@@ -47,7 +47,7 @@
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
         
-        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why choose us? </h2>
+        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why Choose Us? </h2>
         <div class="flex flex-col md:flex-row">
         <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
         <ul class="flex flex-col justify-evenly h-auto">
