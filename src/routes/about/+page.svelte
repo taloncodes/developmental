@@ -73,7 +73,7 @@
         <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
         <div class="flex flex-col">
         <ul class="flex flex-col justify-evenly h-auto">
-            With over (x)% of the world now accessing the internet through mobile devices, it's crucial that your website is optimised for mobile users. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
+            Over half of website traffic comes from mobile devices, and with over 90% of users regularly browsing the web on their phones, ensuring your site is mobile friendly is essential. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
         </ul>
 
         <img src={response} width="1000px" class="m-auto" alt="mobile to desktop responsiveness">
@@ -89,7 +89,7 @@
         
         <ul class="flex flex-col justify-evenly h-auto">
 
-            The core of our service is understanding your business needs and goal. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process. Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
+            The core of our service is understanding your business needs and goal. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process.<br><br>Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
         </ul>
         <img src={shake} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
