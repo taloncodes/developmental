@@ -5,6 +5,8 @@
     import qMark from '$lib/icons/question_icon.png';
     import tools from '$lib/icons/tools_icon.png';
     import response from '$lib/icons/mobile_first.svg';
+    import shake from '$lib/icons/shake_icon.svg';
+    import seo from '$lib/icons/seo_icon.svg';
 
 </script>
 
@@ -78,7 +80,39 @@
     </div>
     </div>
 
+
+
+    <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Client-Centric </h2>
+
+        <div class="flex flex-col-reverse md:flex-row">
+        
+        <ul class="flex flex-col justify-evenly h-auto">
+
+            The core of our service is understanding your business needs and goal. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process. Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
+        </ul>
+        <img src={shake} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
+    </div>
+
+    <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
+        
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Speed And Performance </h2>
+        <div class="flex flex-col md:flex-row">
+        <img src={seo} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
+        <ul class="flex flex-col justify-evenly h-auto">
+            Did you know that 53% of users will leave a website if it hans't loaded in 3 seconds? <br> <br> No need to worry! We prioritise speed and performance. Our websites are built for fast loading times using cutting edge tools and technology, enhancing the user experience and search engine rankings. Ensuring a good first impression for prospective clients.
+        </ul>
+    </div>
+    </div>
+
+    </div>
+
+    <div class="w-full p-5 px-[10%] border-accent-two border-t-3 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
+        <h1 class="text-3xl">How It Works</h1>
+    </div>
+
+
 
       
     
