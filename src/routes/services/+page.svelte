@@ -4,14 +4,12 @@
 </script>
 
 <section>
-    <div class="flex justify-center">
-        <div class="text-center sharp-corners-yellow p-3 w-3/4 md:w-1/3 mb-6 text-3xl text-accent-one"><strong>services</strong></div>
-    </div>
+
+  <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
+    At Developmental Web Services, we provide comprehensive solutions for businesses looking to grow their online presence. Explore our wide range of services, tailored to meet your unique needs.
+</div>
 
     <div class="container mx-auto text-center">
-      <p class="mb-6 text-lg">
-        At Developmental Web Services, we provide comprehensive solutions for businesses looking to grow their online presence. Explore our wide range of services, tailored to meet your unique needs.
-      </p>
       
       <div class="grid p-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Web Design Service -->

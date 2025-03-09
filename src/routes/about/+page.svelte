@@ -11,15 +11,15 @@
 <section>
 
     <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-3xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
+        <h1 class="text-4xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
     </div>
 
    
 
-    <div class=" p-[5%]">
+    <div class=" px-[5%] xl:px-[10%]">
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-            <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one inline"> Welcome!</h2>
+            <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one inline"> Welcome!</h2>
 
         <div class="flex flex-col md:flex-row">
 
@@ -35,7 +35,7 @@
     
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What We Do </h2>
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What We Do </h2>
 
         <div class="flex flex-col-reverse md:flex-row">
         
@@ -49,7 +49,7 @@
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
         
-        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why Choose Us? </h2>
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why Choose Us? </h2>
         <div class="flex flex-col md:flex-row">
         <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
         <ul class="flex flex-col justify-evenly h-auto">
@@ -64,11 +64,11 @@
         <h1 class="text-3xl">Our Approach</h1>
     </div>
 
-    <div class=" p-[5%]">
+    <div class="  px-[5%] xl:px-[10%]">
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
         
-        <h2 class="text-xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
         <div class="flex flex-col">
         <ul class="flex flex-col justify-evenly h-auto">
             With over (x)% of the world now accessing the internet through mobile devices, it's crucial that your website is optimised for mobile users. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.

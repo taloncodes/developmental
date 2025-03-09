@@ -15,7 +15,7 @@
             item : 0,
             name : 'wags',
             src : wags,
-            desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, it showcases the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for clients to make direct booking inquiries.",
+            desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, showcasing the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for customers to make direct booking enquiries.",
             stack : "<li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Mailgun</li>",
             features : "<li>Google analytics</li><li>Subtle Animation</li> <li>Contact Form</li><li>Bespoke design</li> <li>SEO Optimised</li><li>Speed Optimised</li>",
             url : "https://wagsnwhiskers.co",
@@ -55,24 +55,24 @@
 
 <section class="top-0">
 
+    <div class="flex xl:hidden justify-center sticky top-0 z-4 items-center gap-10 md:gap-20 lg:gap-30 py-3 w-[100%] border-b-3 mx-auto darker border-accent-two">
+        <div class="xl:order-none xl:hidden inline">
+            <button class="portButton" on:click={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
+        </div>
+
+        <h1 class="text-2xl text-accent-one">Portfolio</h1>
+
+        <div class="xl:order-none xl:hidden inline">
+            <button class="portButton" on:click={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
+        </div>
+
+    </div>
+
 
     <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
         {portfolioItems[currentItem].desc}
     </div>
 
-    <div class="flex justify-center items-center gap-10 md:gap-20 lg:gap-30 mb-6 w-[95%] mx-auto">
-
-        <div>
-            <button class="xl:hidden port-nav-button text-dark text-center mbg-yellow p-2 inline basis-[150px] portButtonFull" on:click={prevItem} aria-label="view next showcase">previous</button>
-        </div>
-
-        <div>
-            <button class="portButtonFull xl:hidden port-nav-button text-dark text-center mbg-yellow p-2 inline basis-[150px]" on:click={nextItem} aria-label="view next showcase">next</button>
-        </div>
-
-
-    </div>
-      
     <div class="wrapper xl:flex xl:justify-center">
 
     <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-[90%] m-auto xl:m-0">
@@ -89,12 +89,13 @@
 
         </div>
 
-        <div class="demo xl:min-w-[650px] order-first xl:order-none relative xl:min-w-[700px]">
+        <div class="demo xl:min-w-[650px] order-first
+         xl:order-none relative xl:min-w-[700px]">
             <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0">
             <div class="absolute inset-0 opacity-100 lg:opacity-0 overlay">
                 <button 
                     on:click={window.location.href=portfolioItems[currentItem].url} 
-                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-9 cursor-pointer transition-all duration-300 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all duration-300 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     Visit Site
                 </button>
             </div>
