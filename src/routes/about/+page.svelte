@@ -7,7 +7,7 @@
     import response from '$lib/icons/mobile_first.svg';
     import shake from '$lib/icons/shake_icon.svg';
     import seo from '$lib/icons/seo_icon.svg';
-
+    import downArrow from '$lib/icons/down_icon.svg';
 </script>
 
 <section>
@@ -55,7 +55,7 @@
         <div class="flex flex-col md:flex-row">
         <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
         <ul class="flex flex-col justify-evenly h-auto">
-            Unlike many competitors who rely on generic templates, we build fully bespoke websites that balance performance and design. This means you can have as much (or as little) input in the design process as you like. The result? A site that's unique to your business and one that runs faster that a template-based site, without all the built-in bloat that slows things down.
+            Unlike many competitors who rely on generic templates, we build fully bespoke websites that balance performance and design. This means you can have as much (or as little) input in the design process as you like. The result? A site that's unique to your business and one that runs faster than a template-based site, without all the built-in bloat that slows things down.
         </ul>
     </div>
     </div>
@@ -89,7 +89,7 @@
         
         <ul class="flex flex-col justify-evenly h-auto">
 
-            The core of our service is understanding your business needs and goal. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process.<br><br>Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
+            The core of our service is understanding your business needs and goals. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process.<br><br>Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
         </ul>
         <img src={shake} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
@@ -111,6 +111,32 @@
     <div class="w-full p-5 px-[10%] border-accent-two border-t-3 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
         <h1 class="text-3xl">How It Works</h1>
     </div>
+
+    <div class="  px-[5%] xl:px-[10%]">
+
+    <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
+
+        
+        
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 1. Make an Enquiry </h2>
+        <p class="p-6">Getting started is easy. You can reach out with a simple email, text message or phone call. Or, for a quicker start, fill out our comprehensive enquiry form to privde us with the key details we need.</p>
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 2. Tell Us About Your Goals </h2>
+        <p class="p-6">We'll send you a tailored package designed to gather the finer details about you and your website goals. This includes what you aim to achieve, along with any existing branding, logos, or designs you'd like us to incorporate.</p>
+        <img src={downArrow} alt="down arrow" width="77px" class="m-auto pb-6">
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 3. Planning & Design</h2>
+        <p class="p-6">Once we've collected everything we need and received your initial deposit, we'll begin mapping out your website's functionality and design. Throughout this stage, we'll stay in regular contact to keep you updated.</p>
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 4. Review & Refine</h2>
+        <p class="p-6">When the site is nearing completion, we'll provide you with early access so you can explore it firsthand. This is your opporunity to share feedback and request any revisions to ensure everything feels just right.</p>
+        <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-6">
+        <h2 class="text-2xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 5. Launch & Beyond </h2>
+        <p class="p-6">With your approval, we'll launch your website! But our support doesn't end there. If you ever need updates or changes, we offer flexible options. Choose from our ongoing maintenance packages or pay-as-you-go services with discounted rates for future adjustments.</p>
+
+    </div>
+
+</div>
+
 
 
 
