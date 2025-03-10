@@ -1,10 +1,6 @@
 <script>
   let { visible = $bindable(false), ...props } = $props();
 
-  const submitForm = () => {
-    console.log('Form submitted!');
-  };
-
   function closeForm(){
     visible = false;
     document.querySelector('body').style.overflow = '';
@@ -19,6 +15,35 @@
       input.classList.remove('filled');
     }
   }
+
+  let fname = '';
+  let lname = '';
+  let email = '';
+  let phone = '';
+  let message = '';
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = { fname, lname, email, phone, message };
+    console.log('Form data being sent: ', formData);
+    const rest = await fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const response = await rest.json();
+
+    if (rest.ok) {
+      alert(response.message)
+
+    } else {
+      alert("Form submission failed")
+    }   
+  };
+    
 </script>
 
 <section>
@@ -28,7 +53,7 @@
       <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary">Enquire with</span>
         <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span>
       </h2>
-      <form on:submit|preventDefault={submitForm}>
+      <form on:submit|preventDefault={handleSubmit}>
         <div class="form-group">
           <input
             id="fname"
@@ -37,6 +62,7 @@
             placeholder=" "
             required
             on:input={handleInput}
+            bind:value={fname}
           />
           <label for="fname" class="form-label">First Name</label>
         </div>
@@ -49,6 +75,7 @@
             placeholder=" "
             required
             on:input={handleInput}
+            bind:value={lname}
           />
           <label for="lname" class="form-label">Last Name</label>
         </div>
@@ -61,6 +88,7 @@
             placeholder=" "
             required
             on:input={handleInput}
+            bind:value={email}
           />
           <label for="email" class="form-label">Email</label>
         </div>
@@ -73,6 +101,7 @@
             placeholder=" "
             required
             on:input={handleInput}
+            bind:value={phone}
           />
           <label for="phone" class="form-label">Phone Number</label>
         </div>
@@ -84,6 +113,7 @@
             placeholder=" "
             required
             on:input={handleInput}
+            bind:value={message}
           ></textarea>
           <label for="message" class="form-label">Message</label>
         </div>
