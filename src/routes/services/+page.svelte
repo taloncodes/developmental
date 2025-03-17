@@ -80,7 +80,7 @@
     <button 
                 on:click={openModal} 
                 class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                <strong>Ready To Go? Get In Touch Now!</strong>
+                <strong>Ready To Go? Get In Touch!</strong>
             </button>
 
           </div>
