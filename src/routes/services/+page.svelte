@@ -17,8 +17,6 @@
 
   <div class="w-full p-5 px-[10%] darker xl:px-20 flex text-xl justify-center text-center mb-6 text-accent-one">
     At Developmental Web Services, we provide comprehensive solutions for businesses looking to grow their online presence. Explore our wide range of services, tailored to meet your unique needs.
-
-
 </div>
 
     <div class="container mx-auto text-center">

@@ -41,9 +41,13 @@
     if (rest.ok) {
       success = true;
       document.querySelector('.formWrapper').style.display = 'none';
+      console.log('Response:', response);
+
     
     } else {
-      alert("Form submission failed. Please wait a moment and try again")
+      alert("Form submission failed. Please wait a moment and try again");
+      console.log('Response:', response);
+
     }   
   };
     
