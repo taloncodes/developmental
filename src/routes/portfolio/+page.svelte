@@ -69,7 +69,7 @@
     </div>
 
 
-    <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
+    <div class="w-full p-5 px-[10%] darker xl:px-20 flex text-xl justify-center text-center mb-6 text-accent-one">
         {portfolioItems[currentItem].desc}
     </div>
 
