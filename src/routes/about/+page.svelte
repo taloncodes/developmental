@@ -84,7 +84,7 @@
         <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
         <div class="flex flex-col">
         <ul class="flex flex-col justify-evenly h-auto text-lg">
-            Over half of website traffic comes from mobile devices, and with over 90% of users regularly browsing the web on their phones, ensuring your site is mobile friendly is essential. That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
+            Over half of website traffic comes from mobile devices and 90% of users regularly browse the web on their phones, so ensuring your site is mobile friendly is essential.<br><br> That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
         </ul>
 
         <img src={response} width="800px" class="m-auto" alt="mobile to desktop responsiveness">
