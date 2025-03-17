@@ -1,10 +1,12 @@
 <script>
   let { visible = $bindable(false), ...props } = $props();
+  let success = $state(false);
 
   function closeForm(){
     visible = false;
     document.querySelector('body').style.overflow = '';
   }
+
   
   // Track input values and update filled state
   function handleInput(event) {
@@ -37,10 +39,11 @@
     const response = await rest.json();
 
     if (rest.ok) {
-      alert(response.message)
-
+      success = true;
+      document.querySelector('.formWrapper').style.display = 'none';
+    
     } else {
-      alert("Form submission failed")
+      alert("Form submission failed. Please wait a moment and try again")
     }   
   };
     
@@ -48,7 +51,17 @@
 
 <section>
   <div class="modal" class:show={visible}>
+    
     <div class="modal-content mbg-blue">
+
+      <div class="success" class:show={success}>
+        <h2 class="m-auto mb-6 text-center text-2xl text-primary">Thank you!</h2>
+        <p class="text-center text-accent-one">Your enquiry has been received. We will aim to get back to you within 48 hours.</p>
+        <button class="text-accent-one block mx-auto mt-6" on:click={closeForm}>Close</button>
+      </div>
+
+      <div class="formWrapper">
+
       <button class="close-btn" on:click={closeForm}>X</button>
       <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary">Enquire with</span>
         <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span>
@@ -120,6 +133,8 @@
 
         <button class="submitBtn" type="submit">Submit</button>
       </form>
+
+    </div>
     </div>
   </div>
 </section>
@@ -254,4 +269,12 @@
   min-height: 120px;
   resize: vertical;
 }
+
+.success{
+  display: none;
+}
+
+.success.show {
+    display: block;
+  }
 </style>
