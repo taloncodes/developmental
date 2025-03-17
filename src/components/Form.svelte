@@ -64,7 +64,7 @@
 
       <button class="close-btn" on:click={closeForm}>X</button>
       <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary">Enquire with</span>
-        <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span>
+        <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span>
       </h2>
       <form on:submit|preventDefault={handleSubmit}>
         <div class="form-group">

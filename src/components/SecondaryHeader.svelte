@@ -34,8 +34,8 @@
 <header>
     <div class="p-5 flex justify-between items-center second-header border-b-3">
         <a href="/" class="">
-            <span class="text-3xl md:text-5xl text-accent-two">./</span>
-            <span class="text-3xl md:text-5xl text-accent-one">tal</span>
+            <span class="text-4xl md:text-5xl text-accent-two">./</span>
+            <span class="text-4xl md:text-5xl text-accent-one">tal</span>
         </a>
         <ul class="gap-6 hidden md:flex">
             <span class="text-2xl navlink">

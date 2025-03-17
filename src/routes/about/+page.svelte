@@ -25,7 +25,7 @@
     <Form bind:visible={modalOpen} />
 
     <div class="w-full p-5 px-[10%] darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-4xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">./</span><span class="text-accent-one">tal</span></h1>
+        <h1 class="text-4xl"><span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span></h1>
     </div>
    
 
