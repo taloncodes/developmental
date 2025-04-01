@@ -79,7 +79,7 @@
 
         <img src={wave} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="wave icon">
         <ul class="flex h-auto flex-col justify-evenly text-lg">
-            Hi, I'm Talon, a freelance web developer. I have a diverse background in creative digital media, having worked professionally as a developer, a computer science teacher, and a marketing executive. I love using technology as a creative expression and helping others bring their visions to life.
+            I'm Talon, a freelance web developer with a background in digital media, education and marketing. I build modern, fast websites and love helping small businesses bring their ideas to life.
         </ul>
         
 
@@ -89,13 +89,12 @@
     
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What We Do </h2>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What I Do </h2>
 
         <div class="flex flex-col-reverse md:flex-row">
         
         <ul class="flex text-lg flex-col justify-evenly h-auto">
-            At Developmental, we specialise in crafting modern, functional websites tailored specifically to you. Our goal is to highlight your individuality and help you stand our from your competitors, creating a digital presence that's not only memorable but also authentic.
-            We use the latest technologies and best practices to ensure your website looks amazing, performs flawlessly, and is optimised for speed and efficiency.
+            I create custom websites that are designed for your brand, not pulled from a generic template. Every site I build is focused on clean design, great performance, and your business goals.
         </ul>
         <img src={tools} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
@@ -103,11 +102,11 @@
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
         
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why Choose Us? </h2>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Why Work With Me? </h2>
         <div class="flex flex-col md:flex-row">
         <img src={qMark} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
         <ul class="flex text-lg flex-col justify-evenly h-auto">
-            Unlike many competitors who rely on generic templates, we build fully bespoke websites that balance performance and design. This means you can have as much (or as little) input in the design process as you like. The result? A site that's unique to your business and one that runs faster than a template-based site, without all the built-in bloat that slows things down.
+            No bloated templates. No agency fees. Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.
         </ul>
     </div>
     </div>
@@ -115,7 +114,7 @@
     </div>
 
     <div class="w-full p-5 px-[10%] border-accent-two border-t-3 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-4xl text-primary">Our Approach...</h1>
+        <h1 class="text-4xl text-primary">My Approach...</h1>
     </div>
 
     <div class="  px-[5%] xl:px-[10%]">
@@ -125,7 +124,7 @@
         <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Mobile First Design</h2>
         <div class="flex flex-col">
         <ul class="flex flex-col justify-evenly h-auto text-lg">
-            Over half of website traffic comes from mobile devices and 90% of users regularly browse the web on their phones, so ensuring your site is mobile friendly is essential.<br><br> That's why our design process is built around a mobile-first approach. We ensure that no matter the screen size, your site will always look right at home, whether it's on a smartphone, tablet or desktop.
+            Over half of web traffic is mobile, that's why I build with phones in mind from the start. Your site will look great and work fast on any screen.
         </ul>
 
         <img src={response} width="800px" class="m-auto" alt="mobile to desktop responsiveness">
@@ -135,13 +134,13 @@
 
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Client-Centric </h2>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Client-Focused</h2>
 
         <div class="flex flex-col-reverse md:flex-row">
         
         <ul class="flex flex-col justify-evenly h-auto text-lg">
 
-            The core of our service is understanding your business needs and goals. We believe in maintaining transparent, ongoing communication with regular check-ins to ensure we're always aligned with your vision and keep you involved during the process.<br><br>Our relationship doesn't end when the site is launched, our packages include support and maintenace as we continue to grow together.
+            You'll never feel left in the dark. I'll keep you updated throughout the process, and you can have as much input as you like.
         </ul>
         <img src={shake} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="tools icon">
     </div>
@@ -153,7 +152,7 @@
         <div class="flex flex-col md:flex-row">
             <img src={seo} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="question icon">
             <ul class="flex flex-col justify-evenly h-auto text-lg">
-                Did you know that 53% of users will leave a website if it hans't loaded in 3 seconds? <br> <br> No need to worry! We prioritise speed and performance. Our websites are built for fast loading times using cutting edge tools and technology, enhancing the user experience and search engine rankings. Ensuring a good first impression for prospective clients.
+               53% of visitors leave if a site takes over 3 seconds to load. I build lightweight, modern sites that load quickly and make a strong first impression.
             </ul>
         </div>
     </div>
@@ -170,20 +169,20 @@
 
         
         
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 1. Make an Enquiry </h2>
-        <p class="p-6 text-lg">Getting started is easy. You can reach out by sending an email to <a class="text-accent-two" href="mailto:talon@developmental.pro">talon@developmental.pro</a> - Or, for a quicker start, fill out our <button class="text-accent-two" onclick={openModal}>enquiry form.</button></p>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> 1. Make an Enquiry </h2>
+        <p class="p-6 text-lg">Email me at <a class="text-accent-two" href="mailto:talon@developmental.pro">talon@developmental.pro</a> or fill out the <button class="text-accent-two" onclick={openModal}>enquiry form</button> to get started.</p>
         <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 2. Tell Us About Your Goals </h2>
-        <p class="p-6 text-lg">We'll send you a tailored package designed to gather the finer details about you and your website goals. This includes what you aim to achieve, along with any existing branding, logos, or designs you'd like us to incorporate.</p>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> 2. Tell Me About Your Goals </h2>
+        <p class="p-6 text-lg">I'll send over a quick form to learn more about your business and what you're after.</p>
         <img src={downArrow} alt="down arrow" width="77px" class="m-auto pb-3">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 3. Planning & Design</h2>
-        <p class="p-6 text-lg">Once we've collected everything we need and received your initial deposit, we'll begin mapping out your website's functionality and design. Throughout this stage, we'll stay in regular contact to keep you updated.</p>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> 3. Design & Build</h2>
+        <p class="p-6 text-lg">Once we agree on a plan, I'll get to work on your site and keep you in the loop.</p>
         <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 4. Review & Refine</h2>
-        <p class="p-6 text-lg">When the site is nearing completion, we'll provide you with early access so you can explore it firsthand. This is your opporunity to share feedback and request any revisions to ensure everything feels just right.</p>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> 4. Review & Refine</h2>
+        <p class="p-6 text-lg">You'll get a preview and can request changes before launch.</p>
         <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 5. Launch & Beyond </h2>
-        <p class="p-6 text-lg">With your approval, we'll launch your website! But our support doesn't end there. If you ever need updates or changes, we offer flexible options. Choose from our ongoing maintenance packages or pay-as-you-go services with discounted rates for future adjustments.</p>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> 5. Launch & Support </h2>
+        <p class="p-6 text-lg">After launch, I'm still here. You can get updates, maintenance, or ongoing support - whatever works best for you.</p>
 
         <button 
         onclick={openModal} 
