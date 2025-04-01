@@ -10,7 +10,7 @@
     import downArrow from '$lib/icons/down_icon.svg';
     import hero from '$lib/graphics/hero.svg';
     import Form from '../../components/Form.svelte';
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount } from 'svelte';
 
     let modalOpen = $state(false);
     let headerHeight = $state(0);
@@ -32,11 +32,12 @@
         window.addEventListener('resize', setAppHeight);
     });
 
-    onDestroy(() => {
+    /*onDestroy(() => {
         window.visualViewport?.removeEventListener('resize', setAppHeight);
         window.visualViewport?.removeEventListener('scroll', setAppHeight);
         window.removeEventListener('resize', setAppHeight);
     });
+    */
 
     function openModal() {
         modalOpen = !modalOpen;
