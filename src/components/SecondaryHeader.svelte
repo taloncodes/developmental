@@ -31,7 +31,7 @@
 
 </script>
 
-<header>
+<header id="header">
     <div class="p-5 flex justify-between items-center second-header border-b-3">
         <a href="/" class="">
             <span class="text-4xl md:text-5xl text-accent-two">./</span>
@@ -83,30 +83,18 @@
         border-color: #B17A85;
     }
     span.navlink {
-        color: #DEE2A6;
+        color: #B17A85;
     }
 
     .navlink a {
         padding: 5px 10px;
-        border: solid #1D2030 2px;
+
     }
 
     .active{
-        color: #B17A85;
-        border: solid #B17A85 2px !important;
-        border-radius: 10px;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        background-color: #11121B;
+        color: #DEE2A6;
+
         
-    }
-
-    .navlink a:hover {
-        border: solid #DEE2A6 2px !important;
-        border-radius: 10px;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-
     }
 
     .burger{
