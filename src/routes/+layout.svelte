@@ -5,8 +5,11 @@
 	import Footer from '../components/Footer.svelte';
 	import SecondaryHeader from '../components/SecondaryHeader.svelte';
 	import { page } from '$app/stores';
+	import { pageMeta } from '$lib/pageMeta';
 
-	let { children } = $props();
+	let { children, data } = $props();
+
+	let activePath = $derived($page.url.pathname);
 
 
 	import { onMount } from 'svelte';
@@ -16,14 +19,22 @@
 	window.requestAnimationFrame(() => {
 		window.dispatchEvent(new Event('resize'));
 	});
+	console.log(pageMeta)
+
 	});
 
         
 </script>
 
+<svelte:head>
+<title>{pageMeta[activePath].title}</title>
+<meta name="description" content={pageMeta[activePath].desc}>
+
+</svelte:head>
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
 </head>
+
 
 <div class="flex flex-col min-h-[100dvh] justify-between">
 
@@ -50,12 +61,6 @@
 	:global(body.menu-open) {
     overflow: hidden;
 }
-
-
-
-
-
-
 </style>
 
 

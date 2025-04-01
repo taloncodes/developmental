@@ -15,7 +15,6 @@
     function openModal(){
         modalOpen = !modalOpen;
         document.querySelector('body').style.overflow = 'hidden';
-
     };
 
 </script>

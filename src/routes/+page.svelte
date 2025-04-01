@@ -13,10 +13,6 @@
 
 </script>
 
-<svelte:head>
-
-</svelte:head>
-
 <Form bind:visible={modalOpen} />
 
 <div class="home-nav flex flex-col gap-5 p-10 justify-center items-center">
