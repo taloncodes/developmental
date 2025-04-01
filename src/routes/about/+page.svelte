@@ -14,10 +14,13 @@
 
     let modalOpen = $state(false);
     let headerHeight = $state(0);
+    let heroSection;
 
-    function setAppHeight() {
-        const height = window.visualViewport?.height || window.innerHeight;
-        document.documentElement.style.setProperty('--app-height', `${height}px`);
+    function lockHeroHeight() {
+        if (heroSection) {
+            const fullHeight = heroSection.offsetHeight;
+            heroSection.style.height = `${fullHeight}px`;
+        }
     }
 
     onMount(() => {
@@ -26,18 +29,16 @@
             headerHeight = header.offsetHeight;
         }
 
-        setAppHeight();
-        window.visualViewport?.addEventListener('resize', setAppHeight);
-        window.visualViewport?.addEventListener('scroll', setAppHeight);
-        window.addEventListener('resize', setAppHeight);
-    });
+        // Initially use dvh
+        if (heroSection) {
+            heroSection.style.height = `calc(100dvh - ${headerHeight}px)`;
+        }
 
-    /*onDestroy(() => {
-        window.visualViewport?.removeEventListener('resize', setAppHeight);
-        window.visualViewport?.removeEventListener('scroll', setAppHeight);
-        window.removeEventListener('resize', setAppHeight);
+        // Once layout stabilizes, fix to px to avoid jumpiness
+        requestAnimationFrame(() => {
+            lockHeroHeight();
+        });
     });
-    */
 
     function openModal() {
         modalOpen = !modalOpen;
@@ -45,34 +46,26 @@
     }
 </script>
 
-
 <section>
-
     <Form bind:visible={modalOpen} />
 
-    <section style="height: calc(var(--app-height) - {headerHeight}px)" class="hero top-0 hero-animated px-[5%] xl:px-[10%] py-16 flex flex-col md:flex-row items-center justify-around gap-12">
-
-
+    <section bind:this={heroSection} class="hero top-0 hero-animated px-[5%] xl:px-[10%] py-16 flex flex-col md:flex-row items-center justify-around gap-12">
         <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-xl space-y-6">
           <h1 class="text-5xl sm:text-5xl xl:text-6xl font-bold leading-tight">
             <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span>
           </h1>
-      
           <h2 class="text-2xl sm:text-3xl mb-[36px] text-primary">
             simple websites, tailored to your business
           </h2>
-      
           <button class="px-6 py-3 text-lg text-dark rounded-lg mbg-yellow home-nav-button" onclick={openModal}>
             Get in Touch
           </button>
         </div>
-      
 
         <div class="w-full max-w-md">
           <img src={hero} alt="mock-up website" class="w-full h-auto object-contain border border-accent-two rounded-lg" />
         </div>
-      
-      </section>
+    </section>
 
 
    
