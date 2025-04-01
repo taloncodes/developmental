@@ -18,7 +18,7 @@
             name : 'journal',
             src : journal,
             desc : "This full-stack journaling app was crafted using SvelteKit and MongoDB, with Open Router API integration to generate tailored summaries and action points with DeepSeek. Users can log daily reflections, track mood with a slider, and revisit past entries through a calendar interface. Designed with a focus on mindfulness, responsive design, and seamless user experience.",
-            stack : "<li>SvelteKit</li><li>JavaScript</li><li>MongoDB</li><li>Tailwind CSS</li><li>DeepSeek AI</li>",
+            stack : "<li>SvelteKit</li><li>JavaScript</li><li>Node.js</li><li>MongoDB</li><li>Tailwind CSS</li><li>DeepSeek AI</li>",
             features : "<li>Secure Auth</li><li>CRUD Journal Entries</li><li>AI Summaries & Actions</li><li>Mood Slider</li><li>Calendar View</li><li>Responsive UI</li>",
             url : "https://ai-journal-brown.vercel.app/",
         },
