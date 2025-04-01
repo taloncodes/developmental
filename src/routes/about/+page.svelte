@@ -10,41 +10,40 @@
     import downArrow from '$lib/icons/down_icon.svg';
     import hero from '$lib/graphics/hero.svg';
     import Form from '../../components/Form.svelte';
-    import { onMount } from 'svelte';
-    import { onDestroy } from 'svelte';
-
-
+    import { onMount, onDestroy } from 'svelte';
 
     let modalOpen = $state(false);
-
-    
     let headerHeight = $state(0);
 
     function setAppHeight() {
-    const appHeight = window.innerHeight;
-    document.documentElement.style.setProperty('--app-height', `${appHeight}px`);
+        const height = window.visualViewport?.height || window.innerHeight;
+        document.documentElement.style.setProperty('--app-height', `${height}px`);
     }
-
-    
 
     onMount(() => {
         const header = document.getElementById('header');
         if (header) {
-        headerHeight = header.offsetHeight;
+            headerHeight = header.offsetHeight;
         }
 
         setAppHeight();
+        window.visualViewport?.addEventListener('resize', setAppHeight);
+        window.visualViewport?.addEventListener('scroll', setAppHeight);
         window.addEventListener('resize', setAppHeight);
     });
 
-    onDestroy(() => window.removeEventListener('resize', setAppHeight));
+    onDestroy(() => {
+        window.visualViewport?.removeEventListener('resize', setAppHeight);
+        window.visualViewport?.removeEventListener('scroll', setAppHeight);
+        window.removeEventListener('resize', setAppHeight);
+    });
 
-    function openModal(){
+    function openModal() {
         modalOpen = !modalOpen;
         document.querySelector('body').style.overflow = 'hidden';
-    };
-
+    }
 </script>
+
 
 <section>
 
