@@ -8,6 +8,7 @@
 
 	let { children } = $props();
 
+
 	import { onMount } from 'svelte';
 
 
@@ -17,6 +18,7 @@
 	});
 	});
 
+        
 </script>
 
 <head>

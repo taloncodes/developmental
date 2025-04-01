@@ -1,6 +1,7 @@
 <script>
     import wags from '$lib/demo/wags.png';
     import lvm from '$lib/demo/lvm.png';
+    import journal from '$lib/demo/journal.png';
     import { goto } from '$app/navigation';
     import {onMount} from 'svelte';
     import backBtn from '$lib/icons/backBtn.png';
@@ -11,8 +12,18 @@
     let currentItem = $state(0);
 
     let portfolioItems = [
-        {  
+        
+        {
             item : 0,
+            name : 'journal',
+            src : journal,
+            desc : "This full-stack journaling app was crafted using SvelteKit and MongoDB, with Open Router API integration to generate tailored summaries and action points with DeepSeek. Users can log daily reflections, track mood with a slider, and revisit past entries through a calendar interface. Designed with a focus on mindfulness, responsive design, and seamless user experience.",
+            stack : "<li>SvelteKit</li><li>JavaScript</li><li>MongoDB</li><li>Tailwind CSS</li><li>DeepSeek AI</li>",
+            features : "<li>Secure Auth</li><li>CRUD Journal Entries</li><li>AI Summaries & Actions</li><li>Mood Slider</li><li>Calendar View</li><li>Responsive UI</li>",
+            url : "https://ai-journal-brown.vercel.app/",
+        },
+        {  
+            item : 1,
             name : 'wags',
             src : wags,
             desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, showcasing the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for customers to make direct booking enquiries.",
@@ -21,7 +32,7 @@
             url : "https://wagsnwhiskers.co",
         },
         {
-            item : 1,
+            item : 2,
             name : 'lvm',
             src : lvm,
             desc : "A custom music player designed specifically for LVM with a bespoke, responsive design that aligns with their personality. This interactive web app aims to enhance the artist's vision, offering a unique platform to showcase their EP. With engaging features to enhance listening experience, allowing fans to explore the music in a whole new way.",
@@ -29,7 +40,9 @@
             features : "<li>Audio Play/Stop</li><li>Track Select</li><li>Frequency analyser</li><li>Hi Pass Filter</li><li>Lo Pass Filter</li>Subtle Animation<li>",
             url : "https://custom-music-player-eight.vercel.app/",
 
-        }
+        },
+        
+
     ];
 
     console.log(portfolioItems.length);
@@ -51,7 +64,14 @@
         }
     }
 
+    let {data} = $props();
+
 </script>
+
+<svelte:head>
+    <title>{data.title}</title>
+    <meta name="description" content="{data.description}" />
+</svelte:head>
 
 <section class="top-0">
 

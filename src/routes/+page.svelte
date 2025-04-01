@@ -1,6 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import Form from '../components/Form.svelte';
+    import { page } from '$app/state';   
 
     let modalOpen = $state(false);
 
@@ -9,7 +10,12 @@
         document.querySelector('body').style.overflow = 'hidden';
 
     };
+
 </script>
+
+<svelte:head>
+
+</svelte:head>
 
 <Form bind:visible={modalOpen} />
 
