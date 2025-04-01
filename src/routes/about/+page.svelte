@@ -47,7 +47,7 @@
             simple websites, tailored to your business
           </h2>
       
-          <button class="px-6 py-3 text-lg text-dark rounded-lg mbg-yellow home-nav-button">
+          <button class="px-6 py-3 text-lg text-dark rounded-lg mbg-yellow home-nav-button" onclick={openModal}>
             Get in Touch
           </button>
         </div>
@@ -163,7 +163,7 @@
         
         
         <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 1. Make an Enquiry </h2>
-        <p class="p-6 text-lg">Getting started is easy. You can reach out by sending an email to <a class="text-accent-two" href="mailto:talon@developmental.pro">talon@developmental.pro</a> - Or, for a quicker start, fill out our <button class="text-accent-two" on:click={openModal}>enquiry form.</button></p>
+        <p class="p-6 text-lg">Getting started is easy. You can reach out by sending an email to <a class="text-accent-two" href="mailto:talon@developmental.pro">talon@developmental.pro</a> - Or, for a quicker start, fill out our <button class="text-accent-two" onclick={openModal}>enquiry form.</button></p>
         <img src={downArrow} alt="down arrow" width="75px" class="m-auto pb-3">
         <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> Step 2. Tell Us About Your Goals </h2>
         <p class="p-6 text-lg">We'll send you a tailored package designed to gather the finer details about you and your website goals. This includes what you aim to achieve, along with any existing branding, logos, or designs you'd like us to incorporate.</p>
@@ -178,7 +178,7 @@
         <p class="p-6 text-lg">With your approval, we'll launch your website! But our support doesn't end there. If you ever need updates or changes, we offer flexible options. Choose from our ongoing maintenance packages or pay-as-you-go services with discounted rates for future adjustments.</p>
 
         <button 
-        on:click={openModal} 
+        onclick={openModal} 
         class="px-6 formButton m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
         <strong>Ready To Go? Get In Touch!</strong>
     </button>
