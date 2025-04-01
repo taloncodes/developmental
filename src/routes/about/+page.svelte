@@ -11,18 +11,33 @@
     import hero from '$lib/graphics/hero.svg';
     import Form from '../../components/Form.svelte';
     import { onMount } from 'svelte';
+    import { onDestroy } from 'svelte';
+
+
 
     let modalOpen = $state(false);
 
     
     let headerHeight = $state(0);
 
+    function setAppHeight() {
+    const appHeight = window.innerHeight;
+    document.documentElement.style.setProperty('--app-height', `${appHeight}px`);
+    }
+
+    
+
     onMount(() => {
         const header = document.getElementById('header');
         if (header) {
         headerHeight = header.offsetHeight;
         }
+
+        setAppHeight();
+        window.addEventListener('resize', setAppHeight);
     });
+
+    onDestroy(() => window.removeEventListener('resize', setAppHeight));
 
     function openModal(){
         modalOpen = !modalOpen;
@@ -35,7 +50,7 @@
 
     <Form bind:visible={modalOpen} />
 
-    <section style="height: calc(100dvh - {headerHeight}px)" class="hero top-0 hero-animated px-[5%] xl:px-[10%] py-16 flex flex-col md:flex-row items-center justify-around gap-12">
+    <section style="height: calc(var(--app-height) - {headerHeight}px)" class="hero top-0 hero-animated px-[5%] xl:px-[10%] py-16 flex flex-col md:flex-row items-center justify-around gap-12">
 
 
         <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-xl space-y-6">
@@ -71,7 +86,7 @@
 
         <img src={wave} class="m-auto about-icon w-[75px] h-[75px] md:h-[100px] md:w-[100px] lg:w-[125px] lg:h-[125px]" alt="wave icon">
         <ul class="flex h-auto flex-col justify-evenly text-lg">
-            Hi, I'm Talon, the owner of Developmental. I have a diverse background in creative digital media, having worked professionally as a developer, a computer science teacher, and a marketing executive. I love using technology as a creative expression and helping others bring their visions to life.
+            Hi, I'm Talon, a freelance web developer. I have a diverse background in creative digital media, having worked professionally as a developer, a computer science teacher, and a marketing executive. I love using technology as a creative expression and helping others bring their visions to life.
         </ul>
         
 
@@ -107,7 +122,7 @@
     </div>
 
     <div class="w-full p-5 px-[10%] border-accent-two border-t-3 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-4xl">Our Approach...</h1>
+        <h1 class="text-4xl text-primary">Our Approach...</h1>
     </div>
 
     <div class="  px-[5%] xl:px-[10%]">
@@ -153,7 +168,7 @@
     </div>
 
     <div class="w-full p-5 px-[10%] border-accent-two border-t-3 darker xl:px-20 flex xl:text-xl justify-center text-center mb-6 text-accent-one">
-        <h1 class="text-4xl">How It Works...</h1>
+        <h1 class="text-4xl text-primary">How It Works...</h1>
     </div>
 
     <div class="  px-[5%] xl:px-[10%]">

@@ -86,15 +86,17 @@
         color: #B17A85;
     }
 
+    span.navlink:hover{
+        color:#DEE2A6
+    }
+
     .navlink a {
         padding: 5px 10px;
-
     }
 
     .active{
         color: #DEE2A6;
-
-        
+        border-bottom: #DEE2A6 solid 2px;
     }
 
     .burger{
