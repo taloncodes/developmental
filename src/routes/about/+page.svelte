@@ -89,7 +89,7 @@
     
 
     <div class="about sharp-corners w-full flex mb-10 flex-col justify-start">
-        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> What I Do </h2>
+        <h2 class="text-3xl border-b-2 pb-3 mb-3 top-0 text-accent-one"> My Process </h2>
 
         <div class="flex flex-col-reverse md:flex-row">
         
