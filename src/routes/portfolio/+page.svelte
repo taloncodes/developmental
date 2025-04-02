@@ -70,13 +70,13 @@
 
     <div class="flex xl:hidden justify-center sticky top-0 z-4 items-center gap-10 md:gap-20 lg:gap-30 py-3 w-[100%] border-b-3 mx-auto darker border-accent-two">
         <div class="xl:order-none xl:hidden inline">
-            <button class="portButton" on:click={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
+            <button class="portButton" onclick={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
         </div>
 
         <h1 class="text-2xl text-accent-one">Portfolio</h1>
 
         <div class="xl:order-none xl:hidden inline">
-            <button class="portButton" on:click={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
+            <button class="portButton" onclick={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
         </div>
 
     </div>
@@ -91,7 +91,7 @@
     <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-[90%] m-auto xl:m-0">
 
         <div class="xl:order-none xl:inline hidden">
-            <button class="portButton" on:click={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
+            <button class="portButton" onclick={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
         </div>
 
         <div class="stack sharp-corners w-full xl:h-[396px] xl:max-w-[300px] flex flex-col justify-start">
@@ -102,12 +102,12 @@
 
         </div>
 
-        <div class="demo xl:min-w-[650px] order-first
-         xl:order-none relative xl:min-w-[700px]">
+        <div class="demo xl:min-w-[700px] order-first
+         xl:order-none relative">
             <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0">
             <div class="absolute inset-0 opacity-100 lg:opacity-0 overlay">
                 <button 
-                    on:click={window.location.href=portfolioItems[currentItem].url} 
+                    onclick={window.location.href=portfolioItems[currentItem].url} 
                     class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all duration-300 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     Visit Site
                 </button>
@@ -122,7 +122,7 @@
         </div>
 
         <div class="xl:order-none xl:inline hidden">
-            <button class="portButton" on:click={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
+            <button class="portButton" onclick={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
         </div>
 
     </div>
@@ -161,16 +161,6 @@
         max-height: 370px;
     }
 
-    .backIcon {
-        width: 0;
-        height: 0;
-        border-top: 15px solid transparent;
-        border-right: 30px solid #DEE2A6;
-        border-bottom: 15px solid transparent;
-        position: absolute;
-        left: 15px;
-    }
-
     .portButton{
         transition: ease 0.3s;
         width: 40px;
@@ -178,16 +168,6 @@
 
     .portButton:hover{
         transform: scale(1.2);
-    }
-
-    .portButtonFull{
-        transition: ease 0.3s;
-
-    }
-
-    .portButtonFull:hover{
-        transform: scale(1.2);
-
     }
 
 </style>

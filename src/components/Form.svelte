@@ -18,11 +18,11 @@
     }
   }
 
-  let fname = '';
-  let lname = '';
-  let email = '';
-  let phone = '';
-  let message = '';
+  let fname = $state('');
+  let lname = $state('');
+  let email = $state('');
+  let phone = $state('');
+  let message = $state('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,16 +57,16 @@
       <div class="success" class:show={success}>
         <h2 class="m-auto mb-6 text-center text-2xl text-primary">Thank you!</h2>
         <p class="text-center text-accent-one">Your enquiry has been received. We will aim to get back to you within 48 hours.</p>
-        <button class="text-accent-one block mx-auto mt-6" on:click={closeForm}>Close</button>
+        <button class="text-accent-one block mx-auto mt-6" onclick={closeForm}>Close</button>
       </div>
 
       <div class="formWrapper">
 
-      <button class="close-btn" on:click={closeForm}>X</button>
+      <button class="close-btn" onclick={closeForm}>X</button>
       <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary">Enquire with</span>
         <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span>
       </h2>
-      <form on:submit|preventDefault={handleSubmit}>
+      <form onsubmit={handleSubmit}>
         <div class="form-group">
           <input
             id="fname"
@@ -74,7 +74,7 @@
             class="form-input"
             placeholder=" "
             required
-            on:input={handleInput}
+            oninput={handleInput}
             bind:value={fname}
           />
           <label for="fname" class="form-label">First Name</label>
@@ -87,7 +87,7 @@
             class="form-input"
             placeholder=" "
             required
-            on:input={handleInput}
+            oninput={handleInput}
             bind:value={lname}
           />
           <label for="lname" class="form-label">Last Name</label>
@@ -100,7 +100,7 @@
             class="form-input"
             placeholder=" "
             required
-            on:input={handleInput}
+            oninput={handleInput}
             bind:value={email}
           />
           <label for="email" class="form-label">Email</label>
@@ -113,7 +113,7 @@
             class="form-input"
             placeholder=" "
             required
-            on:input={handleInput}
+            oninput={handleInput}
             bind:value={phone}
           />
           <label for="phone" class="form-label">Phone Number</label>
@@ -125,7 +125,7 @@
             class="form-input"
             placeholder=" "
             required
-            on:input={handleInput}
+            oninput={handleInput}
             bind:value={message}
           ></textarea>
           <label for="message" class="form-label">Message</label>
@@ -221,7 +221,6 @@
 
   /* When input has focus or has text (is filled) */
   .form-input:focus ~ .form-label,
-  .form-input.filled ~ .form-label,
   .form-input:not(:placeholder-shown) ~ .form-label {
     top: -25px;
     left: 8px;

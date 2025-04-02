@@ -68,7 +68,7 @@
     </section>
 
 
-   
+   <section class="mainSect">
 
     <div class=" px-[5%] xl:px-[10%]">
 
@@ -192,6 +192,7 @@
     </div>
 
 </div>
+</section>
 
 </section>
 
@@ -240,11 +241,10 @@
     );
     background-size: cover;
     border-bottom: #B17A85 solid 3px;
-    margin-bottom: 40px;
     }
 
-
-
-
+    .mainSect{
+        padding-top: 40px;
+    }
 
 </style>
