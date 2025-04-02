@@ -1,34 +1,15 @@
 {
-    "redirects": [
-      {
-        "source": "/:path*",
-        "has": [
-          {
-            "type": "host",
-            "value": "www.developmental.pro"
-          }
-        ],
-        "destination": "https://developmental.pro/:path*",
-        "permanent": true
-      },
-      {
-        "source": "/:path*",
-        "has": [
-          {
-            "type": "host",
-            "value": "developmental.pro",
-            "missing": [
-              {
-                "type": "header",
-                "key": "x-forwarded-proto",
-                "value": "https"
-              }
-            ]
-          }
-        ],
-        "destination": "https://developmental.pro/:path*",
-        "permanent": true
-      }
-    ]
-  }
-  
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.developmental.pro"
+        }
+      ],
+      "destination": "https://developmental.pro/:path*",
+      "permanent": true
+    }
+  ]
+}
