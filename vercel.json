@@ -1,0 +1,15 @@
+{
+    "redirects": [
+      {
+        "source": "http://developmental.pro/:path*",
+        "destination": "https://developmental.pro/:path*",
+        "permanent": true
+      },
+      {
+        "source": "https://www.developmental.pro/:path*",
+        "destination": "https://developmental.pro/:path*",
+        "permanent": true
+      }
+    ]
+  }
+  
