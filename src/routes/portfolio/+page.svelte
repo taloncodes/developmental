@@ -136,12 +136,13 @@
         border-radius: 15px;
         border-top-left-radius: 0;
         border-bottom-right-radius: 0;
+        transition: 0.3s ease;
 
     }
 
     .demo:hover{
         transform: scale(1.05);
-        transition: 0.3s ease;
+        
     }
 
 
@@ -177,7 +178,6 @@
 
     .portButton:hover{
         transform: scale(1.2);
-
     }
 
     .portButtonFull{

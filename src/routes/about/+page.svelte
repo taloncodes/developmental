@@ -186,7 +186,7 @@
 
         <button 
         onclick={openModal} 
-        class="px-6 formButton m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        class="px-6 formButton m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark ">
         <strong>Ready To Go? Get In Touch!</strong>
     </button>
     </div>
@@ -197,14 +197,20 @@
 
 <style>
 
-    formButton:hover {
+    .formButton{
+        border: #11121b solid 2px;
+        transition: 0.3s ease;
+        margin-bottom: 10px;
+    }
 
-    border: #B17A85 solid 2px;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: #11121b;
-    color: #DEE2A6;
+    .formButton:hover {
+
+        border: #B17A85 solid 2px;
+        border-radius: 15px;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: #11121b;
+        color: #DEE2A6;
 
     }
 
