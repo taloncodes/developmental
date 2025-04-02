@@ -29,7 +29,7 @@
 <svelte:head>
 <title>{pageMeta[activePath].title}</title>
 <meta name="description" content={pageMeta[activePath].desc}>
-
+<link rel="canonical" href={`https://developmental.pro${activePath}`} />
 </svelte:head>
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
