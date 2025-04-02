@@ -6,6 +6,7 @@
 	import SecondaryHeader from '../components/SecondaryHeader.svelte';
 	import { page } from '$app/stores';
 	import { pageMeta } from '$lib/pageMeta';
+	import { afterNavigate } from '$app/navigation';
 
 	let { children, data } = $props();
 
@@ -14,6 +15,11 @@
 
 	import { onMount } from 'svelte';
 
+	afterNavigate((nav) => {
+		gtag('config', 'G-5CRM59K9MX', {
+		page_path: nav.to?.url.pathname
+		});
+	});
 
 	onMount(() => {
 	window.requestAnimationFrame(() => {
@@ -30,6 +36,15 @@
 <title>{pageMeta[activePath].title}</title>
 <meta name="description" content={pageMeta[activePath].desc}>
 <link rel="canonical" href={`https://developmental.pro${activePath}`} />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5CRM59K9MX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5CRM59K9MX');
+</script>
 </svelte:head>
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
