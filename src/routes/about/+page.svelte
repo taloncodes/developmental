@@ -50,6 +50,7 @@
     <Form bind:visible={modalOpen} />
 
     <section bind:this={heroSection} class="hero top-0 hero-animated px-[5%] xl:px-[10%] py-16 flex flex-col md:flex-row items-center justify-around gap-12">
+        
         <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-xl space-y-6">
           <h1 class="text-5xl sm:text-5xl xl:text-6xl font-bold leading-tight">
             <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span>
@@ -233,18 +234,6 @@
         max-height: 150px;
     }
 
-    .hero-animated {
-    background: radial-gradient(
-        circle at 30% 40%,
-        #1d2030,
-        #11121b 80%
-    );
-    background-size: cover;
-    border-bottom: #B17A85 solid 3px;
-    }
-
-    .mainSect{
-        padding-top: 40px;
-    }
+    
 
 </style>

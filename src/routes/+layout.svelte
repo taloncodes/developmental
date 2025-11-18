@@ -45,6 +45,9 @@
 
   gtag('config', 'G-5CRM59K9MX');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </svelte:head>
 <head>
 	<link rel="stylesheet" href="https://use.typekit.net/uuh7xdh.css">
@@ -53,9 +56,7 @@
 
 <div class="flex flex-col min-h-[100dvh] justify-between">
 
-{#if $page.url.pathname === '/'}
-	<Header />
-{:else}
+{#if $page.url.pathname }
 	<SecondaryHeader />
 {/if}
 

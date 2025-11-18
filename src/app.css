@@ -3,7 +3,17 @@
 @plugin '@tailwindcss/forms';
 
 body {
+    font-family: 'Inter', sans-serif;
+}
+
+.logo {
     font-family: 'Clicker', sans-serif;
 }
+
+.finer{
+    font-family: 'Inter', sans-serif;
+    font-weight: lighter;
+}
+
 
 
