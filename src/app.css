@@ -15,5 +15,15 @@ body {
     font-weight: lighter;
 }
 
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+}
+
+.fade-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 

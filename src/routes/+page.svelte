@@ -16,6 +16,7 @@ import downArrow from '$lib/icons/down_icon.svg';
 import hero from '$lib/graphics/lol.png';
 import { onMount } from 'svelte';
 import arrow from '$lib/graphics/arrow.gif';
+import { fadeOnScroll } from '$lib/fadeOnScroll';
 
 const textSegments = [
     { text: "developmen", class: "text-primary" },
@@ -46,6 +47,8 @@ function getSegmentedText(displayText) {
 
     return output;
 }
+
+
      
 
     let modalOpen = $state(false);
@@ -66,6 +69,11 @@ function getSegmentedText(displayText) {
             const fullHeight = heroSection.offsetHeight;
             heroSection.style.height = `${fullHeight}px`;
         }
+    }
+
+    function scrollToAbout(){
+        const el = document.getElementById('about');
+        el?.scrollIntoView({ behavior: 'smooth' });
     }
 
     onMount(() => {
@@ -94,7 +102,7 @@ function getSegmentedText(displayText) {
 
 <Form bind:visible={modalOpen} />
 
-<section bind:this={heroSection} class="hero top-0 hero-animated">
+<section bind:this={heroSection} class="hero top-0 hero-animated border-black border-b-2">
     
     <div>
     <div class="flex flex-col md:flex-row justify-center p:10 md:p-20">
@@ -119,19 +127,21 @@ function getSegmentedText(displayText) {
         </div>
     </div>
     <div class="w-[150px] h-auto m-auto">
+        <button onclick={scrollToAbout}>
         <img src={arrow} alt="click to read more">
+        </button>
     </div>
 </section>
 
-<section>
-    <div class="p:10 md:p-20">
-    <h2 class="text-4xl py:5 md:py-10"><b>A bit about me...</b></h2>
+<section id="about" use:fadeOnScroll class="fade-on-scroll">
+    <div class="p-10 md:p-20">
+    <h2 class="text-4xl py-5 md:py-10"><b>A bit about me...</b></h2>
     <p class="text-xl">Hi! I'm Talon, a freelance web developer with a background in digital media, education and marketing. I build modern, fast websites and love helping businesses bring their ideas to life.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>My Process</b></h2>
+    <h2 class="text-4xl py-5 md:py-10"><b>My Process</b></h2>
     <p class="text-xl">I create custom websites that are designed for your brand, not pulled from a generic template. Every site I build is focused on clean design, great performance, and helping <b>you</b> achieve your business goals</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Why work with Developmental?</b></h2>
+    <h2 class="text-4xl py-5 md:py-10"><b>Why work with Developmental?</b></h2>
     <p class="text-xl">No bloated templates. No agency fees. Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Ready to get started?</b></h2>
+    <h2 class="text-4xl py-5 md:py-10"><b>Ready to get started?</b></h2>
     </div>
 
 </section>
@@ -155,7 +165,6 @@ h1 {
         #EDEDED 80%
     );
     background-size: cover;
-    border-bottom: #E8E1D8 solid 3px;
     }
 
 

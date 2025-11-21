@@ -4,6 +4,10 @@
     import Form from '../../components/Form.svelte';
     import { tick } from 'svelte';
     import { onMount } from 'svelte';
+    import plus from '$lib/graphics/plus.png';
+    import { fade } from 'svelte/transition';
+    import { flip } from 'svelte/animate';
+
     let modalOpen = $state(false);
   
     let sections = $state([
@@ -83,44 +87,42 @@ function getSegmentedText(displayText) {
 
   
 
-<div class="p:10 md:p-20">
+<div class="p-10 md:p-20 hero-animated border-black border-b-2">
 
   <h1 class="text-5xl md:text-6xl flex text-start justify-start">
       <span class="text-accent-primary"><b>.</b></span>
       <span> <b>{@html getSegmentedText(displayText)}</b></span>
   </h1>
-    We provide comprehensive solutions for businesses looking to grow their online presence. No matter what stage you are currently at. Need a new website to showcase your brand? Custom software to automate your business processes? Or maybe you already have a website that's not performing as you'd expect? Browse our services below to learn more.
+  <p class="text-xl py-5 md:py-10">We provide comprehensive solutions for businesses looking to grow their online presence. No matter what stage you are currently at. 
+    <br><br>
+   Need a new website to showcase your brand? Custom software to automate your business processes? 
+   Or maybe you already have a website that's not performing as you'd expect? 
+   <br><br>
+   <b>Tap on a service below to learn more</b>
 </div>
 
 <section>
 
-  {#each sections as section}
-	<div class="p:10 md:p-20">
-		<h2 class='text-4xl py-5 md:py-10'><b>{section.title}</b></h2>
-		<button onclick={() => toggleSection(section.id)}>+</button>
+  <div class="p-10 md:p-20">
+
+  {#each sections as section (section.id)}
+
+	<div class="dot-hover" class:active={section.isOpen === true}>
+    <button class="image-button flex gap-8" onclick={() => toggleSection(section.id)}>
+    <h2 class='text-4xl py:5 md:py-10'><b>{section.title}</b></h2>
+    <h2 class='text-4xl py:5 md:py-10'><b>{section.isOpen ? '–' : '+'}</b></h2></button>	
+		
 	</div>
 
+
 	{#if section.isOpen}
-		<div class="modal text-xl">{section.content}</div>
+		<div 
+    class="modal text-xl section-text"
+    transition:fade={{duration: 250, delay: 250}}
+    >{section.content}</div>
 	{/if}
 {/each}
-
-
-    <div class="p:10 md:p-20">
-    <h2 class="text-4xl py:5 md:py-10"><b>Web Design</b></h2>
-    <p class="text-xl">We create visually appealing, user-friendly websites that engage your visitors and enhance their experience.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Web Development</b></h2>
-    <p class="text-xl">Our web development services ensure that your website is fast, functional, and optimized for all devices.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Logo & Branding</b></h2>
-    <p class="text-xl">We help you establish a strong brand identity with custom logos and branding elements that resonate with your audience.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Site Audit</b></h2>
-    <p class="text-xl">Our site audit service provides an in-depth analysis of your website’s performance, and SEO.</p>
-    <h2 class="text-4xl py:5 md:py-10"><b>On-Page Optimisation</b></h2>
-    <p class="text-xl">We enhance your website's content, structure and improve search engine rankings </p>
-    <h2 class="text-4xl py:5 md:py-10"><b>Custom Solutions</b></h2>
-    <p class="text-xl">Streamline and automate your business processes. Whether that's an invoice generator, a quote calculator, or something completely unique to you.</p>
-    
-    </div>
+</div>
 
 </section>
 
@@ -142,7 +144,50 @@ function getSegmentedText(displayText) {
 
 <style>
 
-    p {
-        color: #FAFAFA;
+
+  .dot-hover {
+      position: relative;
     }
+  
+
+    .dot-hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;        
+      height: 6px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      border-radius: 2px;
+      opacity: 0;
+      transition:
+        opacity .25s cubic-bezier(.4,0,.2,1),
+        transform .25s cubic-bezier(.4,0,.2,1);
+    }
+  
+    .dot-hover:hover::after {
+      opacity: 1;
+      transform: scaleX(.25);
+    }
+  
+    .dot-hover.active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .hero-animated {
+    background: radial-gradient(
+        circle at 30% 40%,
+        #E8E1D8,
+        #EDEDED 80%
+    );
+    background-size: cover;
+    }
+
+    .section-text{
+      padding-top: 20px
+    }
+
 </style>
