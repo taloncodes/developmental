@@ -17,11 +17,12 @@ import hero from '$lib/graphics/lol.png';
 import { onMount } from 'svelte';
 import arrow from '$lib/graphics/arrow.gif';
 import { fadeOnScroll } from '$lib/fadeOnScroll';
+import lappytappy from '$lib/graphics/lappytappy.png'
 
 const textSegments = [
     { text: "developmen", class: "text-primary" },
     { text: "/", class: "text-accent-primary" },
-    { text: "tal", class: "text-accent-one" }
+    { text: "tal", class: "text-accent-primary" }
 ];
 
 let fullText = textSegments.map(segment => segment.text).join('');
@@ -123,7 +124,7 @@ function getSegmentedText(displayText) {
             </button>
         </div>
         <div class="flex min-w-[400px] max-w-[500px] align-middle">
-            <img src={hero} alt="mock-up website" class="object-contain" />
+            <img src={lappytappy} alt="mock-up website" class="object-contain" />
         </div>
     </div>
     <div class="w-[150px] h-auto m-auto">

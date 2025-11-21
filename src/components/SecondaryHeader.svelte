@@ -33,10 +33,10 @@
       <ul class="gap-6 hidden md:flex items-center">
         <li>
           <a
-            href="/about"
+            href="/"
             class=" finer text-2xl navlink dot-hover"
-            class:active={activePage === 'about'}
-          >About</a>
+            class:active={activePage === ''}
+          >Home</a>
         </li>
         <li>
           <a
@@ -82,11 +82,11 @@
     <ul class="mt-10 space-y-4">
       <li>
         <a
-          href="/about"
+          href="/"
           class="block text-lg px-3 py-1 dot-hover"
-          class:active={activePage === 'about'}
+          class:active={activePage === ''}
           onclick={handleClose}
-        >About</a>
+        >Home</a>
       </li>
       <li>
         <a

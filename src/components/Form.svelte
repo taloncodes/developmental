@@ -63,8 +63,8 @@
       <div class="formWrapper">
 
       <button class="close-btn" onclick={closeForm}>X</button>
-      <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary">Enquire with</span>
-        <span class="text-accent-two">.</span><span class="text-primary">developmen</span><span class="text-accent-two">/</span><span class="text-accent-one">tal</span>
+      <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary"><b>Enquire with</b></span>
+        <span class="text-primary"><b>.</b></span><span class="text-primary"><b>developmen</b></span><span class="text-primary"><b>/</b></span><span class="text-primary"><b>tal</b></span>
       </h2>
       <form onsubmit={handleSubmit}>
         <div class="form-group">
@@ -166,7 +166,7 @@
     width: 90%;
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: solid #b17a85 2px;
+    border: solid #1B1B1B 2px;
   }
 
   .close-btn {
@@ -177,12 +177,11 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
-    background-color: #DEE2A6;
+    background-color: #1B1B1B;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    border: solid #DEE2A6 2px;
-    color: #11121b;
+    color: #EDEDED;
     padding: 3px 5px;
     
   }
@@ -191,7 +190,6 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    color: #DEE2A6;
   }
 
   .form-group {
@@ -201,9 +199,9 @@
   .form-input {
     width: 100%;
     padding: 8px;
-    border: 2px solid #b17a85;
+    border: 2px solid #1B1B1B;
     border-radius: 4px;
-    background-color: #11121b;
+    background-color: #EDEDED;
     font-size: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -214,8 +212,8 @@
     left: 12px;
     top: 12px;
     font-size: 16px;
-    color: #b17a85;
-    transition: all 0.2s ease-in-out;
+    color: #1B1B1B;
+    transition: all 0.25s ease-in-out;
     pointer-events: none;
   }
 
@@ -225,43 +223,31 @@
     top: -25px;
     left: 8px;
     font-size: 12px;
-    color: #b17a85;
-  }
-
-  .form-input:valid ~ .form-label{
-    color: #DEE2A6;
+    color: #1B1B1B;
   }
 
   .form-input:valid{
-    border-color: #DEE2A6
+    border-color: #69c647
   }
 
   button {
-    background-color: #DEE2A6;
+    background-color: #1B1B1B;
     padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    border: solid #DEE2A6 2px;
-    color: #11121b;
+
+    color: #EDEDED;
   }
 
   .close-btn:hover{
-    border: #b17a85 solid 2px;
-    border-radius: 5px;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: #11121b;
-    color: #DEE2A6;
+    transition: ease .25s;
+    transform: scale(1.05);
   }
 
   .submitBtn:hover {
-    border: #b17a85 solid 2px;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: #11121b;
-    color: #DEE2A6;
+    transition: ease .25s;
+    transform: scale(1.05);
   }
 
   textarea.form-input {

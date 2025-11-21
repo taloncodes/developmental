@@ -20,7 +20,9 @@
         tech: ['HTML', 'CSS', 'JavaScript', 'Node', 'Mailgun'],
         features: ['Google Analytics', 'E-mail Notifications', 'Contact Form', 'Bespoke Design', 'SEO Optimisation', 'Performance Optimisation']
        },
+    
     ]);
+
 
         let personal = $state([
       { id: 'ai-journal',title: 'AI Journal', isOpen: false,
@@ -35,6 +37,8 @@
         tech: ['Svelte', 'CSS', 'HTML', 'JavaScript', 'Web Audio API'],
         features: ['Audio Play/Stop', 'Track Select', 'Frequency Analyser', 'Hi-Pass Filter', 'Lo-Pass Filter', 'Subtle Animation']
        },
+       
+       
     ]);
 
 
