@@ -1,173 +1,239 @@
 <script>
+    import '../../app.css';
+    import '../../app.scss'
+    import Form from '../../components/Form.svelte';
+    import { tick } from 'svelte';
+    import { onMount } from 'svelte';
+    import plus from '$lib/graphics/plus.png';
+    import { fade } from 'svelte/transition';
+    import { flip } from 'svelte/animate';
     import wags from '$lib/demo/wags.png';
-    import lvm from '$lib/demo/lvm.png';
     import journal from '$lib/demo/journal.png';
-    import { goto } from '$app/navigation';
-    import {onMount} from 'svelte';
-    import backBtn from '$lib/icons/backBtn.png';
-    import nextBtn from '$lib/icons/nextBtn.png';
-    import { slide } from 'svelte/transition';
-    import {fade} from 'svelte/transition';
+    import lvm from '$lib/demo/lvm.png';
 
-    let currentItem = $state(0);
+    let modalOpen = $state(false);
+  
+    let clients = $state([
+      { id: 'wags-n-whiskers',title: 'Wags n Whiskers Pet Services', isOpen: false,
+        content: "This custom-built website for Wags n Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive for all device types, it showcases the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for customers to make direct booking enquiries.",
+        image: wags,
+        tech: ['HTML', 'CSS', 'JavaScript', 'Node', 'Mailgun'],
+        features: ['Google Analytics', 'E-mail Notifications', 'Contact Form', 'Bespoke Design', 'SEO Optimisation', 'Performance Optimisation']
+       },
+    ]);
 
-    let portfolioItems = [
-        
-        {
-            item : 0,
-            name : 'journal',
-            src : journal,
-            desc : "This full-stack journaling app was crafted using SvelteKit and MongoDB, with Open Router API integration to generate tailored summaries and action points with DeepSeek. Users can log daily reflections, track mood with a slider, and revisit past entries through a calendar interface. Designed with a focus on mindfulness, responsive design, and seamless user experience.",
-            stack : "<li>SvelteKit</li><li>JavaScript</li><li>Node.js</li><li>MongoDB</li><li>Tailwind CSS</li><li>DeepSeek AI</li>",
-            features : "<li>Secure Auth</li><li>CRUD Journal Entries</li><li>AI Summaries & Actions</li><li>Mood Slider</li><li>Calendar View</li><li>Responsive UI</li>",
-            url : "https://ai-journal-brown.vercel.app/",
-        },
-        {  
-            item : 1,
-            name : 'wags',
-            src : wags,
-            desc : "This custom-built website for Wags & Whiskers Pet Services was designed with speed and brand identity at its core. Fully responsive, showcasing the business's key features while promoting a strong brand voice. The client aimed to enhance their online presence, attract organic traffic, and provide an easy way for customers to make direct booking enquiries.",
-            stack : "<li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Mailgun</li>",
-            features : "<li>Google analytics</li><li>Subtle Animation</li> <li>Contact Form</li><li>Bespoke design</li> <li>SEO Optimised</li><li>Speed Optimised</li>",
-            url : "https://wagsnwhiskers.co",
-        },
-        {
-            item : 2,
-            name : 'lvm',
-            src : lvm,
-            desc : "A custom music player designed specifically for LVM with a bespoke, responsive design that aligns with their personality. This interactive web app aims to enhance the artist's vision, offering a unique platform to showcase their EP. With engaging features to enhance listening experience, allowing fans to explore the music in a whole new way.",
-            stack : "<li>HTML</li><li>CSS</li><li>JavaScript</li><li>Svelte</li><li>Vite</li><li>Input-knobs.js</li>",
-            features : "<li>Audio Play/Stop</li><li>Track Select</li><li>Frequency analyser</li><li>Hi Pass Filter</li><li>Lo Pass Filter</li>Subtle Animation<li>",
-            url : "https://custom-music-player-eight.vercel.app/",
+        let personal = $state([
+      { id: 'ai-journal',title: 'AI Journal', isOpen: false,
+        content: "This full-stack journalling app was crafted using SvelteKit and MongoDB, with Open Router API integration to generate tailored summaries and action points using DeepSeek AI. Users can log daily reflections, track their mood, and revisit past entries through a calendar interface. Designed with a focus on mindfulness, responsive design and a calming user experience.",
+        image: journal,
+        tech: ['SvelteKit', 'JavaScript', 'Node', 'MongoDB', 'Tailwind CSS', 'DeepSeek AI'],
+        features: ['Secure Authentication', 'CRUD Journal Entires', 'AI Summaries & Actions', 'Mood Slider', 'Calendar View', 'Responsive UI']
+       },
+       { id: 'lvm-player',title: 'Interactive Music Player', isOpen: false,
+        content: "A custom music player designed to showcase an electronic music EP. Bespoke, responsive design aligning with the artist's aesthetic. This interactive web app enhances the artist's vision, offering a unique listening experience that enables fans to explore the music in a new way.",
+        image: lvm,
+        tech: ['Svelte', 'CSS', 'HTML', 'JavaScript', 'Web Audio API'],
+        features: ['Audio Play/Stop', 'Track Select', 'Frequency Analyser', 'Hi-Pass Filter', 'Lo-Pass Filter', 'Subtle Animation']
+       },
+    ]);
 
-        },
-        
 
+    const textSegments = [
+    { text: "/", class: "text-accent-primary" },
+    { text: "portfolio", class: "text-accent-one" }
     ];
 
-    console.log(portfolioItems.length);
+let fullText = textSegments.map(segment => segment.text).join('');
+let displayText = $state('');
 
-    function nextItem(){
-        if (currentItem === portfolioItems.length - 1){
-            currentItem = 0;
-        }
+    async function typewriterEffect() {
+    for (let i = 0; i <= fullText.length; i++) {
+        displayText = fullText.slice(0, i);
+        await tick();
+        await new Promise(resolve => setTimeout(resolve, 75));
+    }
+}
 
-        else (currentItem++)
+function getSegmentedText(displayText) {
+    let output = '';
+    let currentIndex = 0;
+
+    for (const segment of textSegments) {
+        const segmentText = displayText.slice(currentIndex, currentIndex + segment.text.length);
+        output += `<span class="${segment.class}">${segmentText}</span>`;
+        currentIndex += segment.text.length;
     }
 
-    function prevItem(){
-        if (currentItem === 0){
-            currentItem = portfolioItems.length - 1
-        }
-        else {
-            currentItem--;
-        }
-    }
+    return output;
+}
 
+    function openModal(){
+        modalOpen = !modalOpen;
+        document.querySelector('body').style.overflow = 'hidden';
+
+    };
+
+
+    onMount(() => {
+      typewriterEffect();
+    });
 </script>
 
-<section class="top-0">
+<section>
 
-    <div class="flex xl:hidden justify-center sticky top-0 z-4 items-center gap-10 md:gap-20 lg:gap-30 py-3 w-[100%] border-b-3 mx-auto darker border-accent-two">
-        <div class="xl:order-none xl:hidden inline">
-            <button class="portButton" onclick={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
-        </div>
+  <Form bind:visible={modalOpen} />
 
-        <h1 class="text-2xl text-accent-one">Portfolio</h1>
+  
 
-        <div class="xl:order-none xl:hidden inline">
-            <button class="portButton" onclick={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
-        </div>
+<div class="p-10 md:p-20 hero-animated border-black border-b-2">
 
+  <h1 class="text-5xl md:text-6xl flex text-start justify-start">
+      <span class="text-accent-primary"><b>.</b></span>
+      <span> <b>{@html getSegmentedText(displayText)}</b></span>
+  </h1>
+  <p class="text-xl py-5 md:py-10">Check out some samples of live client sites and personal projects that I've been working on below.
+</div>
+
+<section>
+
+  <div class="p-10 md:p-20 border-black border-b-2">
+
+    <h2 class="text-3xl md:text-4xl"><b>Client Showcase</b></h2>
+
+ {#each clients as client (client.id)}
+  <div class="mt-10 flex flex-col gap-4">
+    <h2 class="text-2xl md:text-3xl font-semibold pt-5">
+      {client.title}
+    </h2>
+
+    <p class="text-lg leading-relaxed max-w-3xl">
+      {client.content}
+    </p>
+
+    <img
+      class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
+      src={client.image}
+      alt="{client.title} Homepage"
+    />
+
+    <div class="mt-6">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+        Tech stack
+      </h3>
+      <ul class="flex flex-wrap gap-2">
+        {#each client.tech as tech}
+          <li
+            class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800"
+          >
+            {tech}
+          </li>
+        {/each}
+      </ul>
     </div>
 
-
-    <div class="w-full p-5 px-[10%] darker xl:px-20 flex text-xl justify-center text-center mb-6 text-accent-one">
-        {portfolioItems[currentItem].desc}
+    <div class="mt-4">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+        Features
+      </h3>
+      <ul class="flex flex-wrap gap-2">
+        {#each client.features as feature}
+          <li
+            class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50"
+          >
+            {feature}
+          </li>
+        {/each}
+      </ul>
     </div>
+  </div>
+{/each}
 
-    <div class="wrapper xl:flex xl:justify-center">
+</div>
 
-    <div class="portfolio-flex flex flex-col xl:flex-row shrink-0 items-center justify-around xl:w-[95%] gap-10 p-2 w-[90%] m-auto xl:m-0">
 
-        <div class="xl:order-none xl:inline hidden">
-            <button class="portButton" onclick={prevItem} aria-label="view next showcase"><img src={backBtn} alt="back button"/></button>
-        </div>
+<div class="p-10 md:p-20">
 
-        <div class="stack sharp-corners w-full xl:h-[396px] xl:max-w-[300px] flex flex-col justify-start">
-            <h2 class="border-b-2 pb-3 mb-3 text-accent-one"> Tech Stack </h2>
-            <ul class="flex h-full flex-col justify-evenly">
-                {@html portfolioItems[currentItem].stack}
-            </ul>
+    <h2 class="text-3xl md:text-4xl"><b>Projects</b></h2>
 
-        </div>
+ {#each personal as project (project.id)}
+  <div class="mt-10 flex flex-col gap-4">
+    <h2 class="text-2xl md:text-3xl font-semibold pt-5">
+      {project.title}
+    </h2>
 
-        <div class="demo xl:min-w-[700px] order-first
-         xl:order-none relative">
-            <img src={portfolioItems[currentItem].src} alt="client website demo" class="demo flex m-auto shrink-0">
-            <div class="absolute inset-0 opacity-100 lg:opacity-0 overlay">
-                <button 
-                    onclick={window.location.href=portfolioItems[currentItem].url} 
-                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-3 text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all duration-300 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    Visit Site
-                </button>
-            </div>
-        </div>
+    <p class="text-lg leading-relaxed max-w-3xl">
+      {project.content}
+    </p>
 
-        <div class="features xl:h-[396px] xl:max-w-[300px] sharp-corners w-full flex mb-10 xl:mb-0 flex-col justify-start">
-            <h2 class="border-b-2 pb-3 mb-3 top-0 text-accent-one"> Features </h2>
-            <ul class="flex h-full flex-col justify-evenly">
-                {@html portfolioItems[currentItem].features}
-            </ul>
-        </div>
+    <img
+      class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
+      src={project.image}
+      alt="{project.title} Homepage"
+    />
 
-        <div class="xl:order-none xl:inline hidden">
-            <button class="portButton" onclick={nextItem} aria-label="view next showcase"><img src={nextBtn} alt="next button"/> </button>
-        </div>
-
+    <div class="mt-6">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+        Tech stack
+      </h3>
+      <ul class="flex flex-wrap gap-2">
+        {#each project.tech as tech}
+          <li
+            class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800"
+          >
+            {tech}
+          </li>
+        {/each}
+      </ul>
     </div>
-
+    
+    <div class="mt-4">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+        Features
+      </h3>
+      <ul class="flex flex-wrap gap-2">
+        {#each project.features as feature}
+          <li
+            class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50"
+          >
+            {feature}
+          </li>
+        {/each}
+      </ul>
     </div>
+  </div>
+{/each}
+
+</div>
 
 </section>
 
+    <div class="flex mb-12 mt-6">
+
+    <button 
+                onclick={openModal} 
+                class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <strong>Ready To Go? Get In Touch!</strong>
+            </button>
+
+          </div>
+  </section>
+  
+
 <style>
-    .demo{
-        border-radius: 15px;
-        border-top-left-radius: 0;
-        border-bottom-right-radius: 0;
-        transition: 0.3s ease;
 
+    .hero-animated {
+    background: radial-gradient(
+        circle at 30% 40%,
+        #E8E1D8,
+        #EDEDED 80%
+    );
+    background-size: cover;
     }
 
-    .demo:hover{
-        transform: scale(1.05);
-        
+    .client-container{
+        border: solid, black, 1px;
+        border-radius: 5px;
     }
 
-
-    .overlay:hover{
-        opacity: 100%;
-        
-    }
-
-    .stack, .features {
-        color: #FAFAFA;
-        padding: 20px;
-        text-align: center;
-        display: flex;
-        flex-shrink: 1;
-        min-width: 150px;
-        max-height: 370px;
-    }
-
-    .portButton{
-        transition: ease 0.3s;
-        width: 40px;
-    }
-
-    .portButton:hover{
-        transform: scale(1.2);
-    }
 
 </style>

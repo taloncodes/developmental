@@ -136,12 +136,16 @@ function getSegmentedText(displayText) {
 <section id="about" use:fadeOnScroll class="fade-on-scroll">
     <div class="p-10 md:p-20">
     <h2 class="text-4xl py-5 md:py-10"><b>A bit about me...</b></h2>
-    <p class="text-xl">Hi! I'm Talon, a freelance web developer with a background in digital media, education and marketing. I build modern, fast websites and love helping businesses bring their ideas to life.</p>
+    <p class="text-xl">I'm Talon, a freelance web developer with a background in digital media, education and marketing. I build modern, fast websites and love helping businesses bring their ideas to life.</p>
     <h2 class="text-4xl py-5 md:py-10"><b>My Process</b></h2>
     <p class="text-xl">I create custom websites that are designed for your brand, not pulled from a generic template. Every site I build is focused on clean design, great performance, and helping <b>you</b> achieve your business goals</p>
     <h2 class="text-4xl py-5 md:py-10"><b>Why work with Developmental?</b></h2>
     <p class="text-xl">No bloated templates. No agency fees. Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.</p>
+    <h2 class="text-4xl py-5 md:py-10"><b>How it works?</b></h2>
+    <p class="text-xl">Tell me about your goals so that I can understand your business, you can do this either through the contact form or by e-mailing me at <a class='link' href='mailto:talon@developmental.pro'>talon@developmental.pro</a>. Once we agree on a plan, I'll get to work on your site and keep you in the loop during the process. Before it goes live, you'll get a preview and can request changes before launch. Then after it's live, I'll still be here for ongoing support, updates and maintenance. </p>
     <h2 class="text-4xl py-5 md:py-10"><b>Ready to get started?</b></h2>
+
+
     </div>
 
 </section>
@@ -165,6 +169,10 @@ h1 {
         #EDEDED 80%
     );
     background-size: cover;
+    }
+
+    .link{
+        color: #0000FF;
     }
 
 
