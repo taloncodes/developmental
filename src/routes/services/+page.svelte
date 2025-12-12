@@ -27,7 +27,7 @@
       content: 'We enhance your website’s content, structure, and performance to improve search engine rankings and user experience.'
     },
     { id: 'custom', title: 'Custom Solutions', isOpen: false,
-      content: "Streamline and automate your business processes. Whether that's an invoice generator, a quote calculator, or something completely unique to you"
+      content: "Streamline and automate your business processes. Whether that's an invoice generator, a quote calculator, or something completely unique to you."
     },
   ]);
 
