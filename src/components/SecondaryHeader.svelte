@@ -109,7 +109,6 @@
   
   <style>
     .second-header {
-      border-color: #D9D2C8;
       background-color: #1B1B1B;
     }
   
@@ -155,8 +154,7 @@
   
     .nav-menu {
       background-color: #1B1B1B;
-      color: #D9D2C8;
-      z-index: 10;
+      z-index: 1000;
       overflow: hidden;
     }
   
