@@ -1,6 +1,9 @@
 <script>
   import { page } from '$app/stores';
   import { isMenuOpen } from '../store.svelte';
+  import instaIcon from '$lib/icons/insta_icon.png';
+  import githhubIcon from '$lib/icons/github_icon.png';
+  import mailIcon from '$lib/icons/mail_icon.png';
 
   let activePage = '';
 
@@ -107,44 +110,40 @@
         onclick={handleClose}
       >Portfolio</a>
     </li>
-
-    <li class="menu-cta-row">
-      <a class="menu-cta" href="mailto:talon@developmental.pro" onclick={handleClose}>
-        <span>Get In Touch</span>
-        <span class="cta-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 7.5v9a2.25 2.25 0 0 1-2.25 2.25H4.5A2.25 2.25 0 0 1 2.25 16.5v-9A2.25 2.25 0 0 1 4.5 5.25h15A2.25 2.25 0 0 1 21.75 7.5Z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6" />
-          </svg>
-        </span>
-      </a>
-    </li>
   </ul>
 
   <!-- footer pinned to bottom -->
   <div class="menu-footer">
     <div class="footer-rule"></div>
 
-    <div class="social-row">
-      <a class="social-btn" href="https://instagram.com/developmen_tal" target="_blank" rel="noreferrer" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75h9A3.75 3.75 0 0 1 20.25 7.5v9A3.75 3.75 0 0 1 16.5 20.25h-9A3.75 3.75 0 0 1 3.75 16.5v-9A3.75 3.75 0 0 1 7.5 3.75Z" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75A3.75 3.75 0 1 0 12 8.25a3.75 3.75 0 0 0 0 7.5Z" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75h.008v.008h-.008V6.75Z" />
-        </svg>
-      </a>
+    <div class="links flex gap-6 justify-center">
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <a href="https://www.instagram.com/developmen_tal">
+                    <img src={instaIcon} alt="instagram icon">
+                </a>
+            </div>
 
-      <a class="social-btn" href="https://github.com/taloncodes" target="_blank" rel="noreferrer" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            fill="currentColor"
-            d="M12 .5C5.73.5.75 5.66.75 12.05c0 5.13 3.29 9.48 7.86 11.02.58.11.79-.26.79-.57v-2.1c-3.2.71-3.87-1.6-3.87-1.6-.52-1.36-1.28-1.72-1.28-1.72-1.05-.74.08-.72.08-.72 1.16.08 1.77 1.22 1.77 1.22 1.03 1.8 2.7 1.28 3.36.98.1-.77.4-1.28.72-1.58-2.55-.3-5.23-1.31-5.23-5.84 0-1.29.45-2.35 1.18-3.18-.12-.3-.52-1.52.11-3.16 0 0 .97-.32 3.18 1.21a10.7 10.7 0 0 1 2.9-.4c.98 0 1.97.14 2.9.4 2.21-1.53 3.18-1.21 3.18-1.21.63 1.64.23 2.86.11 3.16.73.83 1.18 1.89 1.18 3.18 0 4.54-2.69 5.54-5.25 5.83.41.36.78 1.09.78 2.2v3.26c0 .32.21.69.8.57 4.56-1.54 7.85-5.9 7.85-11.02C23.25 5.66 18.27.5 12 .5Z"
-          />
-        </svg>
-      </a>
-    </div>
-
-    <a class="email-link" href="mailto:talon@developmental.pro">talon@developmental.pro</a>
+            <div class="flex flex-col justify-center">
+                <span class="text-accent-two text-4xl">
+                    /
+                </span>
+            </div>
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <a href="https://www.github.com/taloncodes">
+                    <img src={githhubIcon} alt="github icon">
+                </a>
+            </div>
+            <div class="flex flex-col justify-center">
+                <span class="text-accent-two text-4xl">
+                    /
+                </span>
+            </div>
+            <div class="link border-accent-one border-2 rounded-full h-10 w-10">
+                <a href="mailto:talon@developmental.pro">
+                    <img src={mailIcon} alt="mail icon">
+                </a>
+            </div>
+        </div>
   </div>
 </div>
 
