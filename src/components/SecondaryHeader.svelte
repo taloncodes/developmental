@@ -90,7 +90,7 @@
         class="menu-link menu-dot"
         class:active={activePage === ''}
         onclick={handleClose}
-      >Home</a>
+      >home</a>
     </li>
 
     <li>
@@ -99,7 +99,7 @@
         class="menu-link menu-dot"
         class:active={activePage === 'services'}
         onclick={handleClose}
-      >Services</a>
+      >services</a>
     </li>
 
     <li>
@@ -108,7 +108,7 @@
         class="menu-link menu-dot"
         class:active={activePage === 'portfolio'}
         onclick={handleClose}
-      >Portfolio</a>
+      >portfolio</a>
     </li>
   </ul>
 
@@ -232,7 +232,7 @@
   .menu-link {
     display: inline-block;
     font-size: 22px;
-    padding: 6px 12px 6px 28px; /* left space for bullet */
+    padding: 6px 12px 6px 12px; /* left space for bullet */
     color: #D9D2C8;
     text-decoration: none;
     position: relative;
@@ -242,9 +242,10 @@
      MOBILE MENU: bullet indicator (hover + active)
      ============================================================ */
   .menu-dot::before {
-    content: "•";
+    content: "/";
+    font-weight: bold;
     position: absolute;
-    left: 12px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%) scale(0.85);
     color: #EDEDED;

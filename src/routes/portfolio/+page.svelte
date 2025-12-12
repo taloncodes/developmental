@@ -161,7 +161,7 @@ function getSegmentedText(displayText) {
 
  {#each personal as project (project.id)}
   <div class="mt-10 flex flex-col gap-4">
-    <h2 class="text-2xl md:text-3xl font-semibold pt-5">
+    <h2 class="text-2xl md:text-3xl font-semibold md:pt-5">
       {project.title}
     </h2>
 

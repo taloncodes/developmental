@@ -97,7 +97,8 @@ onMount(() => {
     <div class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 lg:gap-20">
 
       <!-- TEXT -->
-      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20">
+      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20 md:pl-[clamp(24px,6%,64px)]">
+
         <div class="w-full hidden md:block">
           <a href="/">
             <h1 class="text-4xl md:text-5xl lg:text-6xl flex md:justify-start justify-center">
@@ -170,32 +171,42 @@ onMount(() => {
 <section id="about" use:fadeOnScroll class="fade-on-scroll">
   <div class="p-10 md:p-20">
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me...</b></h2>
-    <p class="text-xl">
-      I'm Talon, a freelance web developer with a background in digital media, education and marketing.
-      I build modern, fast websites and love helping businesses bring their ideas to life.
-    </p>
+<p class="text-xl">
+  I'm Talon, a freelance web developer with a background in digital media, education and marketing.
+  <br><br>
+  I design and build modern, high-performance websites and love helping businesses bring their ideas to life.
+</p>
+
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>My Process</b></h2>
-    <p class="text-xl">
-      I create custom websites that are designed for your brand, not pulled from a generic template.
-      Every site I build is focused on clean design, great performance, and helping <b>you</b> achieve <b>your</b> business goals.
-    </p>
+<p class="text-xl">
+  I create custom websites designed around your brand, not pulled from a generic template.
+  <br><br>
+  Every site I build focuses on clean design, strong performance, and helping <b>you</b> achieve <b>your</b> business goals.
+</p>
+
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>Why Developmental?</b></h2>
-    <p class="text-xl">
-      No bloated templates. No agency fees. Just one person dedicated to building your site the right way,
-      with full control over design, performance and personal service every step of the way.
-    </p>
+<p class="text-xl">
+  No bloated templates. No agency fees.
+  <br><br>
+  Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.
+</p>
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>How it works?</b></h2>
-    <p class="text-xl">
-      Tell me about your goals so that I can understand your business, you can do this either through the contact form
-      or by e-mailing me at
-      <a class="link" href="mailto:talon@developmental.pro">talon@developmental.pro</a>.
-      Once we agree on a plan, I'll get to work on your site and keep you in the loop during the process.
-      Before it goes live, you'll get a preview and can request changes before launch.
-      Then after it's live, I'll still be here for ongoing support, updates and maintenance.
-    </p>
+
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>How it works</b></h2>
+<p class="text-xl">
+  Tell me about your goals so I can understand your business. This can be done via the contact form,
+  or by emailing me at
+  <a class="link" href="mailto:talon@developmental.pro">talon@developmental.pro</a>.
+  <br><br>
+  Once we agree on a plan, I’ll get to work on your site and keep you updated throughout the process.
+  <br><br>
+  Before launch, you’ll receive a preview and can request any final changes.
+  <br><br>
+  After your site goes live, I’ll remain available for ongoing support, updates and maintenance.
+</p>
+
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>
         <button class="link" alt="click here to get started" onclick={openModal}>Click here</button> to get started.</b></h2>

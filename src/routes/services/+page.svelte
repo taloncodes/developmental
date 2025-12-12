@@ -12,22 +12,22 @@
 
   let sections = $state([
     { id: 'web-design', title: 'Web Design', isOpen: false,
-      content: 'Visually appealing, user-friendly and modern website designs that match your brand aesthetic, engage your visitors and enhance their experience.'
+      content: 'Visually appealing, user-friendly and modern website designs that align with your brand aesthetic, engage visitors and elevate their experience.'
     },
     { id: 'web-dev', title: 'Web Development', isOpen: false,
-      content: 'Modern, high performance web development services ensure that your website is fast, functional, and optimized for all devices.'
+      content: 'Modern, high-performance web development services that ensure your website is fast, functional, and optimised across all devices.'
     },
     { id: 'logo', title: 'Logo & Branding', isOpen: false,
-      content: 'Establish a strong brand identity with custom logos and branding elements, unique to you, that resonate with your audience.'
+      content: 'Establish a strong brand identity with custom logos and branding elements, tailored to you, that resonate with your audience.'
     },
     { id: 'site-audit', title: 'Site Audit', isOpen: false,
-      content: 'Site audit service provides an in-depth analysis of your website’s performance, and SEO. Including areas to improve and practical next steps.'
+      content: "A site audit service providing an in-depth analysis of your website's performance and SEO, identifying areas for improvement and actionable next steps."
     },
     { id: 'optimisation', title: 'On-Page Optimisation', isOpen: false,
-      content: 'Enhance your website’s content, structure, and performance to improve search engine rankings and user experience.'
+      content: "Enhance your website's content, structure and performance to improve search engine rankings and elevate user experience."
     },
     { id: 'custom', title: 'Custom Solutions', isOpen: false,
-      content: "Streamline and automate your business processes. Whether that's an invoice generator, a quote calculator, or something completely unique to you."
+      content: "Streamline and automate your business processes with custom solutions, from invoice generators and quote calculators to something completely unique to you."
     },
   ]);
 
@@ -88,13 +88,14 @@
     </h1>
 
     <p class="text-xl py-5 md:py-10">
-      We provide comprehensive solutions for businesses looking to grow their online presence. No matter what stage you are currently at.
-      <br><br>
-      Need a new website to showcase your brand? Custom software to automate your business processes?
-      Or maybe you already have a website that's not performing as you'd expect?
-      <br><br>
-      <b>Tap on a service below to learn more</b>
-    </p>
+  I provide tailored solutions for businesses looking to grow their online presence, no matter what stage you're currently at.
+  <br><br>
+  Need a new website to showcase your brand? Custom software to automate your business processes?
+  Or maybe you already have a website that's not performing as you'd expect?
+  <br><br>
+  <b>Tap on a service below to learn more</b>
+</p>
+
   </div>
 
   <section>
