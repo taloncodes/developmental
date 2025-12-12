@@ -112,11 +112,28 @@ onMount(() => {
         </div>
 
         <button
-          class="px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl text-dark rounded-lg mbg-yellow home-nav-button mx-auto md:mx-0"
-          onclick={openModal}
-        >
-          Get in Touch
-        </button>
+  onclick={openModal}
+  class="px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl text-dark rounded-lg mbg-yellow home-nav-button mx-auto md:mx-0
+         flex items-center justify-center gap-2 md:gap-3"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.75"
+    stroke="currentColor"
+    class="w-5 h-5 md:w-6 md:h-6 relative top-[1px]"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
+    />
+  </svg>
+
+  <span>Get In Touch</span>
+</button>
+
       </div>
 
       <!-- IMAGE -->
@@ -125,7 +142,7 @@ onMount(() => {
         <!-- mobile heading + tagline -->
         <div class="w-full block md:hidden text-center mb-6">
           <a href="/">
-            <h1 class="text-5xl flex justify-center">
+            <h1 class="hero-title text-[2.875rem] sm:text-5xl flex justify-center">
               <span class="text-accent-primary"><b>.</b></span>
               <span><b>{@html getSegmentedText(displayText)}</b></span>
             </h1>
@@ -238,6 +255,12 @@ h1 {
   .hero-macbook__device,
   .hero-macbook__shadow {
     animation: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 2.25rem; /* text-4xl */
   }
 }
 </style>

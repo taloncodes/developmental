@@ -56,16 +56,49 @@
 
       <div class="success" class:show={success}>
         <h2 class="m-auto mb-6 text-center text-2xl text-primary">Thank you!</h2>
-        <p class="text-center text-accent-one">Your enquiry has been received. We will aim to get back to you within 48 hours.</p>
+        <p class="text-center text-accent-one">Your enquiry has been received. I will aim to get back to you within 48 hours.</p>
         <button class="text-accent-one block mx-auto mt-6" onclick={closeForm}>Close</button>
       </div>
 
       <div class="formWrapper">
 
-      <button class="close-btn" onclick={closeForm}>X</button>
-      <h2 class="m-auto mb-8 text-center text-2xl"><span class="text-primary"><b>Enquire with</b></span>
-        <span class="text-primary"><b>.</b></span><span class="text-primary"><b>developmen</b></span><span class="text-primary"><b>/</b></span><span class="text-primary"><b>tal</b></span>
-      </h2>
+      <button class="close-btn" onclick={closeForm} aria-label="Close">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.75"
+    stroke="currentColor"
+    class="w-5 h-5"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+</button>
+
+      <h2 class="m-auto mb-8 text-center text-2xl flex items-center justify-center gap-2">
+  <span class="text-primary font-bold">./enquiry</span>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.75"
+    stroke="currentColor"
+    class="w-6 h-6 text-primary relative top-[1px]"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21.75 6.75v10.5A2.25 2.25 0 0 1 19.5 19.5H4.5A2.25 2.25 0 0 1 2.25 17.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
+    />
+  </svg>
+</h2>
+
       <form onsubmit={handleSubmit}>
         <div class="form-group">
           <input
@@ -169,22 +202,24 @@
     border: solid #1B1B1B 2px;
   }
 
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 16px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    background-color: #1B1B1B;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #EDEDED;
-    padding: 3px 5px;
-    
-  }
+ .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: #1B1B1B;
+  border-radius: 6px;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
+}
+
 
   form {
     display: flex;

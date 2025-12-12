@@ -12,7 +12,7 @@
 
   let sections = $state([
     { id: 'web-design', title: 'Web Design', isOpen: false,
-      content: 'Create visually appealing, user-friendly and modern website designs that match your brand aesthetic, engage your visitors and enhance their experience.'
+      content: 'Visually appealing, user-friendly and modern website designs that match your brand aesthetic, engage your visitors and enhance their experience.'
     },
     { id: 'web-dev', title: 'Web Development', isOpen: false,
       content: 'Modern, high performance web development services ensure that your website is fast, functional, and optimized for all devices.'
@@ -131,13 +131,29 @@
     </div>
   </section>
 
-  <div class="flex mb-12 mt-6">
-    <button
-      onclick={openModal}
-      class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-    >
-      <strong>Ready To Go? Get In Touch!</strong>
-    </button>
+  <div class="flex mb-10 md:mb-20 ">
+    <button 
+  onclick={openModal} 
+  class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all flex items-center gap-2 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.75"
+    stroke="currentColor"
+    class="w-5 h-5 relative top-[1px]"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
+    />
+  </svg>
+
+  <span>Get In Touch</span>
+</button>
+
   </div>
 </section>
 
