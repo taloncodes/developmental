@@ -106,7 +106,7 @@ function getSegmentedText(displayText) {
 
  {#each clients as client (client.id)}
   <div class="mt-10 flex flex-col gap-4">
-    <h2 class="text-2xl md:text-3xl font-semibold pt-5">
+    <h2 class="text-2xl md:text-3xl font-semibold md:pt-5">
       {client.title}
     </h2>
 
