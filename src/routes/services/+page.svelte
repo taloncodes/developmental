@@ -12,19 +12,19 @@
 
   let sections = $state([
     { id: 'web-design', title: 'Web Design', isOpen: false,
-      content: 'We create visually appealing, user-friendly websites that engage your visitors and enhance their experience.'
+      content: 'Create visually appealing, user-friendly and modern website designs that match your brand aesthetic, engage your visitors and enhance their experience.'
     },
     { id: 'web-dev', title: 'Web Development', isOpen: false,
-      content: 'Our web development services ensure that your website is fast, functional, and optimized for all devices.'
+      content: 'Modern, high performance web development services ensure that your website is fast, functional, and optimized for all devices.'
     },
     { id: 'logo', title: 'Logo & Branding', isOpen: false,
-      content: 'We help you establish a strong brand identity with custom logos and branding elements that resonate with your audience.'
+      content: 'Establish a strong brand identity with custom logos and branding elements, unique to you, that resonate with your audience.'
     },
     { id: 'site-audit', title: 'Site Audit', isOpen: false,
-      content: 'Our site audit service provides an in-depth analysis of your website’s performance, and SEO.'
+      content: 'Site audit service provides an in-depth analysis of your website’s performance, and SEO. Including areas to improve and practical next steps.'
     },
     { id: 'optimisation', title: 'On-Page Optimisation', isOpen: false,
-      content: 'We enhance your website’s content, structure, and performance to improve search engine rankings and user experience.'
+      content: 'Enhance your website’s content, structure, and performance to improve search engine rankings and user experience.'
     },
     { id: 'custom', title: 'Custom Solutions', isOpen: false,
       content: "Streamline and automate your business processes. Whether that's an invoice generator, a quote calculator, or something completely unique to you."
