@@ -109,8 +109,8 @@ function getSegmentedText(displayText) {
 
 	<div class="dot-hover" class:active={section.isOpen === true}>
     <button class="image-button flex gap-8" onclick={() => toggleSection(section.id)}>
-    <h2 class='text-4xl py:5 md:py-10'><b>{section.title}</b></h2>
-    <h2 class='text-4xl py:5 md:py-10'><b>{section.isOpen ? '–' : '+'}</b></h2></button>	
+    <h2 class='text-3xl md:text-4xl py:5 md:py-10'><b>{section.title}</b></h2>
+    <h2 class='text-3xl md:text-4xl py:5 md:py-10'><b>{section.isOpen ? '–' : '+'}</b></h2></button>	
 		
 	</div>
 
