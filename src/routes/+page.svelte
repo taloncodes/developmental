@@ -97,16 +97,16 @@ onMount(() => {
     <div class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 lg:gap-20">
 
       <!-- TEXT -->
-      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center items-center gap-6 md:gap-8 text-center md:text-left relative z-20">
+      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20">
         <div class="w-full hidden md:block">
           <a href="/">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl flex justify-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl flex md:justify-start justify-center">
               <span class="text-accent-primary"><b>.</b></span>
               <span><b>{@html getSegmentedText(displayText)}</b></span>
             </h1>
           </a>
 
-          <h2 class="text-xl text-center md:text-3xl lg:text-4xl text-primary mt-3 md:mt-4">
+          <h2 class="text-xl md:text-3xl lg:text-4xl text-primary mt-3 md:mt-4">
             Quality web solutions, tailored to you.
           </h2>
         </div>
