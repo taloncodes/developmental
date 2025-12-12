@@ -159,7 +159,7 @@
       overflow: hidden;
     }
   
-    .overlay { z-index: 9; }
+    .overlay { z-index: 999; }
     :global(body.menu-open) { overflow: hidden; }
   </style>
   
