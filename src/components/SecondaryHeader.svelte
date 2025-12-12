@@ -154,6 +154,7 @@
   
     .nav-menu {
       background-color: #1B1B1B;
+      color: #D9D2C8;
       z-index: 1000;
       overflow: hidden;
     }
