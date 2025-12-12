@@ -258,7 +258,7 @@ h1 {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
   .hero-title {
     font-size: 2.25rem; /* text-4xl */
   }
