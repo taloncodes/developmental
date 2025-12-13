@@ -97,7 +97,7 @@ onMount(() => {
     <div class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 lg:gap-20">
 
       <!-- TEXT -->
-      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20 md:pl-[clamp(24px,6%,64px)]">
+      <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20  sm:pl-0 md:pl-[clamp(24px,10%,64px)]">
 
         <div class="w-full hidden md:block">
           <a href="/">
@@ -171,41 +171,62 @@ onMount(() => {
 <section id="about" use:fadeOnScroll class="fade-on-scroll">
   <div class="p-10 md:p-20">
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me...</b></h2>
-<p class="text-xl">
-  I'm Talon, a freelance web developer with a background in digital media, education and marketing.
-  <br><br>
-  I design and build modern, high-performance websites and love helping businesses bring their ideas to life.
+<p class="text-xl space-y-4">
+  <span class="block">
+    I'm Talon, a freelance web developer with a background in digital media, education and marketing.
+  </span>
+  <span class="block">
+    I design and build modern, high-performance websites and love helping businesses bring their ideas to life.
+  </span>
 </p>
+
 
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>My Process</b></h2>
-<p class="text-xl">
-  I create custom websites designed around your brand, not pulled from a generic template.
-  <br><br>
-  Every site I build focuses on clean design, strong performance, and helping <b>you</b> achieve <b>your</b> business goals.
+<p class="text-xl space-y-4">
+  <span class="block">
+    I create custom websites designed around your brand, not pulled from a generic template.
+  </span>
+  <span class="block">
+    Every site I build focuses on clean design, strong performance, and helping <b>you</b> achieve <b>your</b> business goals.
+  </span>
 </p>
+
 
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>Why Developmental?</b></h2>
-<p class="text-xl">
-  No bloated templates. No agency fees.
-  <br><br>
-  Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.
+<p class="text-xl space-y-4">
+  <span class="block">
+    No bloated templates. No agency fees.
+  </span>
+  <span class="block">
+    Just one person dedicated to building your site the right way, with full control over design, performance and personal service every step of the way.
+  </span>
 </p>
+
 
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>How it works</b></h2>
-<p class="text-xl">
-  Tell me about your goals so I can understand your business. This can be done via the contact form,
-  or by emailing me at
-  <a class="link" href="mailto:talon@developmental.pro">talon@developmental.pro</a>.
-  <br><br>
-  Once we agree on a plan, I’ll get to work on your site and keep you updated throughout the process.
-  <br><br>
-  Before launch, you’ll receive a preview and can request any final changes.
-  <br><br>
-  After your site goes live, I’ll remain available for ongoing support, updates and maintenance.
+<p class="text-xl space-y-4">
+  <span class="block">
+    Tell me about your goals so I can understand your business. This can be done via the contact form,
+    or by emailing me at
+    <a class="link" href="mailto:talon@developmental.pro">talon@developmental.pro</a>.
+  </span>
+
+  <span class="block">
+    Once we agree on a plan, I’ll get to work on your site and keep you updated throughout the process.
+  </span>
+
+  <span class="block">
+    Before launch, you’ll receive a preview and can request any final changes.
+  </span>
+
+  <span class="block">
+    After your site goes live, I’ll remain available for ongoing support, updates and maintenance.
+  </span>
 </p>
+
 
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>
@@ -216,7 +237,6 @@ onMount(() => {
 <style>
 h1 {
   white-space: nowrap;
-  overflow: hidden;
   animation: blink 1.2s steps(2, start) infinite;
 }
 
@@ -274,4 +294,5 @@ h1 {
     font-size: 2.25rem; /* text-4xl */
   }
 }
+
 </style>

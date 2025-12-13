@@ -8,15 +8,21 @@
   }
 
   
-  // Track input values and update filled state
   function handleInput(event) {
-    const input = event.target;
-    if (input.value) {
-      input.classList.add('filled');
-    } else {
-      input.classList.remove('filled');
-    }
+  const input = event.target;
+
+  if (input.id === 'phone') {
+    input.value = input.value.replace(/[^\d+]/g, '');
+
   }
+
+  if (input.value) {
+    input.classList.add('filled');
+  } else {
+    input.classList.remove('filled');
+  }
+}
+
 
   let fname = $state('');
   let lname = $state('');
@@ -57,7 +63,7 @@
       <div class="success" class:show={success}>
         <h2 class="m-auto mb-6 text-center text-2xl text-primary">Thank you!</h2>
         <p class="text-center text-accent-one">Your enquiry has been received. I will aim to get back to you within 48 hours.</p>
-        <button class="text-accent-one block mx-auto mt-6" onclick={closeForm}>Close</button>
+        <button class="text-accent-one block mx-auto mt-6 rounded-xl" onclick={closeForm}>Close</button>
       </div>
 
       <div class="formWrapper">
@@ -79,24 +85,8 @@
   </svg>
 </button>
 
-      <h2 class="m-auto mb-8 text-center text-2xl flex items-center justify-center gap-2">
+      <h2 class="m-auto mb-8 text-center text-3xl flex items-center justify-center gap-2">
   <span class="text-primary font-bold">./enquiry</span>
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.75"
-    stroke="currentColor"
-    class="w-6 h-6 text-primary relative top-[1px]"
-    aria-hidden="true"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M21.75 6.75v10.5A2.25 2.25 0 0 1 19.5 19.5H4.5A2.25 2.25 0 0 1 2.25 17.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
-    />
-  </svg>
 </h2>
 
       <form onsubmit={handleSubmit}>
@@ -104,7 +94,7 @@
           <input
             id="fname"
             type="text"
-            class="form-input"
+            class="form-input rounded-xl"
             placeholder=" "
             required
             oninput={handleInput}
@@ -117,7 +107,7 @@
           <input
             id="lname"
             type="text"
-            class="form-input"
+            class="form-input rounded-xl"
             placeholder=" "
             required
             oninput={handleInput}
@@ -130,7 +120,7 @@
           <input
             id="email"
             type="email"
-            class="form-input"
+            class="form-input rounded-xl"
             placeholder=" "
             required
             oninput={handleInput}
@@ -143,7 +133,7 @@
           <input
             id="phone"
             type="tel"
-            class="form-input"
+            class="form-input rounded-xl"
             placeholder=" "
             required
             oninput={handleInput}
@@ -155,7 +145,7 @@
         <div class="form-group">
           <textarea
             id="message"
-            class="form-input"
+            class="form-input rounded-xl"
             placeholder=" "
             required
             oninput={handleInput}
@@ -164,7 +154,24 @@
           <label for="message" class="form-label">Message</label>
         </div>
 
-        <button class="submitBtn" type="submit">Submit</button>
+        <button class="submitBt  rounded-xl flex items-center justify-center gap-2 md:gap-3" type="submit">
+          
+          <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.75"
+    stroke="currentColor"
+    class="w-5 h-5 md:w-6 md:h-6 relative top-[1px]"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
+    />
+  </svg>
+          
+          <span>Submit</span></button>
       </form>
 
     </div>
@@ -235,7 +242,6 @@
     width: 100%;
     padding: 8px;
     border: 2px solid #1B1B1B;
-    border-radius: 4px;
     background-color: #EDEDED;
     font-size: 16px;
     padding-top: 8px;
@@ -245,7 +251,7 @@
   .form-label {
     position: absolute;
     left: 12px;
-    top: 12px;
+    top: 10px;
     font-size: 16px;
     color: #1B1B1B;
     transition: all 0.25s ease-in-out;
@@ -269,7 +275,6 @@
     background-color: #1B1B1B;
     padding: 10px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 
     color: #EDEDED;

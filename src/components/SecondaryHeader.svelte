@@ -204,7 +204,7 @@
   .menu-head { padding-top: 14px; }
 
   .menu-title {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: #E8E1D8;
