@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.developmental.pro" }
+      ],
+      "destination": "https://developmental.pro/$1",
+      "permanent": true
+    }
+  ]
+}
