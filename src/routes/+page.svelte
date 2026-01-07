@@ -170,7 +170,7 @@ onMount(() => {
 
 <section id="about" use:fadeOnScroll class="fade-on-scroll">
   <div class="p-10 md:p-20">
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me...</b></h2>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me</b></h2>
 <p class="text-xl space-y-4">
   <span class="block">
     I'm Talon, a freelance web developer with a background in digital media, education and marketing.
