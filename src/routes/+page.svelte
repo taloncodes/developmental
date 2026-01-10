@@ -90,6 +90,10 @@ onMount(() => {
 });
 </script>
 
+<svelte:head>
+  <link rel="preload" as="image" href={laptop} type="image/svg+xml" />
+</svelte:head>
+
 <Form bind:visible={modalOpen} />
 
 <section bind:this={heroSection} class="hero top-0 hero-animated border-black border-b-2 flex">
@@ -159,6 +163,9 @@ onMount(() => {
             src={laptop}
             alt="mock-up website"
             class="hero-macbook__device object-contain absolute inset-0 m-auto block"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
           />
           <div class="hero-macbook__shadow"></div>
         </div>
