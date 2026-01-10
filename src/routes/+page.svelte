@@ -91,7 +91,7 @@ onMount(() => {
 </script>
 
 <svelte:head>
-  <link rel="preload" as="image" href={laptop} type="image/svg+xml" />
+  <link rel="preload" as="image" href={laptop} type="image/svg+xml" fetchpriority="high" loading="eager" decoding="async" />
 </svelte:head>
 
 <Form bind:visible={modalOpen} />
