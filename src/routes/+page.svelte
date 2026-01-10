@@ -17,7 +17,7 @@ import { onMount } from 'svelte';
 import arrow from '$lib/graphics/arrow.gif';
 import { fadeOnScroll } from '$lib/fadeOnScroll';
 import lappytappy from '$lib/graphics/lappytappy.png';
-import laptop from '$lib/graphics/hero_layer_1v3.svg';
+import laptop from '$lib/graphics/hero_layer_1v3.webp';
 import shadow from '$lib/graphics/hero_layer_2.svg';
 
 const textSegments = [
