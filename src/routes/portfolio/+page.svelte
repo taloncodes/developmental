@@ -15,6 +15,7 @@
 
   let clients = $state([
     {
+      count: 1,
       id: 'wags-n-whiskers',
       title: 'Wags n Whiskers Pet Services',
       isOpen: false,
@@ -43,6 +44,7 @@
 
   let personal = $state([
     {
+      count: 1,
       id: 'ai-journal',
       title: 'AI Journal',
       isOpen: false,
@@ -64,6 +66,7 @@
       features: ['Secure Authentication', 'CRUD Journal Entires', 'AI Summaries & Actions', 'Mood Slider', 'Calendar View', 'Responsive UI']
     },
     {
+      count: 2,
       id: 'lvm-player',
       title: 'Interactive Music Player',
       isOpen: false,
@@ -128,7 +131,9 @@
 <section>
   <Form bind:visible={modalOpen} />
 
-  <div class="p-10 md:p-20 hero-animated border-black border-b-2">
+  <div class="main_wrap hero-animated border-black border-b-2">
+
+  <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
     <h1 class="text-5xl md:text-6xl flex text-start justify-start">
       <span class="text-accent-primary"><b>.</b></span>
       <span><b>{@html getSegmentedText(displayText)}</b></span>
@@ -138,9 +143,14 @@
     </p>
   </div>
 
+  </div>
+
   <section>
-    <div class="p-10 md:p-20 border-black border-b-2">
+    <div class="border-black border-b-2">
+    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
       <h2 class="text-3xl md:text-4xl"><b>Client Showcase</b></h2>
+
+      <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each clients as client (client.id)}
         <div class="mt-10 flex flex-col gap-4">
@@ -148,16 +158,19 @@
             {client.title}
           </h2>
 
+
           <!-- broken into blocks like home page -->
           <div class="text-xl space-y-4 max-w-3xl content-copy">
             {@html client.contentHtml}
           </div>
 
-          <img
+            <img
             class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
             src={client.image}
             alt="{client.title} Homepage"
           />
+
+          
 
           <div class="mt-6">
             <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
@@ -185,15 +198,25 @@
             </ul>
           </div>
         </div>
+
+         {#if client.count != clients.length}
+
+         <hr class="mt-5 md:mt-12 border-black/20" />
+          
+         {/if}
       {/each}
     </div>
 
-    <div class="p-10 md:p-20">
+    </div>
+    <div>
+    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
       <h2 class="text-3xl md:text-4xl"><b>Projects</b></h2>
+
+      <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each personal as project (project.id)}
         <div class="mt-10 flex flex-col gap-4">
-          <h2 class="text-2xl md:text-3xl font-semibold md:pt-5">
+          <h2 class="text-2xl md:text-3xl font-semibold">
             {project.title}
           </h2>
 
@@ -202,11 +225,15 @@
             {@html project.contentHtml}
           </div>
 
+          
+
           <img
             class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
             src={project.image}
             alt="{project.title} Homepage"
           />
+
+          
 
           <div class="mt-6">
             <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
@@ -234,7 +261,15 @@
             </ul>
           </div>
         </div>
+
+        {#if project.count != personal.length}
+
+         <hr class="mt-5 md:mt-12 border-black/20" />
+          
+         {/if}
       {/each}
+    </div>
+
     </div>
   </section>
 

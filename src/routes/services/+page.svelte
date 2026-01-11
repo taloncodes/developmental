@@ -81,7 +81,9 @@
 <section>
   <Form bind:visible={modalOpen} />
 
-  <div class="p-10 md:p-20 hero-animated border-black border-b-2">
+  <div class="main_wrap hero-animated border-black border-b-2 ">
+
+  <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
     <h1 class="text-5xl md:text-6xl flex text-start justify-start">
       <span class="text-accent-primary"><b>.</b></span>
       <span> <b>{@html getSegmentedText(displayText)}</b></span>
@@ -98,8 +100,10 @@
 
   </div>
 
+  </div>
+
   <section>
-    <div class="px-6 py-10 md:p-20">
+    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
 
       {#each sections as section (section.id)}
 
@@ -125,6 +129,8 @@
           >
             {section.content}
           </div>
+
+          <hr class="mt-5 md:mt-12 border-black/20" />
         {/if}
 
       {/each}

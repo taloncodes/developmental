@@ -176,7 +176,7 @@ onMount(() => {
 </section>
 
 <section id="about" use:fadeOnScroll class="fade-on-scroll">
-  <div class="p-10 md:p-20">
+  <div class="py-10 md:py-20 px-10 md:px-20 max-w-[1200px] mx-auto">
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me</b></h2>
 <p class="text-xl space-y-4">
   <span class="block">
@@ -187,7 +187,7 @@ onMount(() => {
   </span>
 </p>
 
-
+<hr class="mt-5 md:mt-12 border-black/20" />
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>My Process</b></h2>
 <p class="text-xl space-y-4">
@@ -199,7 +199,7 @@ onMount(() => {
   </span>
 </p>
 
-
+<hr class="mt-5 md:mt-12 border-black/20" />
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>Why Developmental?</b></h2>
 <p class="text-xl space-y-4">
@@ -211,7 +211,7 @@ onMount(() => {
   </span>
 </p>
 
-
+<hr class="mt-5 md:mt-12 border-black/20" />
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>How it works</b></h2>
 <p class="text-xl space-y-4">
@@ -233,6 +233,8 @@ onMount(() => {
     After your site goes live, I’ll remain available for ongoing support, updates and maintenance.
   </span>
 </p>
+
+<hr class="mt-5 md:mt-12 border-black/20" />
 
 
 
