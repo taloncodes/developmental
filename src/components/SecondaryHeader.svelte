@@ -33,12 +33,23 @@
   <div class="p-5 flex justify-between items-center second-header border-b-3 h-[84px]">
     
     <a href="/" class="">
+      <div class="relative">
       <div class="fixed top-4 left-4 z-[999]
-       flex h-12 w-12 items-center justify-center
-       rounded-full bg-[#1b1b1b]/25 backdrop-blur border-1 border-[#1b1b1b]">
+  flex h-12 w-12 items-center justify-center
+  rounded-full
+  bg-[#1b1b1b]/25
+  backdrop-blur-md
+  before:content-['']
+  before:absolute
+  before:inset-0
+  before:rounded-full
+  before:bg-[#1b1b1b]/25
+">
+
       <span class="text-4xl md:text-4xl text-accent-two">.</span>
       <span class="text-4xl md:text-4xl text-accent-two">/</span>
           </div>
+      </div>
     </a>
 
 
