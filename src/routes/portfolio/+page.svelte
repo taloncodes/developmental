@@ -150,10 +150,10 @@
     <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
       <h2 class="text-3xl md:text-4xl"><b>Client Showcase</b></h2>
 
-      <hr class="mt-10 md:mt-12 border-black/20" />
+      <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each clients as client (client.id)}
-        <div class="mt-10 flex flex-col gap-4">
+        <div class="mt-5 flex flex-col gap-4">
           <h2 class="text-2xl md:text-3xl font-semibold">
             {client.title}
           </h2>
@@ -201,7 +201,7 @@
 
          {#if client.count != clients.length}
 
-         <hr class="mt-10 md:mt-12 border-black/20" />
+         <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20" />
           
          {/if}
       {/each}
@@ -212,10 +212,10 @@
     <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
       <h2 class="text-3xl md:text-4xl"><b>Projects</b></h2>
 
-      <hr class="mt-10 md:mt-12 border-black/20" />
+      <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each personal as project (project.id)}
-        <div class="mt-10 flex flex-col gap-4">
+        <div class="mt-5 flex flex-col gap-4">
           <h2 class="text-2xl md:text-3xl font-semibold">
             {project.title}
           </h2>
@@ -264,7 +264,7 @@
 
         {#if project.count != personal.length}
 
-         <hr class="mt-10 md:mt-12 border-black/20" />
+         <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20" />
           
          {/if}
       {/each}
