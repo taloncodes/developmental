@@ -23,7 +23,7 @@
     { id: 'site-audit', title: 'Site Audit', isOpen: false,
       content: "A site audit service providing an in-depth analysis of your website's performance and SEO, identifying areas for improvement and actionable next steps."
     },
-    { id: 'optimisation', title: 'On-Page Optimisation', isOpen: false,
+    { id: 'optimisation', title: 'SEO Optimisation', isOpen: false,
       content: "Enhance your website's content, structure and performance to improve search engine rankings and elevate user experience."
     },
     { id: 'custom', title: 'Custom Solutions', isOpen: false,
