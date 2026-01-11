@@ -33,15 +33,9 @@
   <div class="p-5 flex justify-between items-center second-header border-b-3 h-[84px]">
     
     <a href="/" class="">
-<div class="fixed top-4 left-4 z-[999]
-  flex h-12 w-12 items-center justify-center
-  rounded-full
-  bg-[#1b1b1b]/25
-  backdrop-blur-md
-  ring-1 ring-[#1b1b1b]/40
-  shadow-[0_2px_10px_rgba(0,0,0,0.18)]
-">
-
+      <div class="fixed top-4 left-4 z-[999]
+       flex h-12 w-12 items-center justify-center
+       rounded-full bg-[#1b1b1b]/25 backdrop-blur border-1 border-[#1b1b1b]">
       <span class="text-4xl md:text-4xl text-accent-two">.</span>
       <span class="text-4xl md:text-4xl text-accent-two">/</span>
           </div>
