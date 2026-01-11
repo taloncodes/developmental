@@ -36,7 +36,7 @@
       <div class="relative">
       <div class="fixed top-4 left-4 z-[999]
        flex h-12 w-12 items-center justify-center
-       rounded-full bg-[#1b1b1b]/25 backdrop-blur border-1 border-[#1b1b1b]">
+       rounded-full bg-[rgba(27,27,27,0.25)] backdrop-blur border-1 border-[#1b1b1b]">
       <span class="text-4xl md:text-4xl text-accent-two">.</span>
       <span class="text-4xl md:text-4xl text-accent-two">/</span>
           </div>
@@ -62,7 +62,7 @@
     <!-- burger -->
      <div class="md:hidden fixed top-4 right-4 z-[999]
        flex h-12 w-16 items-center justify-center
-       rounded-full bg-[#1b1b1b]/25 backdrop-blur border-1 border-[#1b1b1b]">
+       rounded-full bg-[rgba(27,27,27,0.25)] backdrop-blur border-1 border-[#1b1b1b]">
     <button
       class="relative burger md:hidden flex h-10 flex-col justify-around px-2 py-2"
       onclick={handleClick}
