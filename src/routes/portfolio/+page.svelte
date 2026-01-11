@@ -131,7 +131,7 @@
 <section>
   <Form bind:visible={modalOpen} />
 
-  <div class="main_wrap hero-animated border-black border-b-2">
+  <div class="main_wrap hero-animated border-black border-b-2 mb-4 mb:md-6">
 
   <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
     <h1 class="text-5xl md:text-6xl flex text-start justify-start">
