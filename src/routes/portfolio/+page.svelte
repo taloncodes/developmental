@@ -153,7 +153,7 @@
       <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each clients as client (client.id)}
-        <div class="mt-5 flex flex-col gap-4">
+        <div class="mt-5 md:mt-12 flex flex-col gap-4">
           <h2 class="text-2xl md:text-3xl font-semibold">
             {client.title}
           </h2>
@@ -215,7 +215,7 @@
       <hr class="mt-5 md:mt-12 border-black/20" />
 
       {#each personal as project (project.id)}
-        <div class="mt-5 flex flex-col gap-4">
+        <div class="mt-5 md:mt-12 flex flex-col gap-4">
           <h2 class="text-2xl md:text-3xl font-semibold">
             {project.title}
           </h2>
