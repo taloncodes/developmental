@@ -10,12 +10,63 @@
   import wags from '$lib/demo/wags.png';
   import journal from '$lib/demo/journal.png';
   import lvm from '$lib/demo/lvm.png';
+  import scc from '$lib/demo/scc.png';
 
   let modalOpen = $state(false);
 
   let clients = $state([
-    {
+
+  {
       count: 1,
+      id: 'scc_forms',
+      title: 'Slaters Contracting and Consultancy',
+      isOpen: false,
+      contentHtml:`
+              <span class="block">
+          A bespoke internal web application built for Slaters Contracting & Consultancy (SCC) to digitise and streamline day-to-day operational workflows.
+        </span>
+
+        <span class="block">
+          The platform replaces paper-based processes with secure digital forms covering equipment checks, timesheets, HAVS exposure, RAMS, and compliance records.
+        </span>
+
+        <span class="block">
+          Designed for real-world field use, the app includes in-form HAVS exposure and fatigue calculations, providing immediate feedback within the UI to support safer, compliant decision-making.
+        </span>
+
+        <span class="block">
+          Additional features include digital signatures, automated PDF generation, and cloud storage for audit-ready records.
+        </span>
+
+        <span class="block">
+          This system significantly reduces admin overhead while improving accuracy, traceability, and long-term record keeping.
+        </span>
+        `,
+      image: scc,
+      tech: [
+        'SvelteKit',
+        'JavaScript',
+        'Node',
+        'Supabase',
+        'PostgreSQL',
+        'Dropbox API',
+        'Puppeteer'
+      ],
+
+      features: [
+      'Secure Authentication & RLS',
+      'Dynamic Multi-Step Forms',
+      'Digital Signature Capture',
+      'Automated PDF Generation',
+      'Dropbox Cloud Uploads',
+      'Fatigue and HAVS Calculators',
+      'Compliance & Audit-Ready Records',
+      'Mobile-First Field Workflow'
+    ]
+
+    },
+    {
+      count: 2,
       id: 'wags-n-whiskers',
       title: 'Wags n Whiskers Pet Services',
       isOpen: false,
