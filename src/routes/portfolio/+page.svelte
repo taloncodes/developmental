@@ -11,18 +11,18 @@
   import journal from '$lib/demo/journal.png';
   import lvm from '$lib/demo/lvm.png';
   import scc from '$lib/demo/scc.png';
+  import { fadeOnScroll } from '$lib/fadeOnScroll';  // ✅ added
 
   let modalOpen = $state(false);
 
   let clients = $state([
-
-  {
+    {
       count: 1,
       id: 'scc_forms',
       title: 'Slaters Contracting and Consultancy',
       isOpen: false,
       contentHtml:`
-              <span class="block">
+        <span class="block">
           A bespoke internal web application built for Slaters Contracting & Consultancy (SCC) to digitise and streamline day-to-day operational workflows.
         </span>
 
@@ -41,7 +41,7 @@
         <span class="block">
           This system significantly reduces admin overhead while improving accuracy, traceability, and long-term record keeping.
         </span>
-        `,
+      `,
       image: scc,
       tech: [
         'SvelteKit',
@@ -52,18 +52,16 @@
         'Dropbox API',
         'Puppeteer'
       ],
-
       features: [
-      'Secure Authentication & RLS',
-      'Dynamic Multi-Step Forms',
-      'Digital Signature Capture',
-      'Automated PDF Generation',
-      'Dropbox Cloud Uploads',
-      'Fatigue and HAVS Calculators',
-      'Compliance & Audit-Ready Records',
-      'Mobile-First Field Workflow'
-    ]
-
+        'Secure Authentication & RLS',
+        'Dynamic Multi-Step Forms',
+        'Digital Signature Capture',
+        'Automated PDF Generation',
+        'Dropbox Cloud Uploads',
+        'Fatigue and HAVS Calculators',
+        'Compliance & Audit-Ready Records',
+        'Mobile-First Field Workflow'
+      ]
     },
     {
       count: 2,
@@ -183,148 +181,134 @@
   <Form bind:visible={modalOpen} />
 
   <div class="main_wrap hero-animated border-black border-b-2 mb-4 mb:md-6">
-
-  <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-    <h1 class="text-5xl md:text-6xl flex text-start justify-start">
-      <span class="text-accent-primary"><b>.</b></span>
-      <span><b>{@html getSegmentedText(displayText)}</b></span>
-    </h1>
-    <p class="text-xl py-5 md:py-10">
-      Check out some samples of live client sites and personal projects that I've been working on below.
-    </p>
-  </div>
-
+    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
+      <h1 class="text-5xl md:text-6xl flex text-start justify-start">
+        <span class="text-accent-primary"><b>.</b></span>
+        <span><b>{@html getSegmentedText(displayText)}</b></span>
+      </h1>
+      <p class="text-xl py-5 md:py-10">
+        Check out some samples of live client sites and personal projects that I've been working on below.
+      </p>
+    </div>
   </div>
 
   <section>
     <div class="border-black border-b-2">
-    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-      <h2 class="text-3xl md:text-4xl"><b>Client Showcase</b></h2>
+      <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
+        <h2 class="text-3xl md:text-4xl fade-on-scroll" use:fadeOnScroll><b>Client Showcase</b></h2>
 
-      <hr class="mt-5 md:mt-12 border-black/20" />
+        <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-      {#each clients as client (client.id)}
-        <div class="mt-5 md:mt-12 flex flex-col gap-4">
-          <h2 class="text-2xl md:text-3xl font-semibold">
-            {client.title}
-          </h2>
+        {#each clients as client (client.id)}
+          <div class="mt-5 md:mt-12 flex flex-col gap-4 fade-on-scroll" use:fadeOnScroll>
+            <h2 class="text-2xl md:text-3xl font-semibold">
+              {client.title}
+            </h2>
 
-
-          <!-- broken into blocks like home page -->
-          <div class="text-xl space-y-4 max-w-3xl content-copy">
-            {@html client.contentHtml}
-          </div>
+            <div class="text-xl space-y-4 max-w-3xl content-copy">
+              {@html client.contentHtml}
+            </div>
 
             <img
-            class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
-            src={client.image}
-            alt="{client.title} Homepage"
-          />
+              class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm fade-on-scroll"
+              use:fadeOnScroll
+              src={client.image}
+              alt="{client.title} Homepage"
+            />
 
-          
+            <div class="mt-6 fade-on-scroll" use:fadeOnScroll>
+              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+                Tech stack
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {#each client.tech as tech}
+                  <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
+                    {tech}
+                  </li>
+                {/each}
+              </ul>
+            </div>
 
-          <div class="mt-6">
-            <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-              Tech stack
-            </h3>
-            <ul class="flex flex-wrap gap-2">
-              {#each client.tech as tech}
-                <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
-                  {tech}
-                </li>
-              {/each}
-            </ul>
+            <div class="mt-4 fade-on-scroll" use:fadeOnScroll>
+              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+                Features
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {#each client.features as feature}
+                  <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
+                    {feature}
+                  </li>
+                {/each}
+              </ul>
+            </div>
           </div>
 
-          <div class="mt-4">
-            <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-              Features
-            </h3>
-            <ul class="flex flex-wrap gap-2">
-              {#each client.features as feature}
-                <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
-                  {feature}
-                </li>
-              {/each}
-            </ul>
-          </div>
-        </div>
-
-         {#if client.count != clients.length}
-
-         <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20" />
-          
-         {/if}
-      {/each}
+          {#if client.count != clients.length}
+            <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
+          {/if}
+        {/each}
+      </div>
     </div>
 
-    </div>
     <div>
-    <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-      <h2 class="text-3xl md:text-4xl"><b>Projects</b></h2>
+      <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
+        <h2 class="text-3xl md:text-4xl fade-on-scroll" use:fadeOnScroll><b>Projects</b></h2>
 
-      <hr class="mt-5 md:mt-12 border-black/20" />
+        <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-      {#each personal as project (project.id)}
-        <div class="mt-5 md:mt-12 flex flex-col gap-4">
-          <h2 class="text-2xl md:text-3xl font-semibold">
-            {project.title}
-          </h2>
+        {#each personal as project (project.id)}
+          <div class="mt-5 md:mt-12 flex flex-col gap-4 fade-on-scroll" use:fadeOnScroll>
+            <h2 class="text-2xl md:text-3xl font-semibold">
+              {project.title}
+            </h2>
 
-          <!-- broken into blocks like home page -->
-          <div class="text-xl space-y-4 max-w-3xl content-copy">
-            {@html project.contentHtml}
+            <div class="text-xl space-y-4 max-w-3xl content-copy">
+              {@html project.contentHtml}
+            </div>
+
+            <img
+              class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm fade-on-scroll"
+              use:fadeOnScroll
+              src={project.image}
+              alt="{project.title} Homepage"
+            />
+
+            <div class="mt-6 fade-on-scroll" use:fadeOnScroll>
+              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+                Tech stack
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {#each project.tech as tech}
+                  <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
+                    {tech}
+                  </li>
+                {/each}
+              </ul>
+            </div>
+
+            <div class="mt-4 fade-on-scroll" use:fadeOnScroll>
+              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
+                Features
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {#each project.features as feature}
+                  <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
+                    {feature}
+                  </li>
+                {/each}
+              </ul>
+            </div>
           </div>
 
-          
-
-          <img
-            class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm"
-            src={project.image}
-            alt="{project.title} Homepage"
-          />
-
-          
-
-          <div class="mt-6">
-            <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-              Tech stack
-            </h3>
-            <ul class="flex flex-wrap gap-2">
-              {#each project.tech as tech}
-                <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
-                  {tech}
-                </li>
-              {/each}
-            </ul>
-          </div>
-
-          <div class="mt-4">
-            <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-              Features
-            </h3>
-            <ul class="flex flex-wrap gap-2">
-              {#each project.features as feature}
-                <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
-                  {feature}
-                </li>
-              {/each}
-            </ul>
-          </div>
-        </div>
-
-        {#if project.count != personal.length}
-
-         <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20" />
-          
-         {/if}
-      {/each}
-    </div>
-
+          {#if project.count != personal.length}
+            <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
+          {/if}
+        {/each}
+      </div>
     </div>
   </section>
 
-  <div class="flex mb-12 mt-6">
+  <div class="flex mb-12 mt-6 fade-on-scroll" use:fadeOnScroll>
     <button
       onclick={openModal}
       class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all flex items-center gap-2 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500"
@@ -345,7 +329,7 @@
   }
 
   .client-container{
-    border: solid, black, 1px;
+    border: 1px solid black; /* ✅ fixed commas */
     border-radius: 5px;
   }
 

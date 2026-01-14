@@ -175,10 +175,10 @@ onMount(() => {
   </div>
 </section>
 
-<section id="about" use:fadeOnScroll class="fade-on-scroll">
+<section id="about">
   <div class="py-10 md:py-20 px-10 md:px-20 max-w-[1200px] mx-auto">
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>A bit about me</b></h2>
-<p class="text-xl space-y-4">
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>A bit about me</b></h2>
+<p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     I'm Talon, a freelance web developer with a background in digital media, education and marketing.
   </span>
@@ -187,10 +187,10 @@ onMount(() => {
   </span>
 </p>
 
-<hr class="mt-5 md:mt-12 border-black/20" />
+<hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>My Process</b></h2>
-<p class="text-xl space-y-4">
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>My Process</b></h2>
+<p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     I create custom websites designed around your brand, not pulled from a generic template.
   </span>
@@ -199,10 +199,10 @@ onMount(() => {
   </span>
 </p>
 
-<hr class="mt-5 md:mt-12 border-black/20" />
+<hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>Why Developmental?</b></h2>
-<p class="text-xl space-y-4">
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>Why Developmental?</b></h2>
+<p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     No bloated templates. No agency fees.
   </span>
@@ -211,10 +211,10 @@ onMount(() => {
   </span>
 </p>
 
-<hr class="mt-5 md:mt-12 border-black/20" />
+<hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>How it works</b></h2>
-<p class="text-xl space-y-4">
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>How it works</b></h2>
+<p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     Tell me about your goals so I can understand your business. This can be done via the contact form,
     or by emailing me at
@@ -234,11 +234,11 @@ onMount(() => {
   </span>
 </p>
 
-<hr class="mt-5 md:mt-12 border-black/20" />
+<hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
 
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10"><b>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>
         <button class="link" alt="click here to get started" onclick={openModal}>Click here</button> to get started.</b></h2>
   </div>
 </section>
