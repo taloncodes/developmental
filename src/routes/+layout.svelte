@@ -11,6 +11,11 @@
 	let { children, data } = $props();
 
 	let activePath = $derived($page.url.pathname);
+	const defaultMeta = {
+		title: 'Developmental',
+		desc: 'Modern, affordable websites for small businesses.'
+	};
+	let currentMeta = $derived(pageMeta[activePath] ?? defaultMeta);
 
 
 	import { onMount } from 'svelte';
@@ -25,10 +30,9 @@
 
 
 	onMount(() => {
-	window.requestAnimationFrame(() => {
-		window.dispatchEvent(new Event('resize'));
-	});
-	console.log(pageMeta)
+		window.requestAnimationFrame(() => {
+			window.dispatchEvent(new Event('resize'));
+		});
 
 	});
 
@@ -36,8 +40,8 @@
 </script>
 
 <svelte:head>
-  <title>{pageMeta[activePath].title}</title>
-  <meta name="description" content={pageMeta[activePath].desc} />
+  <title>{currentMeta.title}</title>
+  <meta name="description" content={currentMeta.desc} />
   <link rel="canonical" href={`https://developmental.pro${activePath}`} />
 </svelte:head>
 
@@ -66,7 +70,6 @@
     overflow: hidden;
 }
 </style>
-
 
 
 
