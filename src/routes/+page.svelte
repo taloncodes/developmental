@@ -103,7 +103,7 @@ onMount(() => {
       <!-- TEXT -->
       <div class="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center gap-6 md:gap-8 text-center md:text-left relative z-20  sm:pl-0 md:pl-[clamp(24px,10%,64px)]">
 
-        <div class="w-full hidden md:block">
+        <div class="w-full hidden md:block fade-on-scroll" use:fadeOnScroll>
           <a href="/">
             <h1 class="text-4xl md:text-5xl lg:text-6xl flex md:justify-start justify-center">
               <span class="text-accent-primary"><b>.</b></span>
@@ -118,8 +118,9 @@ onMount(() => {
 
         <button
   onclick={openModal}
-  class="px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl text-dark rounded-lg mbg-yellow home-nav-button mx-auto md:mx-0
+  class="px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl text-dark rounded-lg mbg-yellow home-nav-button mx-auto md:mx-0 fade-on-scroll
          flex items-center justify-center gap-2 md:gap-3"
+  use:fadeOnScroll
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +146,7 @@ onMount(() => {
       <div class="order-1 md:order-2 w-full md:w-1/2 flex flex-col items-center md:items-end relative z-10">
 
         <!-- mobile heading + tagline -->
-        <div class="w-full block md:hidden text-center mb-6">
+        <div class="w-full block md:hidden text-center mb-6 fade-on-scroll" use:fadeOnScroll>
           <a href="/">
             <h1 class="hero-title text-[2.875rem] sm:text-5xl flex justify-center">
               <span class="text-accent-primary"><b>.</b></span>
@@ -158,7 +159,7 @@ onMount(() => {
         </div>
 
         <!-- laptop -->
-        <div class="relative w-full max-w-[420px] sm:max-w-[560px] md:max-w-[640px] lg:max-w-[720px] aspect-[16/10]">
+        <div class="relative w-full max-w-[420px] sm:max-w-[560px] md:max-w-[640px] lg:max-w-[720px] aspect-[16/10] fade-on-scroll" use:fadeOnScroll>
           <img
             src={laptop}
             alt="mock-up website"
