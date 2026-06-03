@@ -11,6 +11,8 @@
   import journal from '$lib/demo/journal.png';
   import lvm from '$lib/demo/lvm.png';
   import scc from '$lib/demo/scc.png';
+  import siterecs from '$lib/demo/siterecs.png';
+  import clearcut from '$lib/demo/clearcut-compliance.png';
   import { fadeOnScroll } from '$lib/fadeOnScroll';  // ✅ added
 
   let modalOpen = $state(false);
@@ -18,6 +20,118 @@
   let clients = $state([
     {
       count: 1,
+      id: 'siterecs',
+      title: 'SiteRecs',
+      isOpen: false,
+      contentHtml:`
+        <span class="block">
+          A full SaaS platform built for trade contractors and site teams to replace manual RAMS paperwork with a secure digital workflow.
+        </span>
+
+        <span class="block">
+          SiteRecs brings jobs, RAMS templates, checks, signatures, and job records into one web app, designed for practical use by tradespeople and office teams.
+        </span>
+
+        <span class="block">
+          The platform includes secure authentication, Supabase-backed data storage, organisation settings, user seats, role-based access, and Stripe billing for subscription management.
+        </span>
+
+        <span class="block">
+          A key part of the system is automated, brandable PDF generation using Playwright, allowing teams to produce clean RAMS and paperwork packs ready to send or store against each job.
+        </span>
+      `,
+      image: siterecs,
+      tech: [
+        'SvelteKit',
+        'JavaScript',
+        'Node',
+        'Supabase',
+        'PostgreSQL',
+        'Stripe',
+        'Playwright'
+      ],
+      features: [
+        'Secure Authentication & RLS',
+        'User Seats & Roles',
+        'Stripe Billing',
+        'RAMS Builder & Library',
+        'Brandable PDF Generation',
+        'Digital Signatures',
+        'Job-Centric Paperwork',
+        'Mobile-First Trade Workflow'
+      ]
+    },
+    {
+      count: 2,
+      id: 'clearcut-compliance',
+      title: 'ClearCut Compliance',
+      isOpen: false,
+      contentHtml:`
+        <span class="block">
+          A specialist compliance SaaS platform for tree surgeons, landscapers, forestry workers, and arborist-led teams who need fast, reliable site paperwork.
+        </span>
+
+        <span class="block">
+          ClearCut adapts the same proven digital RAMS foundation into a sector-focused product, with workflows shaped around outdoor jobs, on-site checks, climbing operations, machinery use, and repeatable risk assessment templates.
+        </span>
+
+        <span class="block">
+          The app includes secure auth, organisation management, user seats, role-based access, Stripe subscriptions, and Supabase-backed records for forms, jobs, documents, and submissions.
+        </span>
+
+        <span class="block">
+          Branded RAMS and compliance documents can be generated as polished PDFs with Playwright, giving teams a cleaner way to issue, resend, and retain paperwork without chasing folders or duplicate files.
+        </span>
+      `,
+      image: clearcut,
+      tech: [
+        'SvelteKit',
+        'JavaScript',
+        'Node',
+        'Supabase',
+        'PostgreSQL',
+        'Stripe',
+        'Playwright'
+      ],
+      features: [
+        'Secure Authentication & RLS',
+        'User Seats & Roles',
+        'Stripe Billing',
+        'Arborist RAMS Templates',
+        'Brandable PDF Generation',
+        'Installable Web App',
+        'Job Records & Submissions',
+        'Mobile-First Site Workflow'
+      ]
+    },
+    {
+      count: 3,
+      id: 'wags-n-whiskers',
+      title: 'Wags n Whiskers Pet Services',
+      isOpen: false,
+      contentHtml: `
+        <span class="block">
+          This custom-built website for
+          <a class="link" href="https://wagsnwhiskers.co" target="_blank" rel="noopener">
+            Wags n Whiskers
+          </a>
+          is designed with speed and brand identity at its core.
+        </span>
+
+        <span class="block">
+          Fully responsive across all device types, it showcases the business's key features while promoting a strong brand voice.
+        </span>
+
+        <span class="block">
+          The goal was to strengthen online presence, attract organic traffic, and make it easy for customers to send direct booking enquiries.
+        </span>
+      `,
+      image: wags,
+      tech: ['HTML', 'CSS', 'JavaScript', 'Node', 'Mailgun'],
+      features: ['Google Analytics', 'E-mail Notifications', 'Contact Form', 'Bespoke Design', 'SEO Optimisation', 'Performance Optimisation']
+    },
+    {
+      count: 4,
       id: 'scc_forms',
       title: 'Slaters Contracting and Consultancy',
       isOpen: false,
@@ -62,32 +176,6 @@
         'Compliance & Audit-Ready Records',
         'Mobile-First Field Workflow'
       ]
-    },
-    {
-      count: 2,
-      id: 'wags-n-whiskers',
-      title: 'Wags n Whiskers Pet Services',
-      isOpen: false,
-      contentHtml: `
-        <span class="block">
-          This custom-built website for
-          <a class="link" href="https://wagsnwhiskers.co" target="_blank" rel="noopener">
-            Wags n Whiskers
-          </a>
-          is designed with speed and brand identity at its core.
-        </span>
-
-        <span class="block">
-          Fully responsive across all device types, it showcases the business's key features while promoting a strong brand voice.
-        </span>
-
-        <span class="block">
-          The goal was to strengthen online presence, attract organic traffic, and make it easy for customers to send direct booking enquiries.
-        </span>
-      `,
-      image: wags,
-      tech: ['HTML', 'CSS', 'JavaScript', 'Node', 'Mailgun'],
-      features: ['Google Analytics', 'E-mail Notifications', 'Contact Form', 'Bespoke Design', 'SEO Optimisation', 'Performance Optimisation']
     },
   ]);
 
@@ -210,7 +298,7 @@
             </div>
 
             <img
-              class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm fade-on-scroll"
+              class="client-container w-full max-w-4xl mt-4 shadow-sm fade-on-scroll"
               use:fadeOnScroll
               src={client.image}
               alt="{client.title} Homepage"
@@ -267,7 +355,7 @@
             </div>
 
             <img
-              class="client-container w-full max-w-4xl mt-4 rounded-2xl border border-black/10 shadow-sm fade-on-scroll"
+              class="client-container w-full max-w-4xl mt-4 shadow-sm fade-on-scroll"
               use:fadeOnScroll
               src={project.image}
               alt="{project.title} Homepage"
@@ -328,8 +416,9 @@
     background-size: cover;
   }
 
-  .client-container{
-    border: 1px solid black; /* ✅ fixed commas */
+  .client-container {
+    display: block;
+    border: 1px solid black;
     border-radius: 5px;
   }
 
