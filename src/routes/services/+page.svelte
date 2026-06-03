@@ -40,7 +40,7 @@
   }
 
   const textSegments = [
-    { text: "/", class: "text-accent-primary" },
+    { text: "/", class: "text-accent-one" },
     { text: "services", class: "text-accent-one" }
   ];
 
@@ -85,7 +85,7 @@
 
   <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
     <h1 class="text-5xl md:text-6xl flex text-start justify-start fade-on-scroll" use:fadeOnScroll>
-      <span class="text-accent-primary"><b>.</b></span>
+      <span class="blue-dot"><b>.</b></span>
       <span> <b>{@html getSegmentedText(displayText)}</b></span>
     </h1>
 
@@ -119,7 +119,7 @@
             aria-controls={`${section.id}-content`}
           >
             <h2 class="text-3xl md:text-4xl font-bold leading-tight">
-              {section.title}
+              {section.title}<span class="blue-dot">.</span>
             </h2>
 
             <span class="text-4xl md:text-4xl font-bold leading-none shrink-0">
@@ -214,6 +214,10 @@
       #EDEDED 80%
     );
     background-size: cover;
+  }
+
+  .blue-dot {
+    color: #0000FF;
   }
 
   .section-text {

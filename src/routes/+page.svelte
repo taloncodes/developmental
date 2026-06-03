@@ -22,19 +22,25 @@ import shadow from '$lib/graphics/hero_layer_2.svg';
 
 const textSegments = [
   { text: "developmen", class: "text-primary" },
-  { text: "/", class: "text-accent-primary" },
-  { text: "tal", class: "text-accent-primary" }
+  { text: "/", class: "text-primary" },
+  { text: "tal", class: "hero-link-blue" }
 ];
 
 let fullText = textSegments.map(segment => segment.text).join('');
 let displayText = $state('');
+let heroIntroComplete = $state(false);
 
 async function typewriterEffect() {
+  heroIntroComplete = false;
+
   for (let i = 0; i <= fullText.length; i++) {
     displayText = fullText.slice(0, i);
     await tick();
     await new Promise(resolve => setTimeout(resolve, 75));
   }
+
+  await new Promise(resolve => setTimeout(resolve, 120));
+  heroIntroComplete = true;
 }
 
 function getSegmentedText(displayText) {
@@ -43,6 +49,7 @@ function getSegmentedText(displayText) {
 
   for (const segment of textSegments) {
     const segmentText = displayText.slice(currentIndex, currentIndex + segment.text.length);
+
     output += `<span class="${segment.class}">${segmentText}</span>`;
     currentIndex += segment.text.length;
   }
@@ -106,19 +113,26 @@ onMount(() => {
         <div class="w-full hidden md:block fade-on-scroll" use:fadeOnScroll>
           <a href="/">
             <h1 class="text-4xl md:text-5xl lg:text-6xl flex md:justify-start justify-center">
-              <span class="text-accent-primary"><b>.</b></span>
-              <span><b>{@html getSegmentedText(displayText)}</b></span>
+              <span class="hero-link-blue"><b>.</b></span>
+              <span class="typewriter-stack">
+                <span class="typewriter-ghost" aria-hidden="true"><b>{@html getSegmentedText(fullText)}</b></span>
+                <span class="typewriter-live"><b>{@html getSegmentedText(displayText)}</b></span>
+              </span>
             </h1>
           </a>
 
-          <h2 class="text-xl md:text-3xl lg:text-4xl text-primary mt-3 md:mt-4">
-            Quality web solutions, tailored to you.
+          <h2
+            class="text-xl md:text-3xl lg:text-4xl text-primary mt-3 md:mt-4 hero-tagline hero-tagline-desktop"
+            class:visible={heroIntroComplete}
+          >
+            <span class="hero-tagline-part">Quality web solutions,</span>
+            <span class="hero-tagline-part">tailored to you.</span>
           </h2>
         </div>
 
         <button
   onclick={openModal}
-  class="px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl text-dark rounded-lg mbg-yellow home-nav-button mx-auto md:mx-0 fade-on-scroll
+  class="px-5 py-3 md:px-6 md:py-4 text-lg md:text-xl rounded-lg home-nav-button home-hero-cta mx-auto md:mx-0 fade-on-scroll
          flex items-center justify-center gap-2 md:gap-3"
   use:fadeOnScroll
 >
@@ -149,12 +163,16 @@ onMount(() => {
         <div class="w-full block md:hidden text-center mb-6 fade-on-scroll" use:fadeOnScroll>
           <a href="/">
             <h1 class="hero-title text-[2.875rem] sm:text-5xl flex justify-center">
-              <span class="text-accent-primary"><b>.</b></span>
-              <span><b>{@html getSegmentedText(displayText)}</b></span>
+              <span class="hero-link-blue"><b>.</b></span>
+              <span class="typewriter-stack">
+                <span class="typewriter-ghost" aria-hidden="true"><b>{@html getSegmentedText(fullText)}</b></span>
+                <span class="typewriter-live"><b>{@html getSegmentedText(displayText)}</b></span>
+              </span>
             </h1>
           </a>
-          <h2 class="text-2xl text-primary mt-3">
-            Quality web solutions, tailored to you.
+          <h2 class="text-2xl text-primary mt-3 hero-tagline" class:visible={heroIntroComplete}>
+            <span class="hero-tagline-part">Quality web solutions,</span>
+            <span class="hero-tagline-part"> tailored to you.</span>
           </h2>
         </div>
 
@@ -178,7 +196,7 @@ onMount(() => {
 
 <section id="about">
   <div class="py-10 md:py-20 px-10 md:px-20 max-w-[1200px] mx-auto">
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>A bit about me</b></h2>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>A bit about me<span class="hero-link-blue">.</span></b></h2>
 <p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     I'm Talon, a freelance web developer with a background in digital media, education and marketing.
@@ -190,7 +208,7 @@ onMount(() => {
 
 <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>My Process</b></h2>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>My Process<span class="hero-link-blue">.</span></b></h2>
 <p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     I create custom websites designed around your brand, not pulled from a generic template.
@@ -202,7 +220,7 @@ onMount(() => {
 
 <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>Why Developmental?</b></h2>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>Why Developmental<span class="hero-link-blue">?</span></b></h2>
 <p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     No bloated templates. No agency fees.
@@ -214,7 +232,7 @@ onMount(() => {
 
 <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
 
-    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>How it works</b></h2>
+    <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>How it works<span class="hero-link-blue">.</span></b></h2>
 <p class="text-xl space-y-4 fade-on-scroll" use:fadeOnScroll>
   <span class="block">
     Tell me about your goals so I can understand your business. This can be done via the contact form,
@@ -240,7 +258,7 @@ onMount(() => {
 
 
     <h2 class="text-3xl md:text-4xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll><b>
-        <button class="link" alt="click here to get started" onclick={openModal}>Click here</button> to get started.</b></h2>
+        <button class="link cta-inline-link" alt="click here to get started" onclick={openModal}>Click here</button> to get started<span class="hero-link-blue">.</span></b></h2>
   </div>
 </section>
 
@@ -262,6 +280,78 @@ h1 {
 .link {
   color: #0000FF;
   cursor: pointer;
+}
+
+.cta-inline-link {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-inline-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 100%;
+  height: 5px;
+  background: #0000FF;
+  border-radius: 0;
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.1);
+  transform-origin: center;
+}
+
+:global(.fade-on-scroll.in-view) .cta-inline-link::after {
+  animation: talUnderlineComplete .85s cubic-bezier(.22,1,.36,1) .68s forwards;
+}
+
+:global(.hero-link-blue) {
+  color: #0000FF;
+}
+
+.typewriter-stack {
+  display: inline-grid;
+  grid-template-areas: "typewriter";
+}
+
+.typewriter-stack > span {
+  grid-area: typewriter;
+  justify-self: start;
+  text-align: left;
+}
+
+.typewriter-ghost {
+  visibility: hidden;
+}
+
+.hero-tagline {
+  opacity: 1;
+}
+
+.hero-tagline-part {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity .6s ease-out;
+}
+
+.hero-tagline-desktop .hero-tagline-part {
+  display: block;
+}
+
+.hero-tagline.visible .hero-tagline-part {
+  opacity: 1;
+}
+
+.hero-tagline.visible .hero-tagline-part:nth-child(2) {
+  transition-delay: .5s;
+}
+
+.home-hero-cta,
+.home-hero-cta:hover {
+  width: fit-content;
+  max-width: 100%;
+  background-color: #1B1B1B;
+  color: #E7E1D8;
 }
 
 .hero-macbook__device {
@@ -292,10 +382,28 @@ h1 {
   50% { transform: scale(0.7); opacity: 0.4; }
 }
 
+@keyframes talUnderlineComplete {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-macbook__device,
   .hero-macbook__shadow {
     animation: none;
+  }
+
+  .cta-inline-link::after {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
   }
 }
 

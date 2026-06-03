@@ -6,7 +6,6 @@
   import { onMount } from 'svelte';
   import wags from '$lib/demo/wags.png';
   import journal from '$lib/demo/journal.png';
-  import lvm from '$lib/demo/lvm.png';
   import scc from '$lib/demo/scc.png';
   import siterecs from '$lib/demo/siterecs.png';
   import clearcut from '$lib/demo/clearcut-compliance.png';
@@ -168,28 +167,10 @@
       tech: ['SvelteKit', 'JavaScript', 'Node', 'MongoDB', 'Tailwind CSS', 'DeepSeek AI'],
       features: ['Secure Authentication', 'CRUD Journal Entires', 'AI Summaries & Actions', 'Mood Slider', 'Calendar View', 'Responsive UI']
     },
-    {
-      count: 2,
-      id: 'lvm-player',
-      title: 'Interactive Music Player',
-      category: 'Project',
-      contentHtml: `
-        <span class="block">
-          A bespoke music player built to give an electronic EP a more memorable, interactive and visually polished listening experience.
-        </span>
-
-        <span class="block">
-          Listeners can switch tracks, play with audio filters and see subtle visual feedback while the music plays.
-        </span>
-      `,
-      image: lvm,
-      tech: ['Svelte', 'CSS', 'HTML', 'JavaScript', 'Web Audio API'],
-      features: ['Audio Play/Stop', 'Track Select', 'Frequency Analyser', 'Hi-Pass Filter', 'Lo-Pass Filter', 'Subtle Animation']
-    },
   ]);
 
   const textSegments = [
-    { text: "/", class: "text-accent-primary" },
+    { text: "/", class: "text-accent-one" },
     { text: "portfolio", class: "text-accent-one" }
   ];
 
@@ -251,7 +232,7 @@
   <div class="main_wrap hero-animated border-black border-b-2 mb-4 mb:md-6">
     <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
       <h1 class="text-5xl md:text-6xl flex text-start justify-start fade-on-scroll" use:fadeOnScroll>
-        <span class="text-accent-primary"><b>.</b></span>
+        <span class="blue-dot"><b>.</b></span>
         <span><b>{@html getSegmentedText(displayText)}</b></span>
       </h1>
       <p class="text-xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll>
@@ -277,7 +258,7 @@
             <div class={`case-grid ${client.siteUrl ? 'has-actions' : ''}`}>
               <div class="case-copy">
                 <p class="case-kicker fade-on-scroll" use:fadeOnScroll>{client.category}</p>
-                <h3 class="fade-on-scroll" use:fadeOnScroll>{client.title}</h3>
+                <h3 class="fade-on-scroll" use:fadeOnScroll>{client.title}<span class="blue-dot">.</span></h3>
 
                 <div class="case-body fade-on-scroll" use:fadeOnScroll>
                   {@html client.contentHtml}
@@ -359,7 +340,7 @@
             <div class="case-grid">
               <div class="case-copy">
                 <p class="case-kicker fade-on-scroll" use:fadeOnScroll>{project.category}</p>
-                <h3 class="fade-on-scroll" use:fadeOnScroll>{project.title}</h3>
+                <h3 class="fade-on-scroll" use:fadeOnScroll>{project.title}<span class="blue-dot">.</span></h3>
 
                 <div class="case-body fade-on-scroll" use:fadeOnScroll>
                   {@html project.contentHtml}
@@ -446,6 +427,10 @@
     cursor: pointer;
   }
 
+  .blue-dot {
+    color: #0000FF;
+  }
+
   .portfolio-case {
     padding: clamp(16px, 2vw, 24px) 0 0;
   }
@@ -459,7 +444,7 @@
     align-items: center;
     gap: clamp(14px, 2vw, 22px);
     margin-bottom: clamp(28px, 4vw, 42px);
-    color: #111;
+    color: #0000FF;
     font-size: 0.86rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -560,7 +545,7 @@
     margin-bottom: 4px;
     padding: 0;
     border: 0;
-    color: #111;
+    color: #0000FF;
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
