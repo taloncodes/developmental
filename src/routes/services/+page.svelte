@@ -5,8 +5,8 @@
   import { tick } from 'svelte';
   import { onMount } from 'svelte';
   import plus from '$lib/graphics/plus.png';
-  import { fade } from 'svelte/transition';
   import { flip } from 'svelte/animate';
+  import { fadeOnScroll } from '$lib/fadeOnScroll';
 
   let modalOpen = $state(false);
 
@@ -84,12 +84,12 @@
   <div class="main_wrap hero-animated border-black border-b-2 ">
 
   <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-    <h1 class="text-5xl md:text-6xl flex text-start justify-start">
+    <h1 class="text-5xl md:text-6xl flex text-start justify-start fade-on-scroll" use:fadeOnScroll>
       <span class="text-accent-primary"><b>.</b></span>
       <span> <b>{@html getSegmentedText(displayText)}</b></span>
     </h1>
 
-    <p class="text-xl py-5 md:py-10">
+    <p class="text-xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll>
   I provide tailored solutions for businesses looking to grow their online presence, no matter what stage you're currently at.
   <br><br>
   Need a new website to showcase your brand? Custom software to automate your business processes?
@@ -107,10 +107,16 @@
 
       {#each sections as section (section.id)}
 
-        <div class="dot-hover border-b border-black/20" class:active={section.isOpen === true}>
+        <div
+          class="dot-hover border-b border-black/20 fade-on-scroll"
+          class:active={section.isOpen === true}
+          use:fadeOnScroll
+        >
           <button
             class="image-button w-full flex items-center justify-between gap-4 py-6 md:py-10 text-left"
             onclick={() => toggleSection(section.id)}
+            aria-expanded={section.isOpen}
+            aria-controls={`${section.id}-content`}
           >
             <h2 class="text-3xl md:text-4xl font-bold leading-tight">
               {section.title}
@@ -122,23 +128,28 @@
           </button>
         </div>
 
-        {#if section.isOpen}
-          <div
-            class="modal text-xl section-text"
-            transition:fade={{duration: 250, delay: 250}}
-          >
-            {section.content}
-          </div>
+        <div
+          id={`${section.id}-content`}
+          class="modal text-xl section-text fade-on-scroll"
+          class:open={section.isOpen}
+          aria-hidden={!section.isOpen}
+          use:fadeOnScroll
+        >
+          {section.content}
+        </div>
 
-          <hr class="mt-5 md:mt-12 border-black/20" />
-        {/if}
+        <hr
+          class="section-divider border-black/20 fade-on-scroll"
+          class:open={section.isOpen}
+          use:fadeOnScroll
+        />
 
       {/each}
 
     </div>
   </section>
 
-  <div class="flex mb-10 md:mb-20 ">
+  <div class="flex mb-10 md:mb-20 fade-on-scroll" use:fadeOnScroll>
     <button 
   onclick={openModal} 
   class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all flex items-center gap-2 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500"
@@ -205,7 +216,39 @@
     background-size: cover;
   }
 
-  .section-text{
-    padding-top: 20px
+  .section-text {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    opacity: 0;
+    transition:
+      max-height 250ms ease,
+      opacity 250ms ease,
+      padding-top 250ms ease;
+  }
+
+  .section-text.open {
+    max-height: 12rem;
+    padding-top: 20px;
+    opacity: 1;
+  }
+
+  .section-divider {
+    margin-top: 0;
+    opacity: 0;
+    transition:
+      margin-top 250ms ease,
+      opacity 250ms ease;
+  }
+
+  .section-divider.open {
+    margin-top: 1.25rem;
+    opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    .section-divider.open {
+      margin-top: 3rem;
+    }
   }
 </style>

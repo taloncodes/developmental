@@ -4,9 +4,6 @@
   import Form from '../../components/Form.svelte';
   import { tick } from 'svelte';
   import { onMount } from 'svelte';
-  import plus from '$lib/graphics/plus.png';
-  import { fade } from 'svelte/transition';
-  import { flip } from 'svelte/animate';
   import wags from '$lib/demo/wags.png';
   import journal from '$lib/demo/journal.png';
   import lvm from '$lib/demo/lvm.png';
@@ -16,28 +13,23 @@
   import { fadeOnScroll } from '$lib/fadeOnScroll';  // ✅ added
 
   let modalOpen = $state(false);
+  let scrollFill = $state(0);
+  const marqueeCopies = Array.from({ length: 8 }, (_, index) => index);
 
   let clients = $state([
     {
       count: 1,
       id: 'siterecs',
       title: 'SiteRecs',
-      isOpen: false,
+      category: 'Client Showcase',
+      siteUrl: 'https://siterecs.com',
       contentHtml:`
         <span class="block">
-          A full SaaS platform built for trade contractors and site teams to replace manual RAMS paperwork with a secure digital workflow.
+          A digital RAMS and paperwork platform for trade contractors. SiteRecs helps teams create RAMS, complete checks, collect signatures, and keep job records together.
         </span>
 
         <span class="block">
-          SiteRecs brings jobs, RAMS templates, checks, signatures, and job records into one web app, designed for practical use by tradespeople and office teams.
-        </span>
-
-        <span class="block">
-          The platform includes secure authentication, Supabase-backed data storage, organisation settings, user seats, role-based access, and Stripe billing for subscription management.
-        </span>
-
-        <span class="block">
-          A key part of the system is automated, brandable PDF generation using Playwright, allowing teams to produce clean RAMS and paperwork packs ready to send or store against each job.
+          Built with a focus on field usability and simple office admin. Secure access, Stripe billing, and branded PDF generation keep everything running smoothly.
         </span>
       `,
       image: siterecs,
@@ -64,23 +56,16 @@
     {
       count: 2,
       id: 'clearcut-compliance',
-      title: 'ClearCut Compliance',
-      isOpen: false,
+      title: 'ClearCut',
+      category: 'Client Showcase',
+      siteUrl: 'https://clearcutcompliance.com',
       contentHtml:`
         <span class="block">
-          A specialist compliance SaaS platform for tree surgeons, landscapers, forestry workers, and arborist-led teams who need fast, reliable site paperwork.
+          A compliance platform for tree surgeons, landscapers and forestry teams who need RAMS, checks and site paperwork without the usual admin drag.
         </span>
 
         <span class="block">
-          ClearCut adapts the same proven digital RAMS foundation into a sector-focused product, with workflows shaped around outdoor jobs, on-site checks, climbing operations, machinery use, and repeatable risk assessment templates.
-        </span>
-
-        <span class="block">
-          The app includes secure auth, organisation management, user seats, role-based access, Stripe subscriptions, and Supabase-backed records for forms, jobs, documents, and submissions.
-        </span>
-
-        <span class="block">
-          Branded RAMS and compliance documents can be generated as polished PDFs with Playwright, giving teams a cleaner way to issue, resend, and retain paperwork without chasing folders or duplicate files.
+          The product keeps repeat forms, team access, subscriptions and branded PDFs in one place, shaped around outdoor work and practical site records.
         </span>
       `,
       image: clearcut,
@@ -107,23 +92,20 @@
     {
       count: 3,
       id: 'wags-n-whiskers',
-      title: 'Wags n Whiskers Pet Services',
-      isOpen: false,
+      title: 'Wags n Whiskers',
+      category: 'Client Showcase',
+      siteUrl: 'https://wagsnwhiskers.co',
       contentHtml: `
         <span class="block">
-          This custom-built website for
+          A custom website for
           <a class="link" href="https://wagsnwhiskers.co" target="_blank" rel="noopener">
             Wags n Whiskers
           </a>
-          is designed with speed and brand identity at its core.
+          with a bold visual style, fast loading pages and clear routes into customer enquiries and service requests.
         </span>
 
         <span class="block">
-          Fully responsive across all device types, it showcases the business's key features while promoting a strong brand voice.
-        </span>
-
-        <span class="block">
-          The goal was to strengthen online presence, attract organic traffic, and make it easy for customers to send direct booking enquiries.
+          It gives the brand a stronger online presence while making services, requests and customer information easy for visitors to find.
         </span>
       `,
       image: wags,
@@ -133,27 +115,15 @@
     {
       count: 4,
       id: 'scc_forms',
-      title: 'Slaters Contracting and Consultancy',
-      isOpen: false,
+      title: 'SCC',
+      category: 'Client Showcase',
       contentHtml:`
         <span class="block">
-          A bespoke internal web application built for Slaters Contracting & Consultancy (SCC) to digitise and streamline day-to-day operational workflows.
+          SCC needed a practical internal system to replace paper forms with simple digital workflows for teams working out in the field.
         </span>
 
         <span class="block">
-          The platform replaces paper-based processes with secure digital forms covering equipment checks, timesheets, HAVS exposure, RAMS, and compliance records.
-        </span>
-
-        <span class="block">
-          Designed for real-world field use, the app includes in-form HAVS exposure and fatigue calculations, providing immediate feedback within the UI to support safer, compliant decision-making.
-        </span>
-
-        <span class="block">
-          Additional features include digital signatures, automated PDF generation, and cloud storage for audit-ready records.
-        </span>
-
-        <span class="block">
-          This system significantly reduces admin overhead while improving accuracy, traceability, and long-term record keeping.
+          Forms, signatures, calculations and PDFs are brought together so records are easier to complete, store and review later.
         </span>
       `,
       image: scc,
@@ -184,18 +154,14 @@
       count: 1,
       id: 'ai-journal',
       title: 'AI Journal',
-      isOpen: false,
+      category: 'Project',
       contentHtml: `
         <span class="block">
-          A full-stack journalling app built with SvelteKit and MongoDB, with OpenRouter integration to generate tailored summaries and action points using DeepSeek AI.
+          A calm journalling app where users can record reflections, track mood and revisit previous entries through a simple calendar.
         </span>
 
         <span class="block">
-          Users can log daily reflections, track mood, and revisit past entries through a calendar interface.
-        </span>
-
-        <span class="block">
-          Designed with a focus on mindfulness, responsive layout, and a calming user experience.
+          AI summaries help turn everyday notes into useful prompts and action points without making the experience feel busy.
         </span>
       `,
       image: journal,
@@ -206,18 +172,14 @@
       count: 2,
       id: 'lvm-player',
       title: 'Interactive Music Player',
-      isOpen: false,
+      category: 'Project',
       contentHtml: `
         <span class="block">
-          A custom music player designed to showcase an electronic music EP, with a bespoke responsive design aligned to the artist’s aesthetic.
+          A bespoke music player built to give an electronic EP a more memorable, interactive and visually polished listening experience.
         </span>
 
         <span class="block">
-          This interactive web app enhances the listening experience and lets fans explore the music in a more engaging way.
-        </span>
-
-        <span class="block">
-          Built with Web Audio features for analysis and filtering, plus subtle motion for polish.
+          Listeners can switch tracks, play with audio filters and see subtle visual feedback while the music plays.
         </span>
       `,
       image: lvm,
@@ -260,8 +222,26 @@
     document.querySelector('body').style.overflow = 'hidden';
   };
 
+  function updateScrollFill() {
+    const documentElement = document.documentElement;
+    const maxScroll = documentElement.scrollHeight - documentElement.clientHeight;
+    scrollFill = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+  }
+
+  function getMarqueeDuration(items) {
+    return `${Math.max(items.length * 34, 180)}s`;
+  }
+
   onMount(() => {
     typewriterEffect();
+    updateScrollFill();
+    window.addEventListener('scroll', updateScrollFill, { passive: true });
+    window.addEventListener('resize', updateScrollFill);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollFill);
+      window.removeEventListener('resize', updateScrollFill);
+    };
   });
 </script>
 
@@ -270,127 +250,172 @@
 
   <div class="main_wrap hero-animated border-black border-b-2 mb-4 mb:md-6">
     <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-      <h1 class="text-5xl md:text-6xl flex text-start justify-start">
+      <h1 class="text-5xl md:text-6xl flex text-start justify-start fade-on-scroll" use:fadeOnScroll>
         <span class="text-accent-primary"><b>.</b></span>
         <span><b>{@html getSegmentedText(displayText)}</b></span>
       </h1>
-      <p class="text-xl py-5 md:py-10">
+      <p class="text-xl py-5 md:py-10 fade-on-scroll" use:fadeOnScroll>
         Check out some samples of live client sites and personal projects that I've been working on below.
       </p>
     </div>
   </div>
 
   <section>
-    <div class="border-black border-b-2">
-      <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-        <h2 class="text-3xl md:text-4xl fade-on-scroll" use:fadeOnScroll><b>Client Showcase</b></h2>
-
-        <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
-
+    <div>
+      <div class="pt-10 pb-10 md:pt-20 md:pb-14 px-10 md:px-16 max-w-[1200px] mx-auto">
         {#each clients as client (client.id)}
-          <div class="mt-5 md:mt-12 flex flex-col gap-4 fade-on-scroll" use:fadeOnScroll>
-            <h2 class="text-2xl md:text-3xl font-semibold">
-              {client.title}
-            </h2>
-
-            <div class="text-xl space-y-4 max-w-3xl content-copy">
-              {@html client.contentHtml}
-            </div>
-
-            <img
-              class="client-container w-full max-w-4xl mt-4 shadow-sm fade-on-scroll"
+          <article class="portfolio-case">
+            <div
+              class="case-heading-row fade-on-scroll"
+              style={`--scroll-fill: ${scrollFill};`}
               use:fadeOnScroll
-              src={client.image}
-              alt="{client.title} Homepage"
-            />
-
-            <div class="mt-6 fade-on-scroll" use:fadeOnScroll>
-              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-                Tech stack
-              </h3>
-              <ul class="flex flex-wrap gap-2">
-                {#each client.tech as tech}
-                  <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
-                    {tech}
-                  </li>
-                {/each}
-              </ul>
+            >
+              <span class="case-heading-line"></span>
+              <span>{String(client.count).padStart(2, '0')}</span>
             </div>
 
-            <div class="mt-4 fade-on-scroll" use:fadeOnScroll>
-              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-                Features
-              </h3>
-              <ul class="flex flex-wrap gap-2">
-                {#each client.features as feature}
-                  <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
-                    {feature}
-                  </li>
-                {/each}
-              </ul>
-            </div>
-          </div>
+            <div class={`case-grid ${client.siteUrl ? 'has-actions' : ''}`}>
+              <div class="case-copy">
+                <p class="case-kicker fade-on-scroll" use:fadeOnScroll>{client.category}</p>
+                <h3 class="fade-on-scroll" use:fadeOnScroll>{client.title}</h3>
 
-          {#if client.count != clients.length}
-            <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
-          {/if}
+                <div class="case-body fade-on-scroll" use:fadeOnScroll>
+                  {@html client.contentHtml}
+                </div>
+              </div>
+
+              <figure class="case-figure fade-on-scroll" use:fadeOnScroll>
+                <img
+                  class="client-container"
+                  src={client.image}
+                  alt="{client.title} Homepage"
+                />
+              </figure>
+
+              {#if client.siteUrl}
+                <div class="case-actions fade-on-scroll" use:fadeOnScroll>
+                  <a href={client.siteUrl} target="_blank" rel="noopener">View site</a>
+                </div>
+              {/if}
+            </div>
+
+            <div class="case-meta" id={`${client.id}-stack`}>
+              <div class="fade-on-scroll" use:fadeOnScroll>
+                <h4>Tech Stack</h4>
+                <div class="tag-marquee">
+                  <div
+                    class="tag-track"
+                    style={`--tag-marquee-duration: ${getMarqueeDuration(client.tech)};`}
+                    role="list"
+                  >
+                    {#each marqueeCopies as copyIndex}
+                      <div class="tag-set" aria-hidden={copyIndex > 0}>
+                        {#each client.tech as tech}
+                          <span class="tag-pill" role="listitem">{tech}</span>
+                        {/each}
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              </div>
+
+              <div class="fade-on-scroll" use:fadeOnScroll>
+                <h4>Features</h4>
+                <div class="tag-marquee">
+                  <div
+                    class="tag-track feature-list"
+                    style={`--tag-marquee-duration: ${getMarqueeDuration(client.features)};`}
+                    role="list"
+                  >
+                    {#each marqueeCopies as copyIndex}
+                      <div class="tag-set" aria-hidden={copyIndex > 0}>
+                        {#each client.features as feature}
+                          <span class="tag-pill" role="listitem">{feature}</span>
+                        {/each}
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         {/each}
       </div>
     </div>
 
     <div>
-      <div class="py-10 md:py-20 px-10 md:px-16 max-w-[1200px] mx-auto">
-        <h2 class="text-3xl md:text-4xl fade-on-scroll" use:fadeOnScroll><b>Projects</b></h2>
-
-        <hr class="mt-5 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
-
+      <div class="pt-4 pb-10 md:pt-8 md:pb-14 px-10 md:px-16 max-w-[1200px] mx-auto">
         {#each personal as project (project.id)}
-          <div class="mt-5 md:mt-12 flex flex-col gap-4 fade-on-scroll" use:fadeOnScroll>
-            <h2 class="text-2xl md:text-3xl font-semibold">
-              {project.title}
-            </h2>
-
-            <div class="text-xl space-y-4 max-w-3xl content-copy">
-              {@html project.contentHtml}
-            </div>
-
-            <img
-              class="client-container w-full max-w-4xl mt-4 shadow-sm fade-on-scroll"
+          <article class="portfolio-case">
+            <div
+              class="case-heading-row fade-on-scroll"
+              style={`--scroll-fill: ${scrollFill};`}
               use:fadeOnScroll
-              src={project.image}
-              alt="{project.title} Homepage"
-            />
-
-            <div class="mt-6 fade-on-scroll" use:fadeOnScroll>
-              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-                Tech stack
-              </h3>
-              <ul class="flex flex-wrap gap-2">
-                {#each project.tech as tech}
-                  <li class="px-3 py-1 text-xs md:text-sm rounded-full border border-neutral-300/70 bg-white/70 backdrop-blur-sm text-neutral-800">
-                    {tech}
-                  </li>
-                {/each}
-              </ul>
+            >
+              <span class="case-heading-line"></span>
+              <span>{String(clients.length + project.count).padStart(2, '0')}</span>
             </div>
 
-            <div class="mt-4 fade-on-scroll" use:fadeOnScroll>
-              <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-500 mb-2">
-                Features
-              </h3>
-              <ul class="flex flex-wrap gap-2">
-                {#each project.features as feature}
-                  <li class="px-3 py-1 text-xs md:text-sm rounded-full bg-neutral-900 text-neutral-50">
-                    {feature}
-                  </li>
-                {/each}
-              </ul>
-            </div>
-          </div>
+            <div class="case-grid">
+              <div class="case-copy">
+                <p class="case-kicker fade-on-scroll" use:fadeOnScroll>{project.category}</p>
+                <h3 class="fade-on-scroll" use:fadeOnScroll>{project.title}</h3>
 
-          {#if project.count != personal.length}
-            <hr class="mt-10 mb-6 md:mb-8 md:mt-12 border-black/20 fade-on-scroll" use:fadeOnScroll />
-          {/if}
+                <div class="case-body fade-on-scroll" use:fadeOnScroll>
+                  {@html project.contentHtml}
+                </div>
+              </div>
+
+              <figure class="case-figure fade-on-scroll" use:fadeOnScroll>
+                <img
+                  class="client-container"
+                  src={project.image}
+                  alt="{project.title} Homepage"
+                />
+              </figure>
+
+            </div>
+
+            <div class="case-meta" id={`${project.id}-stack`}>
+              <div class="fade-on-scroll" use:fadeOnScroll>
+                <h4>Tech Stack</h4>
+                <div class="tag-marquee">
+                  <div
+                    class="tag-track"
+                    style={`--tag-marquee-duration: ${getMarqueeDuration(project.tech)};`}
+                    role="list"
+                  >
+                    {#each marqueeCopies as copyIndex}
+                      <div class="tag-set" aria-hidden={copyIndex > 0}>
+                        {#each project.tech as tech}
+                          <span class="tag-pill" role="listitem">{tech}</span>
+                        {/each}
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              </div>
+
+              <div class="fade-on-scroll" use:fadeOnScroll>
+                <h4>Features</h4>
+                <div class="tag-marquee">
+                  <div
+                    class="tag-track feature-list"
+                    style={`--tag-marquee-duration: ${getMarqueeDuration(project.features)};`}
+                    role="list"
+                  >
+                    {#each marqueeCopies as copyIndex}
+                      <div class="tag-set" aria-hidden={copyIndex > 0}>
+                        {#each project.features as feature}
+                          <span class="tag-pill" role="listitem">{feature}</span>
+                        {/each}
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         {/each}
       </div>
     </div>
@@ -416,18 +441,313 @@
     background-size: cover;
   }
 
-  .client-container {
-    display: block;
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-
   :global(.link){
     color: #0000FF;
     cursor: pointer;
   }
 
-  :global(.content-copy) > * + * {
-    margin-top: 16px;
+  .portfolio-case {
+    padding: clamp(16px, 2vw, 24px) 0 0;
+  }
+
+  .portfolio-case:first-of-type {
+    padding-top: clamp(10px, 1.5vw, 18px);
+  }
+
+  .case-heading-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 22px);
+    margin-bottom: clamp(28px, 4vw, 42px);
+    color: #111;
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .case-heading-line {
+    position: relative;
+    display: block;
+    flex: 1 1 auto;
+    height: 2px;
+    overflow: visible;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .case-heading-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 6px;
+    background: #111;
+    border-radius: 2px;
+    transform: translateY(-50%) scaleX(var(--scroll-fill));
+    transform-origin: left;
+  }
+
+  .case-heading-row > span:last-child {
+    min-width: 2ch;
+    line-height: 1;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.55fr) minmax(520px, 1.35fr);
+    grid-template-areas:
+      "copy figure";
+    column-gap: clamp(34px, 6vw, 78px);
+    row-gap: clamp(22px, 3vw, 34px);
+    align-items: center;
+  }
+
+  .case-grid.has-actions {
+    grid-template-areas:
+      "copy figure"
+      "actions figure";
+  }
+
+  .case-copy {
+    grid-area: copy;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: clamp(14px, 2vw, 22px);
+  }
+
+  .case-kicker {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .case-copy h3 {
+    max-width: none;
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 2.25rem;
+    letter-spacing: 0;
+  }
+
+  .case-body {
+    max-width: 27rem;
+    font-size: clamp(1rem, 1.04vw, 1.08rem);
+    line-height: 1.5;
+  }
+
+  .case-body :global(.block + .block) {
+    margin-top: 22px;
+  }
+
+  .case-actions {
+    grid-area: actions;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(28px, 4vw, 46px);
+    justify-content: flex-end;
+    align-self: start;
+  }
+
+  .case-actions a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    color: #111;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 180ms ease;
+  }
+
+  .case-actions a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 28px;
+    bottom: -6px;
+    height: 3px;
+    background: currentColor;
+    border-radius: 999px;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 180ms ease;
+  }
+
+  .case-actions a::after {
+    content: "→";
+    margin-left: 12px;
+  }
+
+  .case-actions a:hover {
+    transform: translateX(3px);
+  }
+
+  .case-actions a:hover::before {
+    transform: scaleX(1);
+  }
+
+  .case-figure {
+    grid-area: figure;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .client-container {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.08);
+  }
+
+  .case-meta {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vw, 30px);
+    margin-top: clamp(34px, 5vw, 52px);
+    padding-top: clamp(22px, 3vw, 28px);
+    padding-bottom: clamp(18px, 3vw, 34px);
+    border-top: 1px solid rgba(0, 0, 0, 0.28);
+  }
+
+  .case-meta h4 {
+    margin-bottom: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .tag-marquee {
+    overflow: hidden;
+    width: 100%;
+    padding: 2px 0 4px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+
+  .tag-track {
+    display: flex;
+    width: max-content;
+    animation: tag-marquee var(--tag-marquee-duration, 220s) linear infinite;
+    will-change: transform;
+  }
+
+  .tag-track.feature-list {
+    animation-direction: reverse;
+  }
+
+  .tag-marquee:hover .tag-track {
+    animation-play-state: paused;
+  }
+
+  .tag-set {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  .tag-pill {
+    flex: 0 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 7px 14px;
+    color: #1b1b1b;
+    font-size: 0.82rem;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .feature-list .tag-pill {
+    border-color: #111;
+    background: #111;
+    color: #f2eee8;
+  }
+
+  @keyframes tag-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tag-track {
+      animation: none;
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "copy"
+        "figure";
+    }
+
+    .case-grid.has-actions {
+      grid-template-areas:
+        "copy"
+        "figure"
+        "actions";
+    }
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-case {
+      padding-top: 16px;
+    }
+
+    .portfolio-case:first-of-type {
+      padding-top: 10px;
+    }
+
+    .case-heading-row {
+      margin-bottom: 26px;
+    }
+
+    .case-grid {
+      row-gap: 24px;
+    }
+
+    .case-copy {
+      gap: 16px;
+    }
+
+    .case-copy h3 {
+      font-size: 2rem;
+      line-height: 2.25rem;
+    }
+
+    .case-body {
+      max-width: none;
+      font-size: 1rem;
+    }
+
+    .case-actions {
+      gap: 28px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .case-copy h3 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
   }
 </style>
