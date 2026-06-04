@@ -22,8 +22,8 @@ import shadow from '$lib/graphics/hero_layer_2.svg';
 
 const textSegments = [
   { text: "developmen", class: "text-primary" },
-  { text: "/", class: "text-primary" },
-  { text: "tal", class: "hero-link-blue" }
+  { text: "/", class: "hero-link-blue" },
+  { text: "tal", class: "text-primary" }
 ];
 
 let fullText = textSegments.map(segment => segment.text).join('');
@@ -282,29 +282,6 @@ h1 {
   cursor: pointer;
 }
 
-.cta-inline-link {
-  position: relative;
-  display: inline-block;
-}
-
-.cta-inline-link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 100%;
-  height: 5px;
-  background: #0000FF;
-  border-radius: 0;
-  opacity: 0;
-  transform: translateX(-50%) scaleX(0.1);
-  transform-origin: center;
-}
-
-:global(.fade-on-scroll.in-view) .cta-inline-link::after {
-  animation: talUnderlineComplete .85s cubic-bezier(.22,1,.36,1) .68s forwards;
-}
-
 :global(.hero-link-blue) {
   color: #0000FF;
 }
@@ -400,11 +377,6 @@ h1 {
     animation: none;
   }
 
-  .cta-inline-link::after {
-    animation: none;
-    opacity: 1;
-    transform: translateX(-50%) scaleX(1);
-  }
 }
 
 @media (max-width: 380px) {

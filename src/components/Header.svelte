@@ -3,7 +3,7 @@
 
     const textSegments = [
         { text: "developmen", class: "text-primary" },
-        { text: "/", class: "text-accent-two" },
+        { text: "/", class: "brand-mark-blue" },
         { text: "tal", class: "text-accent-one" }
     ];
 
@@ -40,7 +40,7 @@
     <div class="p-5 pb-0">
         <a href="/">
             <h1 class="text-5xl flex items-center justify-center">
-                <span class="text-accent-two">.</span>
+                <span class="brand-mark-blue">.</span>
                 <span> {@html getSegmentedText(displayText)}</span>
             </h1>
         </a>
@@ -52,5 +52,9 @@
         white-space: nowrap;
         overflow: hidden;
         animation: blink 1.2s steps(2, start) infinite;
+    }
+
+    .brand-mark-blue {
+        color: #0000FF;
     }
 </style>

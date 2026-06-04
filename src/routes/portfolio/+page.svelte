@@ -170,7 +170,7 @@
   ]);
 
   const textSegments = [
-    { text: "/", class: "text-accent-one" },
+    { text: "/", class: "blue-dot" },
     { text: "portfolio", class: "text-accent-one" }
   ];
 
@@ -427,7 +427,7 @@
     cursor: pointer;
   }
 
-  .blue-dot {
+  :global(.blue-dot) {
     color: #0000FF;
   }
 
