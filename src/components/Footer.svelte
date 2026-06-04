@@ -1,140 +1,249 @@
 <script>
-	import instaIcon from '$lib/icons/insta_icon.png';
-	import mailIcon from '$lib/icons/mail_icon.png';
+	import { fadeOnScroll } from '$lib/fadeOnScroll';
 </script>
 
-<footer>
-	<div class="footer border-accent-two darker border-t-3">
-		<div class="footer-content">
-			<div class="links flex justify-center gap-6">
-				<div class="link border-accent-one h-10 w-10 rounded-full border-2">
-					<a href="https://www.instagram.com/developmen_tal">
-						<img src={instaIcon} alt="instagram icon" />
-					</a>
-				</div>
+<footer class="site-footer">
+	<div class="footer-inner fade-on-scroll" use:fadeOnScroll>
+		<div class="footer-brand fade-on-scroll" use:fadeOnScroll>
+			<a href="/" class="footer-logo" aria-label="Developmental home">./</a>
+			<p>Modern, affordable websites for small businesses.</p>
+		</div>
 
-				<div class="flex flex-col justify-center">
-					<span class="text-accent-two text-4xl"> / </span>
-				</div>
-				<div class="link border-accent-one h-10 w-10 rounded-full border-2">
-					<a
-						href="https://www.facebook.com/profile.php?id=61586867661440"
-						target="_blank"
-						rel="noopener"
-						aria-label="Facebook"
-					>
-						<svg class="facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
-							<circle cx="50" cy="50" r="45" />
-							<path
-								d="M59 31h8V20h-9c-11 0-18 7-18 18v8H30v12h10v22h13V58h11l2-12H53v-7c0-5 2-8 6-8Z"
-							/>
-						</svg>
-					</a>
-				</div>
-				<div class="flex flex-col justify-center">
-					<span class="text-accent-two text-4xl"> / </span>
-				</div>
-				<div class="link border-accent-one h-10 w-10 rounded-full border-2">
-					<a href="mailto:talon@developmental.pro">
-						<img src={mailIcon} alt="mail icon" />
-					</a>
-				</div>
-			</div>
-			<div class="footer-contact">
-				<a href="mailto:talon@developmental.pro">
-					<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-						<path d="M4 6.5h16v11H4z" />
-						<path d="m4.5 7 7.5 6 7.5-6" />
+		<nav class="footer-group fade-on-scroll" aria-label="Footer sitemap" use:fadeOnScroll>
+			<h2>Sitemap</h2>
+			<a href="/">Home</a>
+			<a href="/portfolio">Portfolio</a>
+			<a href="/services">Services</a>
+		</nav>
+
+		<div class="footer-group fade-on-scroll" use:fadeOnScroll>
+			<h2>Contact</h2>
+			<a href="mailto:talon@developmental.pro">
+				<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M4 6.5h16v11H4z" />
+					<path d="m4.5 7 7.5 6 7.5-6" />
+				</svg>
+				<span>talon@developmental.pro</span>
+			</a>
+			<a href="tel:+447306123054">
+				<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						d="M7.5 4.5 10 7.4l-1.7 2.1c1 2.1 2.7 3.8 4.8 4.8l2.1-1.7 2.9 2.5-.8 3.2c-.2.7-.8 1.2-1.6 1.2C9.4 19.5 4.5 14.6 4.5 8.3c0-.8.5-1.4 1.2-1.6l1.8-.4Z"
+					/>
+				</svg>
+				<span>+44 7306 123054</span>
+			</a>
+		</div>
+
+		<div class="footer-social fade-on-scroll" use:fadeOnScroll>
+			<h2>Social</h2>
+			<div class="social-links">
+				<a href="https://www.instagram.com/developmen_tal" aria-label="Instagram">
+					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
+						<rect x="28" y="28" width="44" height="44" rx="13" />
+						<circle cx="50" cy="50" r="12" />
+						<circle cx="64" cy="36" r="4.5" />
 					</svg>
-					<span>talon@developmental.pro</span>
 				</a>
-				<span class="contact-divider" aria-hidden="true"></span>
-				<a href="tel:+447306123054">
-					<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+				<a
+					href="https://www.facebook.com/profile.php?id=61586867661440"
+					target="_blank"
+					rel="noopener"
+					aria-label="Facebook"
+				>
+					<svg class="social-icon facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
 						<path
-							d="M7.5 4.5 10 7.4l-1.7 2.1c1 2.1 2.7 3.8 4.8 4.8l2.1-1.7 2.9 2.5-.8 3.2c-.2.7-.8 1.2-1.6 1.2C9.4 19.5 4.5 14.6 4.5 8.3c0-.8.5-1.4 1.2-1.6l1.8-.4Z"
+							d="M59 31h8V20h-9c-11 0-18 7-18 18v8H30v12h10v22h13V58h11l2-12H53v-7c0-5 2-8 6-8Z"
 						/>
 					</svg>
-					<span>+44 7306 123054</span>
+				</a>
+				<a href="mailto:talon@developmental.pro" aria-label="Email">
+					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
+						<rect x="24" y="32" width="52" height="38" rx="4" />
+						<path d="M28 36 50 54 72 36" />
+					</svg>
 				</a>
 			</div>
 		</div>
 	</div>
+
+	<div class="footer-bottom fade-on-scroll" use:fadeOnScroll>
+		<span>© 2026 Developmental</span>
+		<span>Built by Talon</span>
+	</div>
 </footer>
 
 <style>
-	.footer {
-		height: fit-content;
-		padding: 2.75rem 2rem;
+	.site-footer {
+		border-top: 3px solid #ededed;
+		background: #1b1b1b;
+		color: #e8e1d8;
 	}
 
-	.footer-content {
+	.footer-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+		gap: clamp(2rem, 5vw, 4rem);
+		width: min(100%, 1200px);
+		margin: 0 auto;
+		padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 5rem);
+	}
+
+	.footer-brand {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		gap: 1.25rem;
+		gap: clamp(0.8rem, 2vw, 1.1rem);
+		min-width: 0;
 	}
 
-	.link a {
+	.footer-logo {
+		display: inline-flex;
+		flex: 0 0 auto;
+		color: #e8e1d8;
+		font-size: clamp(2rem, 3.8vw, 2.8rem);
+		font-weight: 700;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.footer-brand p {
+		max-width: 18rem;
+		margin: 0;
+		color: rgba(232, 225, 216, 0.74);
+		line-height: 1.55;
+	}
+
+	.footer-group,
+	.footer-social {
+		display: grid;
+		align-content: start;
+		gap: 0.75rem;
+	}
+
+	h2 {
+		color: #e8e1d8;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	a {
+		color: rgba(232, 225, 216, 0.78);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	a:hover {
+		color: #dee2a6;
+	}
+
+	.footer-group a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		width: fit-content;
+		line-height: 1.4;
+	}
+
+	.contact-icon {
+		width: 1rem;
+		height: 1rem;
+		flex: 0 0 auto;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.8;
+	}
+
+	.social-links {
 		display: flex;
+		gap: 0.8rem;
+	}
+
+	.social-links a {
+		display: grid;
+		place-items: center;
+		width: 2.6rem;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	.social-icon {
+		display: block;
 		width: 100%;
 		height: 100%;
-		align-items: center;
-		justify-content: center;
 	}
 
-	.facebook-icon {
-		width: 100%;
-		height: 100%;
-	}
-
-	.facebook-icon circle {
+	.social-icon circle {
 		fill: #dee2a6;
+	}
+
+	.social-icon rect,
+	.social-icon path,
+	.social-icon circle:not(:first-child) {
+		fill: none;
+		stroke: #1b1b1b;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 5;
 	}
 
 	.facebook-icon path {
 		fill: #1b1b1b;
+		stroke: none;
 	}
 
-	.footer-contact {
+	.footer-bottom {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		gap: 0.5rem 0.65rem;
-		color: #e8e1d8;
-		font-size: 0.95rem;
-		line-height: 1.4;
+		justify-content: space-between;
+		gap: 0.75rem;
+		width: min(100%, 1200px);
+		margin: 0 auto;
+		padding: 1rem clamp(1.5rem, 5vw, 5rem) 1.25rem;
+		border-top: 1px solid rgba(232, 225, 216, 0.18);
+		color: rgba(232, 225, 216, 0.58);
+		font-size: 0.9rem;
 	}
 
-	.footer-contact a {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.35rem;
-		color: inherit;
-		text-decoration: none;
+	@media (max-width: 820px) {
+		.footer-inner {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.footer-brand {
+			grid-column: 1 / -1;
+		}
 	}
 
-	.footer-contact a:hover {
-		color: #dee2a6;
-	}
+	@media (max-width: 560px) {
+		.footer-inner {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
 
-	.contact-icon {
-		width: 0.95rem;
-		height: 0.95rem;
-		fill: none;
-		stroke: currentColor;
-		stroke-width: 1.9;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		flex: 0 0 auto;
-	}
+		.footer-brand {
+			align-items: flex-start;
+		}
 
-	.contact-divider {
-		width: 4px;
-		height: 4px;
-		border-radius: 999px;
-		background: #e8e1d8;
-		flex: 0 0 auto;
+		.footer-logo {
+			font-size: 2rem;
+		}
+
+		.footer-brand p {
+			max-width: 15rem;
+			line-height: 1.45;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+		}
 	}
 </style>
