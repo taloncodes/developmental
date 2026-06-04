@@ -453,10 +453,6 @@
 		color: #dee2a6;
 	}
 
-	.menu-contact a[href^='mailto:'] {
-		color: #0000ff;
-	}
-
 	.contact-icon {
 		width: 0.9rem;
 		height: 0.9rem;
