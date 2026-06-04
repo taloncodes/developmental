@@ -4,11 +4,11 @@
   import Form from '../../components/Form.svelte';
   import { tick } from 'svelte';
   import { onMount } from 'svelte';
-  import wags from '$lib/demo/wags.png';
-  import journal from '$lib/demo/journal.png';
-  import scc from '$lib/demo/scc.png';
-  import siterecs from '$lib/demo/siterecs.png';
-  import clearcut from '$lib/demo/clearcut-compliance.png';
+  import wags from '$lib/demo/wags-1400.webp';
+  import journal from '$lib/demo/journal-1400.webp';
+  import scc from '$lib/demo/scc-1400.webp';
+  import siterecs from '$lib/demo/siterecs-1400.webp';
+  import clearcut from '$lib/demo/clearcut-compliance-1400.webp';
   import { fadeOnScroll } from '$lib/fadeOnScroll';  // ✅ added
 
   let modalOpen = $state(false);
@@ -270,6 +270,8 @@
                   class="client-container"
                   src={client.image}
                   alt="{client.title} Homepage"
+                  loading="lazy"
+                  decoding="async"
                 />
               </figure>
 
@@ -352,6 +354,8 @@
                   class="client-container"
                   src={project.image}
                   alt="{project.title} Homepage"
+                  loading="lazy"
+                  decoding="async"
                 />
               </figure>
 
