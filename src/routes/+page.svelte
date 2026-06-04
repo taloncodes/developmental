@@ -283,7 +283,7 @@ h1 {
 }
 
 :global(.hero-link-blue) {
-  color: #0000FF;
+  color: #1B1B1B;
 }
 
 .typewriter-stack {

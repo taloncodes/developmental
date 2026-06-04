@@ -217,7 +217,7 @@
   }
 
   :global(.blue-dot) {
-    color: #0000FF;
+    color: #1B1B1B;
   }
 
   .section-text {

@@ -55,6 +55,6 @@
     }
 
     .brand-mark-blue {
-        color: #0000FF;
+        color: #1B1B1B;
     }
 </style>

@@ -428,7 +428,7 @@
   }
 
   :global(.blue-dot) {
-    color: #0000FF;
+    color: #1B1B1B;
   }
 
   .portfolio-case {
@@ -444,7 +444,7 @@
     align-items: center;
     gap: clamp(14px, 2vw, 22px);
     margin-bottom: clamp(28px, 4vw, 42px);
-    color: #0000FF;
+    color: #1B1B1B;
     font-size: 0.86rem;
     font-weight: 800;
     letter-spacing: 0.08em;
