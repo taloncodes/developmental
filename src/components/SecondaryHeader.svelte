@@ -1,8 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import { isMenuOpen } from '../store.svelte';
-	import instaIcon from '$lib/icons/insta_icon.png';
-	import mailIcon from '$lib/icons/mail_icon.png';
+	import ThreeCoin from './ThreeCoin.svelte';
 
 	let activePage = '';
 
@@ -15,12 +14,15 @@
 	}
 
 	function handleClick() {
-		isMenuOpen.open = !isMenuOpen.open;
-		document.body.style.overflow = isMenuOpen.open ? 'hidden' : 'visible';
+		isMenuOpen.update((open) => {
+			const nextOpen = !open;
+			document.body.style.overflow = nextOpen ? 'hidden' : 'visible';
+			return nextOpen;
+		});
 	}
 
 	function handleClose() {
-		isMenuOpen.open = false;
+		isMenuOpen.set(false);
 		document.body.style.overflow = 'visible';
 	}
 </script>
@@ -71,7 +73,7 @@
 		>
 			<button
 				class="burger relative flex h-10 flex-col justify-around px-2 py-2 md:hidden"
-				onclick={handleClick}
+				on:click={handleClick}
 				aria-label="mobile nav menu button"
 			>
 				<div class="flex flex-col items-end gap-[7px]">
@@ -84,19 +86,19 @@
 	</div>
 </header>
 
-{#if isMenuOpen.open}
+{#if $isMenuOpen}
 	<div
 		class="overlay fixed inset-0 bg-black/50 backdrop-blur-lg transition-opacity duration-300"
 		role="button"
 		tabindex="0"
-		onclick={handleClose}
-		onkeydown={(e) => e.key === 'Enter' || (e.key === ' ' && handleClose())}
-	/>
+		on:click={handleClose}
+		on:keydown={(e) => e.key === 'Enter' || (e.key === ' ' && handleClose())}
+	></div>
 {/if}
 
 <div
 	class={`nav-menu fixed top-0 right-0 h-full w-3/4 transform p-6 shadow-lg transition-transform duration-300 ${
-		isMenuOpen.open ? 'translate-x-0' : 'translate-x-full'
+		$isMenuOpen ? 'translate-x-0' : 'translate-x-full'
 	}`}
 >
 	<!-- header -->
@@ -108,7 +110,7 @@
 	<!-- links -->
 	<ul class="menu-links">
 		<li>
-			<a href="/" class="menu-link menu-dot" class:active={activePage === ''} onclick={handleClose}
+			<a href="/" class="menu-link menu-dot" class:active={activePage === ''} on:click={handleClose}
 				>home</a
 			>
 		</li>
@@ -118,7 +120,7 @@
 				href="/services"
 				class="menu-link menu-dot"
 				class:active={activePage === 'services'}
-				onclick={handleClose}>services</a
+				on:click={handleClose}>services</a
 			>
 		</li>
 
@@ -127,34 +129,56 @@
 				href="/portfolio"
 				class="menu-link menu-dot"
 				class:active={activePage === 'portfolio'}
-				onclick={handleClose}>portfolio</a
+				on:click={handleClose}>portfolio</a
 			>
 		</li>
 	</ul>
+
+	<div class="menu-brand">
+		<div class="menu-brand-lockup">
+			<a href="/" class="menu-brand-logo" aria-label="Developmental home" on:click={handleClose}>
+				<ThreeCoin colourway="flipped" size="footer" showShadow={false} />
+			</a>
+			<p>Quality web solutions, tailored to you.</p>
+		</div>
+		<a href="mailto:talon@developmental.pro" class="menu-cta" on:click={handleClose}>
+			<svg class="menu-cta-icon" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M4 6.5h16v11H4z" />
+				<path d="m4.5 7 7.5 6 7.5-6" />
+			</svg>
+			<span>Get in touch</span>
+			<span class="menu-cta-arrow">-&gt;</span>
+		</a>
+	</div>
 
 	<!-- footer pinned to bottom -->
 	<div class="menu-footer">
 		<div class="footer-rule"></div>
 
 		<div class="links flex justify-center gap-6">
-			<div class="link border-accent-one h-10 w-10 rounded-full border-2">
-				<a href="https://www.instagram.com/developmen_tal">
-					<img src={instaIcon} alt="instagram icon" />
+			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+				<a href="https://www.instagram.com/developmen_tal" aria-label="Instagram">
+					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
+						<rect x="28" y="28" width="44" height="44" rx="13" />
+						<circle cx="50" cy="50" r="12" />
+						<circle cx="64" cy="36" r="4.5" />
+					</svg>
 				</a>
 			</div>
 
 			<div class="flex flex-col justify-center">
 				<span class="text-accent-two text-4xl"> / </span>
 			</div>
-			<div class="link border-accent-one h-10 w-10 rounded-full border-2">
+			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
 				<a
 					href="https://www.facebook.com/profile.php?id=61586867661440"
 					target="_blank"
 					rel="noopener"
 					aria-label="Facebook"
 				>
-					<svg class="facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
-						<circle cx="50" cy="50" r="45" />
+					<svg class="social-icon facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
 						<path
 							d="M59 31h8V20h-9c-11 0-18 7-18 18v8H30v12h10v22h13V58h11l2-12H53v-7c0-5 2-8 6-8Z"
 						/>
@@ -164,9 +188,13 @@
 			<div class="flex flex-col justify-center">
 				<span class="text-accent-two text-4xl"> / </span>
 			</div>
-			<div class="link border-accent-one h-10 w-10 rounded-full border-2">
-				<a href="mailto:talon@developmental.pro">
-					<img src={mailIcon} alt="mail icon" />
+			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+				<a href="mailto:talon@developmental.pro" aria-label="Email">
+					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+						<circle cx="50" cy="50" r="49" />
+						<rect x="24" y="32" width="52" height="38" rx="4" />
+						<path d="M28 36 50 54 72 36" />
+					</svg>
 				</a>
 			</div>
 		</div>
@@ -321,44 +349,88 @@
 		transform: translateY(-50%) scale(1);
 	}
 
-	.menu-cta-row {
-		margin-top: 10px;
+	.menu-brand {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+		gap: 0.85rem;
+		min-height: 0;
+		padding: 1.5rem 0 2rem;
+	}
+
+	.menu-brand-lockup {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		width: min(100%, 17rem);
+		margin: 0;
+		text-align: left;
+	}
+
+	.menu-brand-logo {
+		display: grid;
+		flex: 0 0 auto;
+		width: 3.2rem;
+		aspect-ratio: 1;
+		place-items: center;
+		text-decoration: none;
+	}
+
+	.menu-brand p {
+		min-width: 0;
+		max-width: 14rem;
+		margin: 0;
+		color: rgba(232, 225, 216, 0.78);
+		font-size: clamp(1rem, 2.6vw, 1.2rem);
+		font-weight: 650;
+		line-height: 1.35;
 	}
 
 	.menu-cta {
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		gap: 10px;
-		padding: 12px 14px;
-		border-radius: 10px;
-		border: 2px solid rgba(255, 255, 255, 0.15);
+		justify-content: flex-start;
+		gap: 0.45rem;
+		width: fit-content;
+		max-width: 100%;
+		margin-left: calc(3.2rem + 0.9rem);
+		padding: 0 0 0.25rem;
+		border: 0;
+		border-bottom: 2px solid rgba(222, 226, 166, 0.8);
+		border-radius: 0;
 		color: #ededed;
-		background: rgba(255, 255, 255, 0.06);
+		background: transparent;
 		text-decoration: none;
-		width: 100%;
-		max-width: 280px;
-		margin-left: 12px;
+		font-weight: 700;
+		line-height: 1;
 		transition:
-			transform 0.2s ease,
+			color 0.2s ease,
 			border-color 0.2s ease,
-			background-color 0.2s ease;
+			gap 0.2s ease;
 	}
 
 	.menu-cta:hover {
-		transform: scale(1.02);
-		border-color: rgba(255, 255, 255, 0.25);
-		background: rgba(255, 255, 255, 0.1);
+		gap: 0.6rem;
+		border-color: #dee2a6;
+		color: #dee2a6;
 	}
 
-	.cta-icon {
-		width: 18px;
-		height: 18px;
-		display: inline-flex;
+	.menu-cta-icon {
+		width: 1.1rem;
+		height: 1.1rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.8;
+		flex: 0 0 auto;
 	}
-	.cta-icon svg {
-		width: 18px;
-		height: 18px;
+
+	.menu-cta-arrow {
+		font-size: 0.95em;
+		line-height: 1;
 	}
 
 	.menu-footer {
@@ -413,17 +485,29 @@
 		justify-content: center;
 	}
 
-	.facebook-icon {
+	.social-icon {
+		display: block;
 		width: 100%;
 		height: 100%;
 	}
 
-	.facebook-icon circle {
+	.social-icon circle {
 		fill: #dee2a6;
+	}
+
+	.social-icon rect,
+	.social-icon path,
+	.social-icon circle:not(:first-child) {
+		fill: none;
+		stroke: #1b1b1b;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 5;
 	}
 
 	.facebook-icon path {
 		fill: #1b1b1b;
+		stroke: none;
 	}
 
 	.social-btn svg {

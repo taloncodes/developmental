@@ -342,16 +342,15 @@
 				<b>My Process<span class="hero-link-blue">.</span></b>
 			</h2>
 
+			<p class="process-intro text-xl">
+				Tell me about your goals, audience and what success looks like. I design your website with a
+				focus on aesthetics, performance and achieving your business goals, then we review, refine
+				and launch with support for final changes and ongoing updates.
+			</p>
+
 			<div class="process-steps" aria-label="Website project process">
 				<article class="process-step">
-					<span class="process-step__number">01</span>
-					<div class="process-step__body">
-						<h3>Discover</h3>
-						<p>
-							Tell me about your goals, audience and what success looks like via the contact form or
-							email.
-						</p>
-					</div>
+					<h3>Discover</h3>
 				</article>
 
 				<div class="process-arrow" aria-hidden="true">
@@ -362,14 +361,7 @@
 				</div>
 
 				<article class="process-step">
-					<span class="process-step__number">02</span>
-					<div class="process-step__body">
-						<h3>Design &amp; Build</h3>
-						<p>
-							I design your website with a focus on aesthetics, performance and achieving your
-							business goals.
-						</p>
-					</div>
+					<h3>Design &amp; Build</h3>
 				</article>
 
 				<div class="process-arrow" aria-hidden="true">
@@ -380,14 +372,7 @@
 				</div>
 
 				<article class="process-step">
-					<span class="process-step__number">03</span>
-					<div class="process-step__body">
-						<h3>Launch &amp; Support</h3>
-						<p>
-							You review, we refine, then go live. I'm here for final changes, updates and ongoing
-							support.
-						</p>
-					</div>
+					<h3>Launch &amp; Support</h3>
 				</article>
 			</div>
 		</div>
@@ -399,6 +384,12 @@
 				<b>Why Developmental<span class="hero-link-blue">?</span></b>
 			</h2>
 
+			<p class="why-intro text-xl">
+				You get a custom website built around your business, not a bloated template or agency
+				process. The focus is clean, fast code, fair pricing and direct communication from one
+				person who understands the project from first idea to final launch.
+			</p>
+
 			<div class="why-cards" aria-label="Reasons to choose Developmental">
 				<article class="why-card fade-on-scroll" use:fadeOnScroll>
 					<span class="why-card__icon" aria-hidden="true">
@@ -408,7 +399,6 @@
 						</svg>
 					</span>
 					<h3>No bloated templates</h3>
-					<p>Every site is built from the ground up for your business.</p>
 				</article>
 
 				<article class="why-card fade-on-scroll" use:fadeOnScroll>
@@ -421,7 +411,6 @@
 						</svg>
 					</span>
 					<h3>No agency fees</h3>
-					<p>You get expert work without the extra overhead.</p>
 				</article>
 
 				<article class="why-card fade-on-scroll" use:fadeOnScroll>
@@ -431,7 +420,6 @@
 						</svg>
 					</span>
 					<h3>Clean, fast code</h3>
-					<p>Optimised for speed, SEO and a smooth user experience.</p>
 				</article>
 
 				<article class="why-card fade-on-scroll" use:fadeOnScroll>
@@ -442,7 +430,6 @@
 						</svg>
 					</span>
 					<h3>Personal service</h3>
-					<p>One point of contact who cares about your success.</p>
 				</article>
 			</div>
 
@@ -513,13 +500,13 @@
 			<hr class="ready-rule border-black/20" />
 
 			<section class="ready-section">
-				<h2 class="text-3xl md:text-4xl">
-					<b>Ready to get your website sorted?</b>
-				</h2>
+				<div class="ready-section__inner">
+					<h2 class="text-3xl md:text-4xl">
+						<b>Ready to get your website sorted?</b>
+					</h2>
 
-				<div class="ready-card">
-					<h3>
-						<button class="link ready-card__inline-link" onclick={openModal}>Click here</button>
+					<h3 class="ready-cta text-3xl md:text-4xl">
+						<button class="link ready-cta__inline-link" onclick={openModal}>Click here</button>
 						to get started.
 					</h3>
 				</div>
@@ -588,6 +575,7 @@
 	.home-hero-cta,
 	.home-hero-cta:hover {
 		width: fit-content;
+		min-width: clamp(13.5rem, 24vw, 16rem);
 		max-width: 100%;
 		background-color: #1b1b1b;
 		color: #e7e1d8;
@@ -640,6 +628,11 @@
 		align-items: center;
 		gap: clamp(1.25rem, 3vw, 2.25rem);
 		min-height: 5.75rem;
+		padding: clamp(1.25rem, 3vw, 1.75rem);
+		border: 1px solid rgba(27, 27, 27, 0.12);
+		border-radius: 8px;
+		background: rgba(237, 237, 237, 0.58);
+		box-shadow: 0 0.75rem 1.75rem rgba(27, 27, 27, 0.05);
 	}
 
 	.about-highlight__icon {
@@ -648,7 +641,7 @@
 		width: clamp(3.25rem, 7vw, 4.25rem);
 		aspect-ratio: 1;
 		border-radius: 50%;
-		background: #ededed;
+		background: #f6f6f6;
 		color: #1b1b1b;
 	}
 
@@ -696,52 +689,43 @@
 		padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 4vw, 3rem);
 	}
 
+	.process-intro {
+		max-width: 48rem;
+		margin-top: clamp(1.75rem, 4vw, 3rem);
+		line-height: 1.65;
+	}
+
 	.process-steps {
 		display: grid;
-		gap: clamp(1.5rem, 4vw, 3rem);
-		margin-top: clamp(2rem, 5vw, 4rem);
+		gap: clamp(1rem, 3vw, 2rem);
+		margin-top: clamp(2rem, 5vw, 3.5rem);
 	}
 
 	.process-step {
 		display: grid;
-		gap: 1.5rem;
-	}
-
-	.process-step__number {
-		display: inline-grid;
 		place-items: center;
-		width: clamp(3.25rem, 6vw, 4rem);
-		aspect-ratio: 1;
-		border: 1px solid rgba(27, 27, 27, 0.22);
-		border-radius: 50%;
-		background: #ededed;
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-		color: #1b1b1b;
-		font-weight: 700;
-		line-height: 1;
-	}
-
-	.process-step__body {
-		padding-left: 0;
+		width: fit-content;
+		max-width: 100%;
+		padding: clamp(0.85rem, 2vw, 1.1rem) clamp(1.5rem, 4vw, 2.35rem);
+		border: 2px solid #1b1b1b;
+		border-radius: 999px;
+		background: rgba(237, 237, 237, 0.44);
+		justify-self: center;
 	}
 
 	.process-step h3 {
-		font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+		font-size: clamp(1.25rem, 2vw, 1.5rem);
 		font-weight: 700;
 		line-height: 1.15;
-	}
-
-	.process-step p {
-		max-width: 22rem;
-		margin-top: 1rem;
-		color: rgba(27, 27, 27, 0.78);
-		font-size: clamp(1rem, 1.5vw, 1.1rem);
-		line-height: 1.65;
+		text-align: center;
+		white-space: nowrap;
 	}
 
 	.process-arrow {
-		display: none;
+		display: flex;
+		justify-content: center;
 		align-self: center;
+		justify-self: center;
 		color: #1b1b1b;
 	}
 
@@ -759,26 +743,34 @@
 			grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
 			align-items: center;
 		}
-
-		.process-arrow {
-			display: block;
-			margin-top: clamp(2.5rem, 5vw, 4rem);
-		}
 	}
 
 	@media (max-width: 899px) {
-		.process-step {
-			grid-template-columns: auto minmax(0, 1fr);
-			align-items: start;
+		.process-steps {
+			justify-items: center;
 		}
 
-		.process-step__body {
-			min-height: 100%;
+		.process-step {
+			width: fit-content;
+			justify-self: center;
+		}
+
+		.process-arrow {
+			width: min(100%, 28rem);
+			margin: -0.25rem 0;
+			justify-self: center;
+			transform: rotate(90deg);
 		}
 	}
 
 	.why-section {
-		padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 4vw, 3rem);
+		padding: clamp(2rem, 5vw, 4rem) 0 0;
+	}
+
+	.why-intro {
+		max-width: 48rem;
+		margin-top: clamp(1.75rem, 4vw, 3rem);
+		line-height: 1.65;
 	}
 
 	.why-cards {
@@ -790,7 +782,7 @@
 
 	.why-card {
 		display: flex;
-		min-height: 11.5rem;
+		min-height: clamp(8.75rem, 16vw, 10.5rem);
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
@@ -825,13 +817,6 @@
 		font-size: clamp(1rem, 1.3vw, 1.1rem);
 		font-weight: 700;
 		line-height: 1.2;
-	}
-
-	.why-card p {
-		max-width: 13rem;
-		color: rgba(27, 27, 27, 0.78);
-		font-size: clamp(0.95rem, 1.25vw, 1rem);
-		line-height: 1.55;
 	}
 
 	.why-reviews-rule {
@@ -983,27 +968,37 @@
 	}
 
 	.ready-rule {
-		margin-top: clamp(2rem, 5vw, 3rem);
+		width: 100vw;
+		margin: clamp(2rem, 5vw, 3rem) 0 0 calc(50% - 50vw);
+		border-color: #1b1b1b;
+		border-top-width: 2px;
 	}
 
 	.ready-section {
-		padding-top: clamp(1.5rem, 4vw, 2.5rem);
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-bottom: -2.5rem;
+		background: radial-gradient(circle at 30% 40%, #e8e1d8, #ededed 80%);
+		background-size: cover;
 	}
 
-	.ready-card {
+	.ready-section__inner {
+		display: flex;
+		min-height: clamp(13rem, 18vw, 14rem);
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: clamp(2rem, 4vw, 3.25rem) 2.5rem;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.ready-cta {
 		margin-top: clamp(1.5rem, 4vw, 2.5rem);
-		padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.5rem, 4vw, 2.5rem);
-		border-radius: 8px;
-		background: #ededed;
-	}
-
-	.ready-card h3 {
-		font-size: clamp(1.6rem, 3vw, 2.35rem);
 		font-weight: 700;
 		line-height: 1.18;
 	}
 
-	.ready-card__inline-link {
+	.ready-cta__inline-link {
 		display: inline;
 		padding: 0;
 		border: 0;
@@ -1014,6 +1009,17 @@
 		font-weight: inherit;
 		line-height: inherit;
 		text-align: left;
+	}
+
+	@media (min-width: 768px) {
+		.ready-section {
+			margin-bottom: -5rem;
+		}
+
+		.ready-section__inner {
+			padding-right: 5rem;
+			padding-left: 5rem;
+		}
 	}
 
 	@media (max-width: 980px) {

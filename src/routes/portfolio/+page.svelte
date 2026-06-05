@@ -2,13 +2,15 @@
   import '../../app.css';
   import '../../app.scss'
   import Form from '../../components/Form.svelte';
+  import ReadySection from '../../components/ReadySection.svelte';
   import { tick } from 'svelte';
   import { onMount } from 'svelte';
-  import wags from '$lib/demo/wags-1400.webp';
-  import journal from '$lib/demo/journal-1400.webp';
-  import scc from '$lib/demo/scc-1400.webp';
-  import siterecs from '$lib/demo/siterecs-1400.webp';
-  import clearcut from '$lib/demo/clearcut-compliance-1400.webp';
+  import wags from '$lib/demo/newmockups/wags4mockup.png';
+  import journal from '$lib/demo/newmockups/aiformockup.png';
+  import scc from '$lib/demo/newmockups/scc4mockup.png';
+  import siterecs from '$lib/demo/newmockups/siterecs4mockup.png';
+  import clearcut from '$lib/demo/newmockups/clearcut4mockup.png';
+  import lvm from '$lib/demo/newmockups/music4mockup.png';
   import { fadeOnScroll } from '$lib/fadeOnScroll';  // ✅ added
 
   let modalOpen = $state(false);
@@ -20,7 +22,7 @@
       count: 1,
       id: 'siterecs',
       title: 'SiteRecs',
-      category: 'Client Showcase',
+      category: 'Software',
       siteUrl: 'https://siterecs.com',
       contentHtml:`
         <span class="block">
@@ -32,6 +34,7 @@
         </span>
       `,
       image: siterecs,
+      imageStyle: 'mockup',
       tech: [
         'SvelteKit',
         'JavaScript',
@@ -56,7 +59,7 @@
       count: 2,
       id: 'clearcut-compliance',
       title: 'ClearCut',
-      category: 'Client Showcase',
+      category: 'Software',
       siteUrl: 'https://clearcutcompliance.com',
       contentHtml:`
         <span class="block">
@@ -68,6 +71,7 @@
         </span>
       `,
       image: clearcut,
+      imageStyle: 'mockup',
       tech: [
         'SvelteKit',
         'JavaScript',
@@ -92,7 +96,7 @@
       count: 3,
       id: 'wags-n-whiskers',
       title: 'Wags n Whiskers',
-      category: 'Client Showcase',
+      category: 'Client Website',
       siteUrl: 'https://wagsnwhiskers.co',
       contentHtml: `
         <span class="block">
@@ -108,6 +112,7 @@
         </span>
       `,
       image: wags,
+      imageStyle: 'mockup',
       tech: ['HTML', 'CSS', 'JavaScript', 'Node', 'Mailgun'],
       features: ['Google Analytics', 'E-mail Notifications', 'Contact Form', 'Bespoke Design', 'SEO Optimisation', 'Performance Optimisation']
     },
@@ -115,7 +120,7 @@
       count: 4,
       id: 'scc_forms',
       title: 'SCC',
-      category: 'Client Showcase',
+      category: 'Client Software',
       contentHtml:`
         <span class="block">
           SCC needed a practical internal system to replace paper forms with simple digital workflows for teams working out in the field.
@@ -126,6 +131,7 @@
         </span>
       `,
       image: scc,
+      imageStyle: 'mockup',
       tech: [
         'SvelteKit',
         'JavaScript',
@@ -164,8 +170,28 @@
         </span>
       `,
       image: journal,
+      imageStyle: 'mockup',
       tech: ['SvelteKit', 'JavaScript', 'Node', 'MongoDB', 'Tailwind CSS', 'DeepSeek AI'],
       features: ['Secure Authentication', 'CRUD Journal Entires', 'AI Summaries & Actions', 'Mood Slider', 'Calendar View', 'Responsive UI']
+    },
+    {
+      count: 2,
+      id: 'custom-ep-player',
+      title: 'Custom EP Player',
+      category: 'Project',
+      contentHtml: `
+        <span class="block">
+          A bespoke music player built to give an electronic EP a more memorable, interactive and visually polished listening experience.
+        </span>
+
+        <span class="block">
+          Listeners can switch tracks, play with audio filters and see subtle visual feedback while the music plays.
+        </span>
+      `,
+      image: lvm,
+      imageStyle: 'mockup',
+      tech: ['Svelte', 'CSS', 'HTML', 'JavaScript', 'Web Audio API'],
+      features: ['Audio Play/Stop', 'Track Select', 'Frequency Analyser', 'Hi-Pass Filter', 'Lo-Pass Filter', 'Subtle Animation']
     },
   ]);
 
@@ -243,7 +269,7 @@
 
   <section>
     <div>
-      <div class="pt-10 pb-10 md:pt-20 md:pb-14 px-10 md:px-16 max-w-[1200px] mx-auto">
+      <div class="pt-10 pb-4 md:pt-20 md:pb-6 px-10 md:px-16 max-w-[1200px] mx-auto">
         {#each clients as client (client.id)}
           <article class="portfolio-case">
             <div
@@ -267,7 +293,7 @@
 
               <figure class="case-figure fade-on-scroll" use:fadeOnScroll>
                 <img
-                  class="client-container"
+                  class={`client-container ${client.imageStyle === 'mockup' ? 'client-container--mockup' : ''}`}
                   src={client.image}
                   alt="{client.title} Homepage"
                   loading="lazy"
@@ -327,7 +353,7 @@
     </div>
 
     <div>
-      <div class="pt-4 pb-10 md:pt-8 md:pb-14 px-10 md:px-16 max-w-[1200px] mx-auto">
+      <div class="pt-4 pb-4 md:pt-8 md:pb-6 px-10 md:px-16 max-w-[1200px] mx-auto">
         {#each personal as project (project.id)}
           <article class="portfolio-case">
             <div
@@ -339,7 +365,7 @@
               <span>{String(clients.length + project.count).padStart(2, '0')}</span>
             </div>
 
-            <div class="case-grid">
+            <div class={`case-grid ${project.siteUrl ? 'has-actions' : ''}`}>
               <div class="case-copy">
                 <p class="case-kicker fade-on-scroll" use:fadeOnScroll>{project.category}</p>
                 <h3 class="fade-on-scroll" use:fadeOnScroll>{project.title}<span class="blue-dot">.</span></h3>
@@ -351,13 +377,19 @@
 
               <figure class="case-figure fade-on-scroll" use:fadeOnScroll>
                 <img
-                  class="client-container"
+                  class={`client-container ${project.imageStyle === 'mockup' ? 'client-container--mockup' : ''}`}
                   src={project.image}
                   alt="{project.title} Homepage"
                   loading="lazy"
                   decoding="async"
                 />
               </figure>
+
+              {#if project.siteUrl}
+                <div class="case-actions fade-on-scroll" use:fadeOnScroll>
+                  <a href={project.siteUrl} target="_blank" rel="noopener">View site</a>
+                </div>
+              {/if}
 
             </div>
 
@@ -406,18 +438,11 @@
     </div>
   </section>
 
-  <div class="flex mb-12 mt-6 fade-on-scroll" use:fadeOnScroll>
-    <button
-      onclick={openModal}
-      class="px-6 m-auto w-fit py-3 text-xl text-dark mbg-yellow rounded-xl shadow-2xl z-3 cursor-pointer transition-all flex items-center gap-2 hover:bg-dark hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-5 h-5 relative top-[1px]">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75" />
-      </svg>
-
-      <span>Get In Touch</span>
-    </button>
-  </div>
+  <ReadySection
+    heading="Ready to be the next portfolio piece?"
+    tail="to get started."
+    onAction={openModal}
+  />
 </section>
 
 <style>
@@ -483,7 +508,7 @@
 
   .case-grid {
     display: grid;
-    grid-template-columns: minmax(250px, 0.55fr) minmax(520px, 1.35fr);
+    grid-template-columns: minmax(360px, 0.82fr) minmax(480px, 1.18fr);
     grid-template-areas:
       "copy figure";
     column-gap: clamp(34px, 6vw, 78px);
@@ -523,9 +548,9 @@
   }
 
   .case-body {
-    max-width: 27rem;
-    font-size: clamp(1rem, 1.04vw, 1.08rem);
-    line-height: 1.5;
+    max-width: 46rem;
+    font-size: 1.25rem;
+    line-height: 1.45;
   }
 
   .case-body :global(.block + .block) {
@@ -595,6 +620,12 @@
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 18px 34px rgba(0, 0, 0, 0.08);
+  }
+
+  .client-container--mockup {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .case-meta {
@@ -695,6 +726,10 @@
         "figure"
         "actions";
     }
+
+    .case-body {
+      max-width: 48rem;
+    }
   }
 
   @media (max-width: 640px) {
@@ -725,7 +760,7 @@
 
     .case-body {
       max-width: none;
-      font-size: 1rem;
+      font-size: 1.25rem;
     }
 
     .case-actions {

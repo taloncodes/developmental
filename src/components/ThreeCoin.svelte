@@ -1,6 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
 
+	export let colourway = 'default';
+	export let size = 'default';
+	export let showShadow = true;
+
 	let canvas;
 	let shadow;
 	let frameId;
@@ -35,23 +39,39 @@
 			coin.rotation.z = THREE.MathUtils.degToRad(-2);
 			scene.add(coin);
 
+			const palettes = {
+				default: {
+					face: 0x1f1f1f,
+					edge: 0x181818,
+					inner: 0x242424,
+					mark: 0xededed
+				},
+				flipped: {
+					face: 0xe8e1d8,
+					edge: 0xdee2a6,
+					inner: 0xededed,
+					mark: 0x1b1b1b
+				}
+			};
+			const palette = palettes[colourway] ?? palettes.default;
+
 			const dark = new THREE.MeshStandardMaterial({
-				color: 0x1f1f1f,
+				color: palette.face,
 				roughness: 0.94,
 				metalness: 0
 			});
 			const edge = new THREE.MeshStandardMaterial({
-				color: 0x181818,
+				color: palette.edge,
 				roughness: 0.92,
 				metalness: 0
 			});
 			const inner = new THREE.MeshStandardMaterial({
-				color: 0x242424,
+				color: palette.inner,
 				roughness: 0.96,
 				metalness: 0
 			});
 			const mark = new THREE.MeshStandardMaterial({
-				color: 0xededed,
+				color: palette.mark,
 				roughness: 0.58,
 				metalness: 0
 			});
@@ -215,9 +235,16 @@
 	});
 </script>
 
-<div class="three-coin-stage" aria-hidden="true">
+<div
+	class="three-coin-stage"
+	class:three-coin-stage--footer={size === 'footer'}
+	class:three-coin-stage--menu={size === 'menu'}
+	aria-hidden="true"
+>
 	<canvas bind:this={canvas} class="three-coin"></canvas>
-	<span bind:this={shadow} class="three-coin-shadow"></span>
+	{#if showShadow}
+		<span bind:this={shadow} class="three-coin-shadow"></span>
+	{/if}
 </div>
 
 <style>
@@ -254,6 +281,26 @@
 		will-change: opacity, transform;
 	}
 
+	.three-coin-stage--footer {
+		width: 3.2rem;
+		min-height: 3.2rem;
+	}
+
+	.three-coin-stage--footer .three-coin {
+		width: 3.2rem;
+		height: 3.2rem;
+	}
+
+	.three-coin-stage--menu {
+		width: 4.5rem;
+		min-height: 4.5rem;
+	}
+
+	.three-coin-stage--menu .three-coin {
+		width: 4.5rem;
+		height: 4.5rem;
+	}
+
 	@media (max-width: 767px) {
 		.three-coin-stage {
 			width: min(68vw, 13rem);
@@ -263,6 +310,26 @@
 		.three-coin {
 			width: min(100%, 12.25rem);
 			height: 11rem;
+		}
+
+		.three-coin-stage--footer {
+			width: 3rem;
+			min-height: 3rem;
+		}
+
+		.three-coin-stage--footer .three-coin {
+			width: 3rem;
+			height: 3rem;
+		}
+
+		.three-coin-stage--menu {
+			width: 4rem;
+			min-height: 4rem;
+		}
+
+		.three-coin-stage--menu .three-coin {
+			width: 4rem;
+			height: 4rem;
 		}
 	}
 </style>

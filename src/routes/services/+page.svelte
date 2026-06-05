@@ -2,6 +2,7 @@
 	import '../../app.css';
 	import '../../app.scss';
 	import Form from '../../components/Form.svelte';
+	import ReadySection from '../../components/ReadySection.svelte';
 	import { tick } from 'svelte';
 	import { onMount } from 'svelte';
 	import plus from '$lib/graphics/plus.png';
@@ -220,10 +221,35 @@
 										<span class="custom-path custom-path--right"></span>
 										<span class="custom-path custom-path--bottom"></span>
 										<span class="custom-path custom-path--left"></span>
-										<span class="custom-node custom-node--top custom-node--form"></span>
-										<span class="custom-node custom-node--right custom-node--output"></span>
-										<span class="custom-node custom-node--bottom custom-node--invoice"></span>
-										<span class="custom-node custom-node--left custom-node--data"></span>
+										<span class="custom-node custom-node--top custom-node--message">
+											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
+												<path d="M5 6.5h14v9H9l-4 3.2V6.5Z" />
+												<path d="M8.5 10h7" />
+												<path d="M8.5 12.8h4.8" />
+											</svg>
+										</span>
+										<span class="custom-node custom-node--right custom-node--money">
+											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
+												<path d="M12 3.8v16.4" />
+												<path
+													d="M16.4 7.2c-.9-.8-2.2-1.3-3.9-1.3-2.3 0-3.8 1.1-3.8 2.8 0 1.6 1.1 2.3 3.8 2.8 2.8.5 3.9 1.3 3.9 3 0 1.8-1.6 3-4.1 3-1.8 0-3.4-.5-4.6-1.5"
+												/>
+											</svg>
+										</span>
+										<span class="custom-node custom-node--bottom custom-node--person">
+											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
+												<circle cx="12" cy="8.2" r="3.2" />
+												<path d="M5.8 19.2c.8-3.2 3-5 6.2-5s5.4 1.8 6.2 5" />
+											</svg>
+										</span>
+										<span class="custom-node custom-node--left custom-node--gear">
+											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
+												<path
+													d="M12 4.2 13.3 6l2.1.4.8 2 1.9 1.2-.4 2.2.4 2.2-1.9 1.2-.8 2-2.1.4L12 19.4l-1.3-1.8-2.1-.4-.8-2-1.9-1.2.4-2.2-.4-2.2 1.9-1.2.8-2 2.1-.4L12 4.2Z"
+												/>
+												<circle cx="12" cy="11.8" r="2.5" />
+											</svg>
+										</span>
 										<div class="custom-core">./</div>
 									</div>
 								</div>
@@ -251,29 +277,11 @@
 		</div>
 	</section>
 
-	<div class="fade-on-scroll mb-10 flex md:mb-20" use:fadeOnScroll>
-		<button
-			onclick={openModal}
-			class="text-dark mbg-yellow hover:bg-dark z-3 m-auto flex w-fit cursor-pointer items-center gap-2 rounded-xl px-6 py-3 text-xl shadow-2xl transition-all hover:scale-105 hover:text-white focus:ring-2 focus:ring-yellow-500 focus:outline-none active:scale-95"
-		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.75"
-				stroke="currentColor"
-				class="relative top-[1px] h-5 w-5"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0-9.75 6.75L2.25 6.75"
-				/>
-			</svg>
-
-			<span>Get In Touch</span>
-		</button>
-	</div>
+	<ReadySection
+		heading="Need help with anything else web-related?"
+		tail="to get in touch."
+		onAction={openModal}
+	/>
 </section>
 
 <style>
@@ -620,73 +628,14 @@
 		animation: customNodePulse 4.8s ease-in-out infinite;
 	}
 
-	.custom-node::before {
-		content: '';
-		display: block;
-	}
-
-	.custom-node::after {
-		content: '';
-		position: absolute;
-		display: block;
-	}
-
-	.custom-node--form::before {
-		width: 40%;
-		height: 48%;
-		border: 2px solid #1b1b1b;
-		border-top-width: 5px;
-		border-radius: 2px;
-	}
-
-	.custom-node--form::after {
-		width: 22%;
-		height: 2px;
-		background: #ededed;
-		box-shadow: 0 0.28rem 0 #ededed;
-		transform: translateY(-0.02rem);
-	}
-
-	.custom-node--output::before {
-		width: 46%;
-		height: 2px;
-		background: #1b1b1b;
-		box-shadow:
-			0 0.34rem 0 #1b1b1b,
-			0 -0.34rem 0 #1b1b1b;
-	}
-
-	.custom-node--invoice::before {
-		width: 40%;
-		height: 50%;
-		border: 2px solid #1b1b1b;
-		border-radius: 2px;
-	}
-
-	.custom-node--invoice::after {
-		width: 22%;
-		height: 2px;
-		background: #1b1b1b;
-		box-shadow:
-			0 0.3rem 0 #1b1b1b,
-			0 -0.3rem 0 #1b1b1b;
-	}
-
-	.custom-node--data::before {
-		width: 50%;
-		height: 34%;
-		border: 2px solid #1b1b1b;
-		border-radius: 50%;
-		transform: translateY(-18%);
-	}
-
-	.custom-node--data::after {
-		width: 50%;
-		height: 34%;
-		border: 2px solid #1b1b1b;
-		border-top: 0;
-		border-radius: 0 0 50% 50%;
-		transform: translateY(18%);
+	.custom-node__icon {
+		width: 58%;
+		height: 58%;
+		fill: none;
+		stroke: #1b1b1b;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.9;
 	}
 
 	.custom-node--top {
