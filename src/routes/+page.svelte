@@ -283,7 +283,7 @@
 				</p>
 				<p class="text-xl">
 					I design and build modern, high-performance websites that give small businesses
-					agency-quality results without the agency price tag.
+					high quality results without the agency price tag.
 				</p>
 			</div>
 
@@ -344,7 +344,7 @@
 
 			<p class="process-intro text-xl">
 				Tell me about your goals, audience and what success looks like. I design your website with a
-				focus on aesthetics, performance and achieving your business goals, then we review, refine
+				focus on aesthetics, performance and achieving your business objectives, then we review, refine
 				and launch with support for final changes and ongoing updates.
 			</p>
 
@@ -834,15 +834,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: clamp(1.5rem, 4vw, 2.5rem);
-		margin-top: clamp(2rem, 5vw, 3rem);
+		gap: clamp(1rem, 3vw, 1.75rem);
+		margin-top: clamp(1.25rem, 4vw, 2rem);
 	}
 
 	.why-testimonial__card {
 		display: grid;
 		grid-template-areas: 'review';
 		width: 100%;
-		min-height: clamp(25rem, 44vw, 32rem);
+		min-height: clamp(15rem, 26vw, 20rem);
 		overflow: hidden;
 		border: 2px solid #000;
 		border-radius: 8px;
@@ -868,9 +868,9 @@
 		display: grid;
 		align-items: center;
 		justify-content: center;
-		padding: clamp(3rem, 5vw, 4.5rem) clamp(3.25rem, 6vw, 5rem);
+		padding: clamp(1.5rem, 3vw, 2.25rem) clamp(2rem, 5vw, 4rem);
 		color: #ededed;
-		font-size: clamp(1.55rem, 2.6vw, 2.45rem);
+		font-size: clamp(1.25rem, 2vw, 1.85rem);
 		font-weight: 400;
 		line-height: 1.28;
 		text-align: center;
@@ -901,8 +901,8 @@
 	.why-testimonial__footer {
 		display: grid;
 		justify-items: center;
-		gap: 0.75rem;
-		padding: clamp(1rem, 2.5vw, 1.5rem);
+		gap: 0.5rem;
+		padding: clamp(0.75rem, 2vw, 1.1rem);
 		border-top: 2px solid #ededed;
 		text-align: center;
 	}
@@ -911,7 +911,7 @@
 		display: grid;
 		place-items: center;
 		min-width: clamp(8rem, 16vw, 11rem);
-		min-height: clamp(3rem, 6vw, 4rem);
+		min-height: clamp(2.25rem, 5vw, 3rem);
 		border: 1px dashed rgba(237, 237, 237, 0.7);
 		border-radius: 6px;
 		color: #ededed;
@@ -924,7 +924,7 @@
 
 	.why-testimonial__logo-placeholder img {
 		width: min(100%, 13rem);
-		max-height: clamp(2.25rem, 5vw, 3.5rem);
+		max-height: clamp(1.8rem, 4vw, 2.75rem);
 		object-fit: contain;
 	}
 
