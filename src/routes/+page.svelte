@@ -1,26 +1,15 @@
 <script>
 	import { tick } from 'svelte';
-	import { goto } from '$app/navigation';
 	import Form from '../components/Form.svelte';
-	import { page } from '$app/state';
 	import '../app.css';
 	import '../app.scss';
-	import wave from '$lib/icons/wave_icon.png';
-	import qMark from '$lib/icons/question_icon.png';
-	import tools from '$lib/icons/tools_icon.png';
-	import response from '$lib/icons/mobile_first.svg';
-	import shake from '$lib/icons/shake_icon.svg';
-	import seo from '$lib/icons/seo_icon.svg';
-	import downArrow from '$lib/icons/down_icon.svg';
-	import hero from '$lib/graphics/lol.png';
 	import { onMount } from 'svelte';
-	import arrow from '$lib/graphics/arrow.gif';
 	import { fadeOnScroll } from '$lib/fadeOnScroll';
-	import lappytappy from '$lib/graphics/lappytappy.png';
 	import laptop from '$lib/graphics/hero_layer_1v3.webp';
-	import shadow from '$lib/graphics/hero_layer_2.svg';
 	import slatersLogo from '$lib/logos/slaters-contracting-consultancy.png';
 	import wagsLogo from '$lib/logos/wags-n-whiskers.png';
+	import { articles } from '$lib/articles';
+	import { trackMainCta } from '$lib/conversionTracking';
 
 	const textSegments = [
 		{ text: 'developmen', class: 'text-primary' },
@@ -29,7 +18,7 @@
 	];
 
 	let fullText = textSegments.map((segment) => segment.text).join('');
-	let displayText = $state('');
+	let displayText = $state(fullText);
 	let heroIntroComplete = $state(false);
 	const reviewsFullText = './reviews';
 	let reviewsDisplayText = $state('');
@@ -53,6 +42,12 @@
 		}
 	];
 	let activeReviewIndex = $state(0);
+	const featuredArticleSlugs = [
+		'ai-website-builder-small-business',
+		'local-seo-small-business',
+		'app-development-for-business-admin'
+	];
+	const featuredArticles = featuredArticleSlugs.map((slug) => articles[slug]);
 
 	async function typewriterEffect() {
 		heroIntroComplete = false;
@@ -99,6 +94,11 @@
 	function openModal() {
 		modalOpen = !modalOpen;
 		document.querySelector('body').style.overflow = 'hidden';
+	}
+
+	function openTrackedModal(location) {
+		trackMainCta('Get In Touch', location);
+		openModal();
 	}
 
 	let headerHeight = $state(0);
@@ -158,15 +158,7 @@
 </script>
 
 <svelte:head>
-	<link
-		rel="preload"
-		as="image"
-		href={laptop}
-		type="image/svg+xml"
-		fetchpriority="high"
-		loading="eager"
-		decoding="async"
-	/>
+	<link rel="preload" as="image" href={laptop} type="image/webp" fetchpriority="high" />
 </svelte:head>
 
 <Form bind:visible={modalOpen} />
@@ -203,7 +195,7 @@
 				</div>
 
 				<button
-					onclick={openModal}
+					onclick={() => openTrackedModal('home_hero')}
 					class="home-nav-button home-hero-cta fade-on-scroll mx-auto flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-lg
          md:mx-0 md:gap-3 md:px-6 md:py-4 md:text-xl"
 					use:fadeOnScroll
@@ -282,8 +274,8 @@
 					marketing.
 				</p>
 				<p class="text-xl">
-					I design and build modern, high-performance websites that give small businesses
-					high quality results without the agency price tag.
+					I design and build modern, high-performance websites that give small businesses high
+					quality results without the agency price tag.
 				</p>
 			</div>
 
@@ -344,8 +336,8 @@
 
 			<p class="process-intro text-xl">
 				Tell me about your goals, audience and what success looks like. I design your website with a
-				focus on aesthetics, performance and achieving your business objectives, then we review, refine
-				and launch with support for final changes and ongoing updates.
+				focus on aesthetics, performance and achieving your business objectives, then we review,
+				refine and launch with support for final changes and ongoing updates.
 			</p>
 
 			<div class="process-steps" aria-label="Website project process">
@@ -506,9 +498,42 @@
 					</h2>
 
 					<h3 class="ready-cta text-3xl md:text-4xl">
-						<button class="link ready-cta__inline-link" onclick={openModal}>Click here</button>
+						<button
+							class="link ready-cta__inline-link"
+							onclick={() => openTrackedModal('home_ready')}>Click here</button
+						>
 						to get started.
 					</h3>
+				</div>
+			</section>
+
+			<section class="home-articles" aria-labelledby="home-articles-heading">
+				<div class="home-articles__inner">
+					<div class="home-articles__head fade-on-scroll" use:fadeOnScroll>
+						<h2 id="home-articles-heading" class="text-3xl md:text-4xl">
+							<b>Useful reads<span class="hero-link-blue">.</span></b>
+						</h2>
+						<a href="/articles">View all articles</a>
+					</div>
+
+					<div class="home-articles__grid">
+						{#each featuredArticles as article}
+							<article class="home-article fade-on-scroll" use:fadeOnScroll>
+								<div class="home-article__meta">
+									<span>{article.category}</span>
+									<span>{article.readTime}</span>
+								</div>
+
+								<h3>
+									<a href={article.path}>{article.title}</a>
+								</h3>
+
+								<p>{article.desc}</p>
+
+								<a class="home-article__link" href={article.path}>Read article</a>
+							</article>
+						{/each}
+					</div>
 				</div>
 			</section>
 		</div>
@@ -623,6 +648,9 @@
 	}
 
 	.about-highlight {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr);
 		align-items: center;
@@ -633,6 +661,35 @@
 		border-radius: 8px;
 		background: rgba(237, 237, 237, 0.58);
 		box-shadow: 0 0.75rem 1.75rem rgba(27, 27, 27, 0.05);
+	}
+
+	.about-highlight::after {
+		content: '';
+		position: absolute;
+		top: -45%;
+		bottom: -45%;
+		left: 0;
+		z-index: 0;
+		width: 42%;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(255, 255, 255, 0.08) 24%,
+			rgba(226, 222, 215, 0.5) 42%,
+			rgba(248, 246, 239, 0.78) 50%,
+			rgba(205, 200, 191, 0.34) 62%,
+			transparent 100%
+		);
+		filter: blur(0.5px);
+		opacity: 0;
+		transform: translateX(-170%) skewX(-18deg);
+		animation: highlightSheen 5.8s ease-in-out infinite;
+		pointer-events: none;
+	}
+
+	.about-highlight > * {
+		position: relative;
+		z-index: 1;
 	}
 
 	.about-highlight__icon {
@@ -685,6 +742,51 @@
 		}
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.about-highlight::after {
+			animation: none;
+		}
+	}
+
+	@keyframes highlightSheen {
+		0%,
+		58% {
+			opacity: 0;
+			transform: translateX(-170%) skewX(-18deg);
+		}
+
+		64% {
+			opacity: 0.92;
+		}
+
+		78% {
+			opacity: 0.82;
+			transform: translateX(320%) skewX(-18deg);
+		}
+
+		82%,
+		100% {
+			opacity: 0;
+			transform: translateX(320%) skewX(-18deg);
+		}
+	}
+
+	@keyframes processStepPulse {
+		0%,
+		52%,
+		100% {
+			transform: scale(1);
+		}
+
+		62% {
+			transform: scale(1.08);
+		}
+
+		72% {
+			transform: scale(1);
+		}
+	}
+
 	.process-section {
 		padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 4vw, 3rem);
 	}
@@ -711,6 +813,17 @@
 		border-radius: 999px;
 		background: rgba(237, 237, 237, 0.44);
 		justify-self: center;
+		transform-origin: center;
+		animation: processStepPulse 5.8s ease-in-out infinite;
+		will-change: transform;
+	}
+
+	.process-step:nth-child(3) {
+		animation-delay: 0.55s;
+	}
+
+	.process-step:nth-child(5) {
+		animation-delay: 1.1s;
 	}
 
 	.process-step h3 {
@@ -719,6 +832,12 @@
 		line-height: 1.15;
 		text-align: center;
 		white-space: nowrap;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.process-step {
+			animation: none;
+		}
 	}
 
 	.process-arrow {
@@ -977,7 +1096,6 @@
 	.ready-section {
 		width: 100vw;
 		margin-left: calc(50% - 50vw);
-		margin-bottom: -2.5rem;
 		background: radial-gradient(circle at 30% 40%, #e8e1d8, #ededed 80%);
 		background-size: cover;
 	}
@@ -1011,14 +1129,158 @@
 		text-align: left;
 	}
 
+	.home-articles {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-bottom: -2.5rem;
+		border-top: 2px solid #1b1b1b;
+		background: #e8e1d8;
+	}
+
+	.home-articles__inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: clamp(2rem, 5vw, 4rem) 2.5rem;
+	}
+
+	.home-articles__head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: end;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.home-articles__head a,
+	.home-article__link {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		width: fit-content;
+		margin-bottom: 4px;
+		color: #0000ff;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-decoration: none;
+		transition: transform 180ms ease;
+	}
+
+	.home-articles__head a::before,
+	.home-article__link::before {
+		content: '';
+		position: absolute;
+		right: 28px;
+		bottom: -6px;
+		left: 0;
+		height: 3px;
+		border-radius: 999px;
+		background: currentColor;
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.home-articles__head a::after,
+	.home-article__link::after {
+		content: '→';
+		margin-left: 12px;
+	}
+
+	.home-articles__head a:hover,
+	.home-article__link:hover {
+		transform: translateX(3px);
+	}
+
+	.home-articles__grid {
+		display: grid;
+		gap: clamp(1.5rem, 4vw, 3rem);
+		margin-top: clamp(1.75rem, 4vw, 3rem);
+	}
+
+	.home-article {
+		display: grid;
+		align-content: start;
+		gap: 1rem;
+		min-width: 0;
+		padding-top: clamp(1.25rem, 3vw, 1.75rem);
+		border-top: 1px solid rgba(27, 27, 27, 0.22);
+	}
+
+	.home-article__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+	}
+
+	.home-article__meta span {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.1rem;
+		padding: 0.45rem 0.75rem;
+		border: 1px solid rgba(27, 27, 27, 0.28);
+		border-radius: 999px;
+		background: rgba(237, 237, 237, 0.52);
+		color: #1b1b1b;
+		font-size: 0.8rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.home-article h3 {
+		max-width: 22rem;
+		font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+		font-weight: 700;
+		line-height: 1.12;
+	}
+
+	.home-article h3 a {
+		color: #1b1b1b;
+		text-decoration: none;
+	}
+
+	.home-article p {
+		max-width: 24rem;
+		color: rgba(27, 27, 27, 0.78);
+		font-size: 1rem;
+		line-height: 1.45;
+	}
+
 	@media (min-width: 768px) {
 		.ready-section {
-			margin-bottom: -5rem;
+			margin-bottom: 0;
 		}
 
 		.ready-section__inner {
 			padding-right: 5rem;
 			padding-left: 5rem;
+		}
+
+		.home-articles {
+			margin-bottom: -5rem;
+		}
+
+		.home-articles__inner {
+			padding-right: 5rem;
+			padding-left: 5rem;
+		}
+	}
+
+	@media (min-width: 860px) {
+		.home-articles__grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0;
+			column-gap: 0;
+		}
+
+		.home-article {
+			padding-top: 0;
+			padding-right: clamp(1.5rem, 3vw, 2.25rem);
+			border-top: 0;
+		}
+
+		.home-article + .home-article {
+			padding-left: clamp(1.5rem, 3vw, 2.25rem);
+			border-left: 1px solid rgba(27, 27, 27, 0.22);
 		}
 	}
 

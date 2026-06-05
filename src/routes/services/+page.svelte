@@ -5,13 +5,13 @@
 	import ReadySection from '../../components/ReadySection.svelte';
 	import { tick } from 'svelte';
 	import { onMount } from 'svelte';
-	import plus from '$lib/graphics/plus.png';
-	import { flip } from 'svelte/animate';
 	import { fadeOnScroll } from '$lib/fadeOnScroll';
 	import appPhone from '$lib/graphics/app-development-phone.png';
 	import laptop from '$lib/graphics/hero_layer_1v3.webp';
 	import ThreeCoin from '../../components/ThreeCoin.svelte';
 	import AuditScore from '../../components/AuditScore.svelte';
+	import SetupRoute from '../../components/SetupRoute.svelte';
+	import SpinningCog from '../../components/SpinningCog.svelte';
 
 	let modalOpen = $state(false);
 
@@ -24,17 +24,17 @@
 				'Visually appealing, user-friendly and modern website designs that align with your brand aesthetic, engage visitors and elevate their experience.',
 			visualLabel: 'Website mockup',
 			visualType: 'laptop',
-			cta: { label: 'View portfolio', href: '/portfolio' }
+			cta: { label: 'Small business web design', href: '/small-business-web-design' }
 		},
 		{
 			id: 'app-dev',
 			title: 'App Development',
 			isOpen: false,
 			content:
-				'I build installable apps as modern PWAs, optimised to feel fast, reliable and polished across mobile, tablet and desktop.',
+				'I build installable progressive web apps that work from the browser, can be added to a device and support payments, accounts and custom business workflows.',
 			visualLabel: 'App mockup',
 			visualType: 'phone',
-			cta: { label: 'View portfolio', href: '/portfolio' }
+			cta: { label: 'App development', href: '/app-development' }
 		},
 		{
 			id: 'logo',
@@ -50,9 +50,20 @@
 			title: 'Audit & SEO',
 			isOpen: false,
 			content:
-				'I review your site performance, SEO and user experience, then give you clear fixes to improve speed, visibility and conversions.',
+				'I review your site performance, SEO and user experience, including local visibility signals like Google Business Profile where it matters, then give you clear fixes to improve speed, visibility and conversions.',
 			visualLabel: 'Audit and SEO score',
-			visualType: 'auditSeo'
+			visualType: 'auditSeo',
+			cta: { label: 'Website audit & SEO', href: '/website-audit-seo' }
+		},
+		{
+			id: 'setup-local',
+			title: 'Setup & Local Visibility',
+			isOpen: false,
+			content:
+				'I can help with the practical launch pieces around a website too: domain setup, business email, DNS records, basic tracking and Google Business Profile setup for local businesses.',
+			visualLabel: 'Setup workflow image',
+			visualType: 'setupRoute',
+			cta: { label: 'Domain, email & local setup', href: '/domain-email-google-business-setup' }
 		},
 		{
 			id: 'custom',
@@ -61,7 +72,8 @@
 			content:
 				'Streamline and automate your business processes with custom solutions, from invoice generators and quote calculators to something completely unique to you.',
 			visualLabel: 'Custom solution image',
-			visualType: 'custom'
+			visualType: 'spinningCog',
+			cta: { label: 'Custom business software', href: '/custom-business-software' }
 		}
 	]);
 
@@ -77,7 +89,7 @@
 	];
 
 	let fullText = textSegments.map((segment) => segment.text).join('');
-	let displayText = $state('');
+	let displayText = $state(fullText);
 
 	async function typewriterEffect() {
 		for (let i = 0; i <= fullText.length; i++) {
@@ -87,17 +99,18 @@
 		}
 	}
 
-	function getSegmentedText(displayText) {
-		let output = '';
+	function getSegmentedTextParts(displayText) {
 		let currentIndex = 0;
 
-		for (const segment of textSegments) {
+		return textSegments.map((segment) => {
 			const segmentText = displayText.slice(currentIndex, currentIndex + segment.text.length);
-			output += `<span class="${segment.class}">${segmentText}</span>`;
 			currentIndex += segment.text.length;
-		}
 
-		return output;
+			return {
+				...segment,
+				text: segmentText
+			};
+		});
 	}
 
 	function openModal() {
@@ -120,7 +133,13 @@
 				use:fadeOnScroll
 			>
 				<span class="blue-dot"><b>.</b></span>
-				<span> <b>{@html getSegmentedText(displayText)}</b></span>
+				<span>
+					<b>
+						{#each getSegmentedTextParts(displayText) as segment (segment.class)}
+							<span class={segment.class}>{segment.text}</span>
+						{/each}
+					</b>
+				</span>
 			</h1>
 
 			<p class="fade-on-scroll py-5 text-xl md:py-10" use:fadeOnScroll>
@@ -214,45 +233,10 @@
 								<div class="service-detail__score-wrap">
 									<AuditScore active={section.isOpen} />
 								</div>
-							{:else if section.visualType === 'custom'}
-								<div class="service-detail__graphic-wrap">
-									<div class="service-graphic service-graphic--custom" aria-hidden="true">
-										<span class="custom-path custom-path--top"></span>
-										<span class="custom-path custom-path--right"></span>
-										<span class="custom-path custom-path--bottom"></span>
-										<span class="custom-path custom-path--left"></span>
-										<span class="custom-node custom-node--top custom-node--message">
-											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
-												<path d="M5 6.5h14v9H9l-4 3.2V6.5Z" />
-												<path d="M8.5 10h7" />
-												<path d="M8.5 12.8h4.8" />
-											</svg>
-										</span>
-										<span class="custom-node custom-node--right custom-node--money">
-											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
-												<path d="M12 3.8v16.4" />
-												<path
-													d="M16.4 7.2c-.9-.8-2.2-1.3-3.9-1.3-2.3 0-3.8 1.1-3.8 2.8 0 1.6 1.1 2.3 3.8 2.8 2.8.5 3.9 1.3 3.9 3 0 1.8-1.6 3-4.1 3-1.8 0-3.4-.5-4.6-1.5"
-												/>
-											</svg>
-										</span>
-										<span class="custom-node custom-node--bottom custom-node--person">
-											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
-												<circle cx="12" cy="8.2" r="3.2" />
-												<path d="M5.8 19.2c.8-3.2 3-5 6.2-5s5.4 1.8 6.2 5" />
-											</svg>
-										</span>
-										<span class="custom-node custom-node--left custom-node--gear">
-											<svg class="custom-node__icon" viewBox="0 0 24 24" aria-hidden="true">
-												<path
-													d="M12 4.2 13.3 6l2.1.4.8 2 1.9 1.2-.4 2.2.4 2.2-1.9 1.2-.8 2-2.1.4L12 19.4l-1.3-1.8-2.1-.4-.8-2-1.9-1.2.4-2.2-.4-2.2 1.9-1.2.8-2 2.1-.4L12 4.2Z"
-												/>
-												<circle cx="12" cy="11.8" r="2.5" />
-											</svg>
-										</span>
-										<div class="custom-core">./</div>
-									</div>
-								</div>
+							{:else if section.visualType === 'setupRoute'}
+								<SetupRoute routeId={`setup-route-${section.id}`} />
+							{:else if section.visualType === 'spinningCog'}
+								<SpinningCog />
 							{:else}
 								<div class="service-detail__placeholder">
 									<span>{section.visualLabel}</span>
@@ -274,6 +258,21 @@
 					use:fadeOnScroll
 				/>
 			{/each}
+
+			<section class="service-note fade-on-scroll" use:fadeOnScroll>
+				<div>
+					<h2>Pricing & support<span class="blue-dot">.</span></h2>
+					<p>
+						Typical websites for service-based businesses start from £500. Custom apps, specialist
+						functionality and ongoing support plans are scoped around what the work needs to do.
+					</p>
+				</div>
+
+				<div class="service-note__links">
+					<a href="/website-pricing">Website pricing</a>
+					<a href="/domain-email-google-business-setup">Setup support</a>
+				</div>
+			</section>
 		</div>
 	</section>
 
@@ -405,6 +404,69 @@
 		transform: translateX(3px);
 	}
 
+	.service-note {
+		display: grid;
+		gap: clamp(1.25rem, 3vw, 2rem);
+		padding-top: clamp(2rem, 5vw, 3rem);
+	}
+
+	.service-note h2 {
+		margin-bottom: 1rem;
+		font-size: clamp(1.875rem, 4vw, 2.25rem);
+		font-weight: 700;
+		line-height: 1.15;
+	}
+
+	.service-note p {
+		max-width: 48rem;
+		font-size: 1.12rem;
+		line-height: 1.55;
+	}
+
+	.service-note__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: clamp(1rem, 3vw, 2rem);
+	}
+
+	.service-note__links a {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		width: fit-content;
+		margin-bottom: 4px;
+		padding: 0;
+		border: 0;
+		color: #0000ff;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-decoration: none;
+		transition: transform 180ms ease;
+	}
+
+	.service-note__links a::before {
+		content: '';
+		position: absolute;
+		right: 28px;
+		bottom: -6px;
+		left: 0;
+		height: 3px;
+		border-radius: 999px;
+		background: currentColor;
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.service-note__links a::after {
+		content: '→';
+		margin-left: 12px;
+	}
+
+	.service-note__links a:hover {
+		transform: translateX(3px);
+	}
+
 	.service-detail__visual {
 		margin: 0;
 		min-width: 0;
@@ -505,165 +567,11 @@
 		animation: shadowPulse 4s ease-in-out infinite;
 	}
 
-	.service-detail__graphic-wrap {
-		position: relative;
-		display: grid;
-		min-height: clamp(12rem, 23vw, 17rem);
-		place-items: center;
-		overflow: visible;
-	}
-
 	.service-detail__score-wrap {
 		display: grid;
 		min-height: clamp(11rem, 21vw, 15rem);
 		place-items: center;
 		overflow: visible;
-	}
-
-	.service-graphic {
-		position: relative;
-		z-index: 1;
-		width: min(100%, 23rem);
-		min-height: clamp(11rem, 20vw, 15rem);
-		overflow: hidden;
-		border: 1px solid rgba(27, 27, 27, 0.18);
-		border-radius: 8px;
-		background: rgba(237, 237, 237, 0.72);
-		color: #1b1b1b;
-		animation: macbookFloat 4s ease-in-out infinite;
-	}
-
-	.service-graphic--custom {
-		display: grid;
-		place-items: center;
-		min-height: clamp(12rem, 20vw, 15rem);
-		overflow: visible;
-		border: 0;
-		background: transparent;
-		animation: none;
-	}
-
-	.service-graphic--custom::before {
-		content: none;
-	}
-
-	.custom-core {
-		position: relative;
-		z-index: 3;
-		display: grid;
-		width: clamp(3.75rem, 6.4vw, 4.8rem);
-		aspect-ratio: 1;
-		place-items: center;
-		border: 2px solid #ededed;
-		border-radius: 50%;
-		background: #1b1b1b;
-		color: #ededed;
-		font-size: clamp(1.6rem, 3vw, 2.1rem);
-		font-weight: 800;
-		line-height: 1;
-		box-shadow: 0 0 0 1px rgba(27, 27, 27, 0.24);
-	}
-
-	.custom-path {
-		position: absolute;
-		z-index: 1;
-		display: block;
-		background: #1b1b1b;
-		opacity: 0;
-	}
-
-	.custom-path--top,
-	.custom-path--bottom {
-		left: 50%;
-		width: 2px;
-		height: 22%;
-		transform: translateX(-50%);
-		transform-origin: center bottom;
-		animation: customPathFlowY 4.8s ease-in-out infinite;
-	}
-
-	.custom-path--top {
-		top: 19%;
-		animation-delay: 0s;
-	}
-
-	.custom-path--bottom {
-		bottom: 19%;
-		animation-delay: 2.4s;
-		transform-origin: center top;
-	}
-
-	.custom-path--left,
-	.custom-path--right {
-		top: 50%;
-		width: 20%;
-		height: 2px;
-		transform: translateY(-50%);
-		transform-origin: right center;
-		animation: customPathFlowX 4.8s ease-in-out infinite;
-	}
-
-	.custom-path--left {
-		left: 25%;
-		animation-delay: 3.6s;
-	}
-
-	.custom-path--right {
-		right: 25%;
-		animation-delay: 1.2s;
-		transform-origin: left center;
-	}
-
-	.custom-node {
-		position: absolute;
-		z-index: 2;
-		display: grid;
-		width: clamp(2rem, 4vw, 2.7rem);
-		aspect-ratio: 1;
-		place-items: center;
-		border: 1px solid rgba(27, 27, 27, 0.22);
-		border-radius: 50%;
-		background: #e8e1d8;
-		box-shadow: 0 0 0 0 rgba(27, 27, 27, 0.14);
-		animation: customNodePulse 4.8s ease-in-out infinite;
-	}
-
-	.custom-node__icon {
-		width: 58%;
-		height: 58%;
-		fill: none;
-		stroke: #1b1b1b;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		stroke-width: 1.9;
-	}
-
-	.custom-node--top {
-		top: 11%;
-		left: 50%;
-		transform: translateX(-50%);
-		animation-delay: 0.42s;
-	}
-
-	.custom-node--left {
-		top: 50%;
-		left: 20%;
-		transform: translateY(-50%);
-		animation-delay: 4.02s;
-	}
-
-	.custom-node--right {
-		top: 50%;
-		right: 20%;
-		transform: translateY(-50%);
-		animation-delay: 1.62s;
-	}
-
-	.custom-node--bottom {
-		bottom: 11%;
-		left: 50%;
-		transform: translateX(-50%);
-		animation-delay: 2.82s;
 	}
 
 	.service-detail__coin-wrap {
@@ -703,6 +611,11 @@
 			justify-content: flex-end;
 			align-self: start;
 			margin-top: calc(clamp(1.5rem, 4vw, 3rem) * -0.4);
+		}
+
+		.service-note {
+			grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.42fr);
+			align-items: end;
 		}
 
 		.section-divider.open {
@@ -745,10 +658,7 @@
 		.service-detail__laptop,
 		.service-detail__laptop-shadow,
 		.service-detail__phone,
-		.service-detail__phone-shadow,
-		.service-graphic,
-		.custom-path,
-		.custom-node {
+		.service-detail__phone-shadow {
 			animation: none;
 		}
 	}
@@ -774,66 +684,6 @@
 		50% {
 			transform: translateX(var(--shadow-x, -50%)) scale(0.7);
 			opacity: 0.4;
-		}
-	}
-
-	@keyframes customPathFlowY {
-		0%,
-		9% {
-			opacity: 0;
-			transform: translateX(-50%) scaleY(0);
-		}
-
-		18%,
-		56% {
-			opacity: 1;
-			transform: translateX(-50%) scaleY(1);
-		}
-
-		72%,
-		100% {
-			opacity: 0;
-			transform: translateX(-50%) scaleY(1);
-		}
-	}
-
-	@keyframes customPathFlowX {
-		0%,
-		9% {
-			opacity: 0;
-			transform: translateY(-50%) scaleX(0);
-		}
-
-		18%,
-		56% {
-			opacity: 1;
-			transform: translateY(-50%) scaleX(1);
-		}
-
-		72%,
-		100% {
-			opacity: 0;
-			transform: translateY(-50%) scaleX(1);
-		}
-	}
-
-	@keyframes customNodePulse {
-		0%,
-		12%,
-		100% {
-			background: #ededed;
-			box-shadow: 0 0 0 0 rgba(27, 27, 27, 0);
-		}
-
-		20%,
-		38% {
-			background: #e8e1d8;
-			box-shadow: 0 0 0 0.42rem rgba(27, 27, 27, 0.08);
-		}
-
-		54% {
-			background: #ededed;
-			box-shadow: 0 0 0 0 rgba(27, 27, 27, 0);
 		}
 	}
 </style>

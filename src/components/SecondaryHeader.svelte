@@ -2,14 +2,18 @@
 	import { page } from '$app/stores';
 	import { isMenuOpen } from '../store.svelte';
 	import ThreeCoin from './ThreeCoin.svelte';
+	import { landingPagePaths } from '$lib/landingPages';
 
 	let activePage = '';
+	const servicePagePaths = new Set(landingPagePaths);
 
 	$: {
 		const p = $page.url.pathname;
-		if (p === '/about') activePage = 'about';
-		else if (p === '/services') activePage = 'services';
-		else if (p === '/portfolio') activePage = 'portfolio';
+		if (p === '/') activePage = 'home';
+		else if (p === '/about') activePage = 'about';
+		else if (p === '/services' || servicePagePaths.has(p)) activePage = 'services';
+		else if (p === '/portfolio' || p.startsWith('/portfolio/')) activePage = 'portfolio';
+		else if (p === '/articles' || p.startsWith('/articles/')) activePage = 'articles';
 		else activePage = '';
 	}
 
@@ -45,7 +49,7 @@
 		<!-- desktop nav -->
 		<ul class="hidden items-center gap-6 md:flex">
 			<li>
-				<a href="/" class="finer navlink dot-hover text-2xl" class:active={activePage === ''}
+				<a href="/" class="finer navlink dot-hover text-2xl" class:active={activePage === 'home'}
 					>Home</a
 				>
 			</li>
@@ -63,6 +67,13 @@
 					class:active={activePage === 'services'}>Services</a
 				>
 			</li>
+			<li>
+				<a
+					href="/articles"
+					class="finer navlink dot-hover text-2xl"
+					class:active={activePage === 'articles'}>Articles</a
+				>
+			</li>
 		</ul>
 
 		<!-- burger -->
@@ -73,7 +84,7 @@
 		>
 			<button
 				class="burger relative flex h-10 flex-col justify-around px-2 py-2 md:hidden"
-				on:click={handleClick}
+				onclick={handleClick}
 				aria-label="mobile nav menu button"
 			>
 				<div class="flex flex-col items-end gap-[7px]">
@@ -91,132 +102,144 @@
 		class="overlay fixed inset-0 bg-black/50 backdrop-blur-lg transition-opacity duration-300"
 		role="button"
 		tabindex="0"
-		on:click={handleClose}
-		on:keydown={(e) => e.key === 'Enter' || (e.key === ' ' && handleClose())}
+		onclick={handleClose}
+		onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClose()}
 	></div>
 {/if}
 
-<div
-	class={`nav-menu fixed top-0 right-0 h-full w-3/4 transform p-6 shadow-lg transition-transform duration-300 ${
-		$isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-	}`}
->
-	<!-- header -->
-	<div class="menu-head">
-		<h1 class="menu-title">./menu</h1>
-		<div class="menu-rule"></div>
-	</div>
-
-	<!-- links -->
-	<ul class="menu-links">
-		<li>
-			<a href="/" class="menu-link menu-dot" class:active={activePage === ''} on:click={handleClose}
-				>home</a
-			>
-		</li>
-
-		<li>
-			<a
-				href="/services"
-				class="menu-link menu-dot"
-				class:active={activePage === 'services'}
-				on:click={handleClose}>services</a
-			>
-		</li>
-
-		<li>
-			<a
-				href="/portfolio"
-				class="menu-link menu-dot"
-				class:active={activePage === 'portfolio'}
-				on:click={handleClose}>portfolio</a
-			>
-		</li>
-	</ul>
-
-	<div class="menu-brand">
-		<div class="menu-brand-lockup">
-			<a href="/" class="menu-brand-logo" aria-label="Developmental home" on:click={handleClose}>
-				<ThreeCoin colourway="flipped" size="footer" showShadow={false} />
-			</a>
-			<p>Quality web solutions, tailored to you.</p>
+{#if $isMenuOpen}
+	<div
+		class="nav-menu fixed top-0 right-0 h-full w-3/4 translate-x-0 transform p-6 shadow-lg transition-transform duration-300"
+	>
+		<!-- header -->
+		<div class="menu-head">
+			<p class="menu-title">./menu</p>
+			<div class="menu-rule"></div>
 		</div>
-		<a href="mailto:talon@developmental.pro" class="menu-cta" on:click={handleClose}>
-			<svg class="menu-cta-icon" viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M4 6.5h16v11H4z" />
-				<path d="m4.5 7 7.5 6 7.5-6" />
-			</svg>
-			<span>Get in touch</span>
-			<span class="menu-cta-arrow">-&gt;</span>
-		</a>
-	</div>
 
-	<!-- footer pinned to bottom -->
-	<div class="menu-footer">
-		<div class="footer-rule"></div>
-
-		<div class="links flex justify-center gap-6">
-			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
-				<a href="https://www.instagram.com/developmen_tal" aria-label="Instagram">
-					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
-						<circle cx="50" cy="50" r="49" />
-						<rect x="28" y="28" width="44" height="44" rx="13" />
-						<circle cx="50" cy="50" r="12" />
-						<circle cx="64" cy="36" r="4.5" />
-					</svg>
-				</a>
-			</div>
-
-			<div class="flex flex-col justify-center">
-				<span class="text-accent-two text-4xl"> / </span>
-			</div>
-			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+		<!-- links -->
+		<ul class="menu-links">
+			<li>
 				<a
-					href="https://www.facebook.com/profile.php?id=61586867661440"
-					target="_blank"
-					rel="noopener"
-					aria-label="Facebook"
+					href="/"
+					class="menu-link menu-dot"
+					class:active={activePage === 'home'}
+					onclick={handleClose}>home</a
 				>
-					<svg class="social-icon facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
-						<circle cx="50" cy="50" r="49" />
-						<path
-							d="M59 31h8V20h-9c-11 0-18 7-18 18v8H30v12h10v22h13V58h11l2-12H53v-7c0-5 2-8 6-8Z"
-						/>
-					</svg>
+			</li>
+
+			<li>
+				<a
+					href="/services"
+					class="menu-link menu-dot"
+					class:active={activePage === 'services'}
+					onclick={handleClose}>services</a
+				>
+			</li>
+
+			<li>
+				<a
+					href="/portfolio"
+					class="menu-link menu-dot"
+					class:active={activePage === 'portfolio'}
+					onclick={handleClose}>portfolio</a
+				>
+			</li>
+
+			<li>
+				<a
+					href="/articles"
+					class="menu-link menu-dot"
+					class:active={activePage === 'articles'}
+					onclick={handleClose}>articles</a
+				>
+			</li>
+		</ul>
+
+		<div class="menu-brand">
+			<div class="menu-brand-lockup">
+				<a href="/" class="menu-brand-logo" aria-label="Developmental home" onclick={handleClose}>
+					<ThreeCoin colourway="flipped" size="footer" showShadow={false} />
 				</a>
+				<p>Quality web solutions, tailored to you.</p>
 			</div>
-			<div class="flex flex-col justify-center">
-				<span class="text-accent-two text-4xl"> / </span>
-			</div>
-			<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
-				<a href="mailto:talon@developmental.pro" aria-label="Email">
-					<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
-						<circle cx="50" cy="50" r="49" />
-						<rect x="24" y="32" width="52" height="38" rx="4" />
-						<path d="M28 36 50 54 72 36" />
-					</svg>
-				</a>
-			</div>
-		</div>
-		<div class="menu-contact">
-			<a href="mailto:talon@developmental.pro">
-				<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+			<a href="mailto:talon@developmental.pro" class="menu-cta" onclick={handleClose}>
+				<svg class="menu-cta-icon" viewBox="0 0 24 24" aria-hidden="true">
 					<path d="M4 6.5h16v11H4z" />
 					<path d="m4.5 7 7.5 6 7.5-6" />
 				</svg>
-				<span>talon@developmental.pro</span>
-			</a>
-			<a href="tel:+447306123054">
-				<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-					<path
-						d="M7.5 4.5 10 7.4l-1.7 2.1c1 2.1 2.7 3.8 4.8 4.8l2.1-1.7 2.9 2.5-.8 3.2c-.2.7-.8 1.2-1.6 1.2C9.4 19.5 4.5 14.6 4.5 8.3c0-.8.5-1.4 1.2-1.6l1.8-.4Z"
-					/>
-				</svg>
-				<span>+44 7306 123054</span>
+				<span>Get in touch</span>
+				<span class="menu-cta-arrow">-&gt;</span>
 			</a>
 		</div>
+
+		<!-- footer pinned to bottom -->
+		<div class="menu-footer">
+			<div class="footer-rule"></div>
+
+			<div class="links flex justify-center gap-6">
+				<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+					<a href="https://www.instagram.com/developmen_tal" aria-label="Instagram">
+						<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+							<circle cx="50" cy="50" r="49" />
+							<rect x="28" y="28" width="44" height="44" rx="13" />
+							<circle cx="50" cy="50" r="12" />
+							<circle cx="64" cy="36" r="4.5" />
+						</svg>
+					</a>
+				</div>
+
+				<div class="flex flex-col justify-center">
+					<span class="text-accent-two text-4xl"> / </span>
+				</div>
+				<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+					<a
+						href="https://www.facebook.com/profile.php?id=61586867661440"
+						target="_blank"
+						rel="noopener"
+						aria-label="Facebook"
+					>
+						<svg class="social-icon facebook-icon" viewBox="0 0 100 100" aria-hidden="true">
+							<circle cx="50" cy="50" r="49" />
+							<path
+								d="M59 31h8V20h-9c-11 0-18 7-18 18v8H30v12h10v22h13V58h11l2-12H53v-7c0-5 2-8 6-8Z"
+							/>
+						</svg>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center">
+					<span class="text-accent-two text-4xl"> / </span>
+				</div>
+				<div class="link h-[2.6rem] w-[2.6rem] overflow-hidden rounded-full">
+					<a href="mailto:talon@developmental.pro" aria-label="Email">
+						<svg class="social-icon" viewBox="0 0 100 100" aria-hidden="true">
+							<circle cx="50" cy="50" r="49" />
+							<rect x="24" y="32" width="52" height="38" rx="4" />
+							<path d="M28 36 50 54 72 36" />
+						</svg>
+					</a>
+				</div>
+			</div>
+			<div class="menu-contact">
+				<a href="mailto:talon@developmental.pro">
+					<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M4 6.5h16v11H4z" />
+						<path d="m4.5 7 7.5 6 7.5-6" />
+					</svg>
+					<span>talon@developmental.pro</span>
+				</a>
+				<a href="tel:+447306123054">
+					<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M7.5 4.5 10 7.4l-1.7 2.1c1 2.1 2.7 3.8 4.8 4.8l2.1-1.7 2.9 2.5-.8 3.2c-.2.7-.8 1.2-1.6 1.2C9.4 19.5 4.5 14.6 4.5 8.3c0-.8.5-1.4 1.2-1.6l1.8-.4Z"
+						/>
+					</svg>
+					<span>+44 7306 123054</span>
+				</a>
+			</div>
+		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.second-header {
@@ -447,36 +470,6 @@
 		margin-bottom: 14px;
 	}
 
-	.social-row {
-		display: flex;
-		gap: 10px;
-		padding-left: 12px;
-		margin-bottom: 12px;
-	}
-
-	.social-btn {
-		width: 42px;
-		height: 42px;
-		border-radius: 12px;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid rgba(255, 255, 255, 0.14);
-		color: rgba(255, 255, 255, 0.85);
-		background: rgba(255, 255, 255, 0.05);
-		text-decoration: none;
-		transition:
-			transform 0.2s ease,
-			border-color 0.2s ease,
-			background-color 0.2s ease;
-	}
-
-	.social-btn:hover {
-		transform: scale(1.03);
-		border-color: rgba(255, 255, 255, 0.25);
-		background: rgba(255, 255, 255, 0.08);
-	}
-
 	.link a {
 		display: flex;
 		width: 100%;
@@ -510,11 +503,6 @@
 		stroke: none;
 	}
 
-	.social-btn svg {
-		width: 20px;
-		height: 20px;
-	}
-
 	.menu-contact {
 		display: flex;
 		flex-direction: column;
@@ -546,17 +534,5 @@
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		flex: 0 0 auto;
-	}
-
-	.email-link {
-		display: block;
-		padding-left: 12px;
-		font-size: 14px;
-		color: rgba(255, 255, 255, 0.65);
-		text-decoration: none;
-	}
-
-	.email-link:hover {
-		color: rgba(255, 255, 255, 0.9);
 	}
 </style>

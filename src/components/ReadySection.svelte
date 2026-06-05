@@ -1,8 +1,16 @@
 <script>
+	import { trackMainCta } from '$lib/conversionTracking';
+
 	export let heading;
 	export let tail = 'to get started.';
 	export let actionLabel = 'Click here';
+	export let trackingLocation = 'ready_section';
 	export let onAction = () => {};
+
+	function handleAction() {
+		trackMainCta(actionLabel, trackingLocation);
+		onAction();
+	}
 </script>
 
 <hr class="ready-rule border-black/20" />
@@ -14,7 +22,7 @@
 		</h2>
 
 		<h3 class="ready-cta text-3xl md:text-4xl">
-			<button class="link ready-cta__inline-link" onclick={onAction}>{actionLabel}</button>
+			<button class="link ready-cta__inline-link" onclick={handleAction}>{actionLabel}</button>
 			{tail}
 		</h3>
 	</div>

@@ -5,21 +5,44 @@
 
 <footer class="site-footer">
 	<div class="footer-inner fade-on-scroll" use:fadeOnScroll>
-		<div class="footer-brand fade-on-scroll" use:fadeOnScroll>
-			<a href="/" class="footer-logo" aria-label="Developmental home">
-				<ThreeCoin colourway="flipped" size="footer" showShadow={false} />
-			</a>
-			<p>Quality web solutions, tailored to you.</p>
-		</div>
-
-		<nav class="footer-group fade-on-scroll" aria-label="Footer sitemap" use:fadeOnScroll>
+		<nav
+			class="footer-group footer-sitemap fade-on-scroll"
+			aria-label="Footer sitemap"
+			use:fadeOnScroll
+		>
 			<h2>Sitemap</h2>
 			<a href="/">Home</a>
 			<a href="/portfolio">Portfolio</a>
 			<a href="/services">Services</a>
+			<a href="/articles">Articles</a>
 		</nav>
 
-		<div class="footer-group fade-on-scroll" use:fadeOnScroll>
+		<nav
+			class="footer-group footer-services fade-on-scroll"
+			aria-label="Service pages"
+			use:fadeOnScroll
+		>
+			<h2>Services</h2>
+			<a href="/small-business-web-design">Small business websites</a>
+			<a href="/website-pricing">Website pricing</a>
+			<a href="/website-audit-seo">Website audit &amp; SEO</a>
+			<a href="/app-development">App development</a>
+			<a href="/custom-business-software">Custom software</a>
+		</nav>
+
+		<nav
+			class="footer-group footer-locations fade-on-scroll"
+			aria-label="Location pages"
+			use:fadeOnScroll
+		>
+			<h2>Locations</h2>
+			<a href="/web-design-sandiacre">Sandiacre</a>
+			<a href="/web-design-near-sandiacre">Near Sandiacre</a>
+			<a href="/web-design-east-midlands">East Midlands</a>
+			<a href="/web-design-uk">United Kingdom</a>
+		</nav>
+
+		<div class="footer-group footer-contact fade-on-scroll" use:fadeOnScroll>
 			<h2>Contact</h2>
 			<a href="mailto:talon@developmental.pro">
 				<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -75,7 +98,12 @@
 
 	<div class="footer-bottom fade-on-scroll" use:fadeOnScroll>
 		<span>© 2026 Developmental</span>
-		<span>Built by Talon</span>
+		<a href="/" class="footer-bottom-brand" aria-label="Developmental home">
+			<span class="footer-logo">
+				<ThreeCoin colourway="flipped" size="footer" showShadow={false} />
+			</span>
+			<span>Quality web solutions, tailored to you.</span>
+		</a>
 	</div>
 </footer>
 
@@ -89,19 +117,36 @@
 	.footer-inner {
 		display: grid;
 		grid-template-columns:
-			minmax(12rem, 1.1fr) minmax(7rem, 0.65fr) minmax(16rem, 1.1fr)
-			minmax(10rem, 0.8fr);
-		gap: clamp(1.5rem, 4vw, 3rem);
-		width: min(100%, 1200px);
+			minmax(8rem, 0.72fr) minmax(14rem, 1.08fr) minmax(11rem, 0.82fr)
+			minmax(15rem, 1fr);
+		grid-template-areas:
+			'sitemap services locations contact'
+			'social services locations contact';
+		column-gap: clamp(1.5rem, 3vw, 2.25rem);
+		row-gap: clamp(2rem, 4vw, 3rem);
+		width: min(100%, 1320px);
 		margin: 0 auto;
-		padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 5rem);
+		padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
 	}
 
-	.footer-brand {
-		display: flex;
-		align-items: center;
-		gap: clamp(0.8rem, 2vw, 1.1rem);
-		min-width: 0;
+	.footer-sitemap {
+		grid-area: sitemap;
+	}
+
+	.footer-services {
+		grid-area: services;
+	}
+
+	.footer-locations {
+		grid-area: locations;
+	}
+
+	.footer-contact {
+		grid-area: contact;
+	}
+
+	.footer-social {
+		grid-area: social;
 	}
 
 	.footer-logo {
@@ -113,18 +158,11 @@
 		text-decoration: none;
 	}
 
-	.footer-brand p {
-		max-width: 18rem;
-		margin: 0;
-		color: rgba(232, 225, 216, 0.74);
-		line-height: 1.55;
-	}
-
 	.footer-group,
 	.footer-social {
 		display: grid;
 		align-content: start;
-		gap: 0.75rem;
+		gap: 0.7rem;
 		min-width: 0;
 	}
 
@@ -153,12 +191,14 @@
 		gap: 0.45rem;
 		width: fit-content;
 		max-width: 100%;
+		font-size: 0.98rem;
 		line-height: 1.4;
 	}
 
 	.footer-group a span {
 		min-width: 0;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
+		word-break: normal;
 	}
 
 	.contact-icon {
@@ -214,47 +254,79 @@
 	.footer-bottom {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
-		width: min(100%, 1200px);
+		gap: 1rem;
+		width: min(100%, 1320px);
 		margin: 0 auto;
-		padding: 1rem clamp(1.5rem, 5vw, 5rem) 1.25rem;
+		padding: 1rem clamp(1.5rem, 4vw, 3rem) 1.25rem;
 		border-top: 1px solid rgba(232, 225, 216, 0.18);
 		color: rgba(232, 225, 216, 0.58);
 		font-size: 0.9rem;
 	}
 
-	@media (max-width: 1040px) {
-		.footer-inner {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
+	.footer-bottom-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.8rem;
+		min-width: 0;
+		color: rgba(232, 225, 216, 0.72);
+		text-decoration: none;
+	}
 
-		.footer-brand {
-			grid-column: 1 / -1;
+	.footer-bottom-brand .footer-logo {
+		width: 2.4rem;
+	}
+
+	.footer-bottom-brand span:last-child {
+		line-height: 1.35;
+		overflow-wrap: anywhere;
+	}
+
+	@media (max-width: 1100px) {
+		.footer-inner {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			grid-template-areas:
+				'sitemap services'
+				'locations contact'
+				'social contact';
 		}
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 760px) {
 		.footer-inner {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			grid-template-areas:
+				'sitemap locations'
+				'services services'
+				'contact contact'
+				'social social';
 			gap: 2rem;
 		}
+	}
 
-		.footer-brand {
-			align-items: flex-start;
-		}
-
-		.footer-logo {
-			width: 3rem;
-		}
-
-		.footer-brand p {
-			max-width: 15rem;
-			line-height: 1.45;
+	@media (max-width: 520px) {
+		.footer-inner {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'sitemap'
+				'services'
+				'locations'
+				'contact'
+				'social';
 		}
 
 		.footer-bottom {
 			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.footer-bottom-brand {
+			align-items: center;
+		}
+
+		.footer-bottom-brand span:last-child {
+			line-height: 1.25;
 		}
 	}
 </style>

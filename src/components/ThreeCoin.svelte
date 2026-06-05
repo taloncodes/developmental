@@ -4,6 +4,7 @@
 	export let colourway = 'default';
 	export let size = 'default';
 	export let showShadow = true;
+	export let markType = 'logo';
 
 	let canvas;
 	let shadow;
@@ -79,6 +80,7 @@
 			const radius = 1;
 			const depth = 0.13;
 			const faceOffset = depth / 2 + 0.01;
+			const frontMarkOffset = faceOffset + 0.014;
 
 			const bodyGeometry = new THREE.CylinderGeometry(radius, radius, depth, 112, 1, false);
 			bodyGeometry.rotateX(Math.PI / 2);
@@ -112,7 +114,7 @@
 			backBevel.position.z = -depth / 2;
 			coin.add(backBevel);
 
-			function createLogo(z, flipped = false) {
+			function createLogoMark(z, flipped = false) {
 				const logo = new THREE.Group();
 				logo.position.z = z;
 
@@ -128,8 +130,44 @@
 				return logo;
 			}
 
-			coin.add(createLogo(faceOffset + 0.014));
-			coin.add(createLogo(-(faceOffset + 0.014), true));
+			async function createPoundMark(z, flipped = false) {
+				const [{ FontLoader }, { TextGeometry }, fontData] = await Promise.all([
+					import('three/examples/jsm/loaders/FontLoader.js'),
+					import('three/examples/jsm/geometries/TextGeometry.js'),
+					import('three/examples/fonts/helvetiker_bold.typeface.json')
+				]);
+				const font = new FontLoader().parse(fontData.default ?? fontData);
+				const geometry = new TextGeometry('£', {
+					font,
+					size: 0.74,
+					depth: 0.018,
+					curveSegments: 10,
+					bevelEnabled: false
+				});
+
+				geometry.computeBoundingBox();
+				const box = geometry.boundingBox;
+				const width = box.max.x - box.min.x;
+				const height = box.max.y - box.min.y;
+				geometry.translate(-box.min.x - width / 2, -box.min.y - height / 2 - 0.015, 0);
+
+				const pound = new THREE.Group();
+				pound.position.z = z;
+
+				const symbol = new THREE.Mesh(geometry, mark);
+				pound.add(symbol);
+
+				if (flipped) pound.rotation.y = Math.PI;
+				return pound;
+			}
+
+			if (markType === 'pound') {
+				coin.add(await createPoundMark(frontMarkOffset));
+				coin.add(await createPoundMark(-frontMarkOffset, true));
+			} else {
+				coin.add(createLogoMark(frontMarkOffset));
+				coin.add(createLogoMark(-frontMarkOffset, true));
+			}
 
 			const ambient = new THREE.AmbientLight(0xffffff, 2.4);
 			scene.add(ambient);

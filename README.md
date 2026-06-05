@@ -36,3 +36,11 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## SEO Structured Data Notes
+
+Current JSON-LD lives in `src/lib/structuredData.js` and is rendered from the root layout. It covers the site, business, person, current page, breadcrumbs, current services, visible landing-page FAQs, article pages and portfolio case-study pages.
+
+Add the later schema types when the matching visible content/pages exist:
+
+- `Review` or `AggregateRating` only when the review text, reviewer and rating details are visible on the page and can be represented accurately.
